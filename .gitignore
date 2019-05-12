@@ -66,6 +66,11 @@
 !/polkit*
 !/polkit*/**
 
+# PORTAGE: Grab all but the config file
+!/portage
+!/portage
+/portage/make.conf
+
 # RESOLVCONF: Grab config
 !/resolvconf.conf
 
