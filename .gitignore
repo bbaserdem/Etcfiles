@@ -7,7 +7,7 @@
 # X11: Get config overrides
 !/X11
 !/X11/xorg.conf.d
-!/X11/xorg.conf.d/**
+!/X11/xorg.conf.d/10-sbp**
 
 # ABCDE: Get config
 !/abcde.conf
@@ -28,6 +28,10 @@
 !/conf.d
 !/conf.d/**
 
+# DEFAULT: Grab grub config
+!/default
+!/default/grub
+
 # DHCPD: Grab config
 !/dhcpd.conf
 
@@ -36,6 +40,13 @@
 !/etckeeper/**
 !/.etckeeper
 !/.etckeeper/**
+
+# FONTS: Grab overrides THAT I PUT
+!/fonts
+!/fonts/conf.avail
+!/fonts/conf.avail/99-sbp**
+!/fonts/conf.d
+!/fonts/conf.d/99-sbp**
 
 # GEOCLUE: Get config
 !/geoclue
@@ -56,15 +67,22 @@
 !/mkinitcpio
 !/mkinitcpio/**
 
-# NFTABLES: Grab firewall
-!/nftables*
+# NFTABLES: Grab firewall example
+!/nftables.conf.sbp
 
-# PACMAN: Grab config
+# PACMAN: Grab config and user hooks
 !/pacman.conf
+!/pacman.d
+!/pacman.d/hooks
+!/pacman.d/hooks/90-sbp**
 
 # POLKIT: Grab overrides
-!/polkit*
-!/polkit*/**
+!/polkit
+!/polkit/rules.d
+!/polkit/rules.d/90-sbp**
+!/polkit-1
+!/polkit-1/rules.d
+!/polkit-1/rules.d/90-sbp**
 
 # PORTAGE: Grab all but the config file
 !/portage
@@ -76,34 +94,42 @@
 
 # SDDM: Grab theme
 !/sddm.conf.d
-!/sddm.conf.d/**
+!/sddm.conf.d/sbp**
 
 # SKEL: Grab skel
 !/skel
 !/skel/**
 
+# SNAPPER: Use the same config
+!/snapper
+!/snapper/configs
+!/snapper/configs/**
+
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
-!/sudoers.d/**
+!/sudoers.d/sbp**
 
 # SYSCTL: Grab everything
 !/sysctl.d
-!/sysctl.d/**
+!/sysctl.d/99-sbp**
 
 # SYSTEMD: Grab overrides
 !/systemd
 !/systemd/logind.conf.d
-!/systemd/logind.conf.d/**
+!/systemd/logind.conf.d/sbp**
 !/systemd/system.conf.d
-!/systemd/system.conf.d/**
+!/systemd/system.conf.d/sbp**
 !/systemd/system
+!/systemd/system/*.service
+!/systemd/system/*.timer
 !/systemd/system/*.d
 !/systemd/system/*.d/**
 
 # UDEV: Grab rules
 !/udev
 !/udev/rules.d
-!/udev/rules.d/**
+!/udev/rules.d/11-sbp**
+!/udev/rules.d/90-sbp**
 
 # UDISKS: Grab things
 !/udisks2
