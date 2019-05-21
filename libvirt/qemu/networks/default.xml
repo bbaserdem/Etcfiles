@@ -1,6 +1,6 @@
 <network>
   <name>default</name>
-  <uuid>6692c146-7cbf-427b-a4e9-952e3631395a</uuid>
+  <uuid>d42f43f9-8335-4b08-be75-1fe110faf2ed</uuid>
   <bridge name="virbr0"/>
   <forward/>
   <ip address="192.168.122.1" netmask="255.255.255.0">
