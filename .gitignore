@@ -32,6 +32,9 @@
 !/default
 !/default/grub
 
+# DRACUT: Grab the dracut config
+!/dracut.conf
+
 # DHCPD: Grab config
 !/dhcpd.conf
 
