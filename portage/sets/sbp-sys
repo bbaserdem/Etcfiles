@@ -1,14 +1,27 @@
-# Kernel and booting
-sys-boot/refind
+# Base group; things that are on arch
+sys-devel/automake
+sys-devel/gettext
+sys-apps/man-db
+sys-apps/pciutils
+sys-apps/texinfo
+sys-apps/usbutils
+
+# UEFI
 sys-boot/efibootmgr
+sys-boot/refind
+sys-libs/efivar
+app-crypt/efitools
+app-crypt/sbsigntools
+
+# Kernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-kernel/genkernel-next
+sys-kernel/dracut
 sys-firmware/edk2-ovmf
 
 # File systems
 app-backup/snapper
-net-misc/rsync
 sys-block/parted
 sys-fs/btrfs-progs
 sys-fs/exfat-utils

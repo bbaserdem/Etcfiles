@@ -87,10 +87,10 @@
 !/polkit-1/rules.d
 !/polkit-1/rules.d/90-sbp**
 
-# PORTAGE: Grab all but the config file
+# PORTAGE: Grab all but the specific config file
 !/portage
 !/portage/**
-/portage/make.conf
+/portage/specific.conf
 
 # RESOLVCONF: Grab config
 !/resolvconf.conf

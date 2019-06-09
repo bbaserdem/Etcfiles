@@ -1,3 +1,9 @@
+# Base group
+sys-devel/gettext -cvs git
+sys-apps/man-db manpager
+sys-apps/pciutils kmod
+
+
 app-admin/syslog-ng geoip2 json
 app-admin/logrotate cron
 app-admin/pass X -dmenu -fish-completion -importers
