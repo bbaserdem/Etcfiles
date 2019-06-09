@@ -103,11 +103,13 @@ media-sound/mpc
 app-arch/atool
 app-editors/neovim
 app-emulation/qemu
+app-eselect/eselect-sh
 app-misc/khal
 app-misc/khard
 app-misc/neofetch
 app-misc/tmux
 app-misc/vifm
+app-shells/dash
 app-shells/zsh
 app-shells/zsh-completions
 app-shells/gentoo-zsh-completions
