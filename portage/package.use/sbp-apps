@@ -1,0 +1,25 @@
+# Programs
+app-emulation/virt-manager sasl
+app-text/texlive extra epspdf graphics -games -humanities -jadetex luatex music pdfannotextractor pstricks publishers science -xetex -xindy
+app-text/zathura synctex magic
+media-gfx/darktable colord -flickr -kwallet gphoto2
+media-gfx/inkscape -cdr -dia -inkjar latex -visio -wpg
+media-sound/audacity midi portmixer soundtouch
+media-sound/tuxguitar fluidsynth lilypond pdf tray
+media-video/smplayer autoshutdown mpris
+net-misc/remmina ssh -telepathy
+net-wireless/blueman appindicator network
+www-client/qutebroser scripts
+www-client/chromium widevine 
+x11-terms/alacritty terminfo
+
+# Utility
+net-misc/freerdp client -server
+media-video/mpv archive bluray cli -cplugins drm egl gbm libass libmpv -lua -raspberry-pi rubberband -sdl tools uchardet -aqua cdda -coreaudio libcaca
+
+# Programming
+sci-mathematics/octave -glpk gui qhull qrupdate sparse
+dev-python/spyder -webengine
+
+# Gaming
+app-emulation/wine-staging -pipelight run-exes sdl staging themes udev vkd3d -gphoto2 mono gecko lcms gstreamer

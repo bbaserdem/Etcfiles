@@ -1,8 +1,9 @@
-# Compositor
-dev-libs/wayland
-
 # Window manager
 gui-wm/sway
+gui-libs/wlroots
+
+# Background setter
+gui-wm/swaybg
 
 # Idle management daemon
 gui-apps/swayidle
@@ -16,7 +17,13 @@ gui-apps/wl-clipboard
 # Notification daemon
 gui-apps/mako
 
-# grim, slurp
+# Info printer
+x11-misc/i3blocks
 
-# Layman
-#app-misc/zotero
+# LIGHT: Backlight tool
+dev-libs/light
+
+# Autostart manager
+x11-misc/dex
+
+# grim, slurp

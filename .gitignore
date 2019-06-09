@@ -90,7 +90,7 @@
 # PORTAGE: Grab all but the specific config file
 !/portage
 !/portage/**
-/portage/specific.conf
+/portage/local.conf
 
 # RESOLVCONF: Grab config
 !/resolvconf.conf

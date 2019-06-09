@@ -1,0 +1,2 @@
+# Allow recent nvidia drivers
+x11-drivers/nvidia-drivers ~amd64

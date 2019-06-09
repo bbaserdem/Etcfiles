@@ -1,0 +1,4 @@
+gui-wm/sway swaybar swaybg swayidle swaylock swaymsg swaynag tray -wallpapers
+gui-libs/wlroots icccm x11-backend
+gui-apps/swaylock gdk-pixbuf
+

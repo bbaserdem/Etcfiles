@@ -1,0 +1,5 @@
+x11-misc/dunst dunstify
+media-gfx/feh xinerama
+x11-misc/polybar -i3wm ipc mpd network
+x11-misc/redshift geoclue
+x11-misc/rofi windowmode
