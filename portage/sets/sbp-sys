@@ -77,7 +77,6 @@ app-admin/syslog-ng
 sys-apps/dbus
 sys-apps/etckeeper
 sys-apps/mlocate
-sys-auth/pam
 sys-auth/pambase
 sys-auth/polkit
 sys-fs/eudev
