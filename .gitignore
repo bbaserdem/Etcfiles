@@ -3,6 +3,7 @@
 # Do not track anything by default
 /**
 !/.gitignore
+!/.etckeeper
 
 # X11: Get config overrides
 !/X11
