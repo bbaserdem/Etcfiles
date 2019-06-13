@@ -27,7 +27,10 @@
 
 # CONF.D: Grab most thing
 !/conf.d
-!/conf.d/**
+!/conf.d/consolefont
+!/conf.d/keymaps
+!/conf.d/snapper
+!/conf.d/xdm
 
 # DEFAULT: Grab grub config
 !/default
