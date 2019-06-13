@@ -96,7 +96,7 @@
 
 # SDDM: Grab theme
 !/sddm.conf.d
-!/sddm.conf.d/sbp**
+!/sddm.conf.d/**
 
 # SKEL: Grab skel
 !/skel
