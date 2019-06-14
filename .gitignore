@@ -5,6 +5,12 @@
 !/.gitignore
 !/.etckeeper
 
+# DISTRO-SPECIFIC
+!/archlinux
+!/archlinux/**
+!/gentoo
+!/gentoo/**
+
 # X11: Get config overrides
 !/X11
 !/X11/xorg.conf.d
