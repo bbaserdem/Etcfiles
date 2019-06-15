@@ -48,9 +48,10 @@
 # DHCPD: Grab config
 !/dhcpd.conf
 
-# ETCKEEPER: Grab everything
+# ETCKEEPER: Grab everything but config
 !/etckeeper
 !/etckeeper/**
+/etckeeper/local.conf
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
