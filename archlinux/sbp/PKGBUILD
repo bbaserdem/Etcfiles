@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -400,6 +400,9 @@ package_sbp-gui-extra() {
     depends=('sbp-gui-base')
     # Apps
     depends+=(
+        'firefox'
+        'stellarium'
+        'openscad'
         'kitty' 'python-pillow'
         'inkscape'
         'gimp'
