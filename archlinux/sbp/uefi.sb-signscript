@@ -1,0 +1,16 @@
+#!/bin/bash
+# Maintained by sbp
+
+_loc="/etc/keys"
+_key="${_loc}/secureboot.key"
+_crt="${_loc}/secureboot.crt"
+
+_files=("$@")
+
+if [ ! -e "${_key}" ] && [ -e "${_crt}" ] ; then
+    for _var in "${_files[@]}" ; do
+        /usr/bin/sbsign --key $_key --cert $_crt --output $_var $_var
+    done
+else
+    echo "SB keys not found in ${_loc}, skipping …"
+fi
