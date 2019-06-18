@@ -3,10 +3,10 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = linux-lts
+Target = refind-efi
 
 [Action]
-Description = Signing Kernel for SecureBoot
+Description = Updating, and signing rEFInd
 When = PostTransaction
-Exec = /usr/bin/sbp-sbsign.sh /boot/vmlinuz-linux-lts
+Exec = /usr/share/refind/update-refind.sh
 Depends = sbp-sys-uefi

@@ -8,5 +8,5 @@ Target = linux
 [Action]
 Description = Signing Kernel for SecureBoot
 When = PostTransaction
-Exec = /usr/bin/sbsign.sh /boot/vmlinuz-linux
-Depends = sbsigntools
+Exec = /usr/bin/sbp-sbsign.sh /boot/vmlinuz-linux
+Depends = sbp-sys-uefi

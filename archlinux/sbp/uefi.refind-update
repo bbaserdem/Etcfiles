@@ -1,0 +1,43 @@
+#!/bin/dash
+# Maintained by sbp
+#
+# REFIND install/update script
+#
+target="/esp/EFI/rEFInd"
+
+# Create directory if doesn't exist!
+/bin/mkdir -p "${target}"
+
+# Copy the executable and sign it
+/bin/cp -rf "/usr/share/refind/refind_x64.efi" "${target}/refind_x64.efi"
+[ -x /usr/bin/sbp-sbsign.sh ] && /usr/bin/sbp-sbsign.sh "${target}/refind_x64.efi"
+
+#--------------------#
+#-----DARK THEME-----#
+#--------------------#
+[ -d "${target}/dark" ] && rm -rf "${target}/dark"
+/usr/bin/git clone https://github.com/htower/refind-theme-regular-black.git "${target}/dark"
+
+# Change config
+sed -i 's|^icons_dir \(.*\)$|icons_dir dark/384-144|g'          "${target}/dark/theme.conf"
+sed -i 's|^big_icon_size \(.*\)$|big_icon_size 384|g'           "${target}/dark/theme.conf"
+sed -i 's|^small_icon_size \(.*\)$|small_icon_size 144|g'       "${target}/dark/theme.conf"
+sed -i 's|^banner \(.*\)$|banner dark/icons/384-144/bk.png|g'   "${target}/dark/theme.conf"
+sed -i 's|^selection_big \(.*\)$|selection_big dark/icons/384-144/selection-big.png|g' "${target}/dark/theme.conf"
+sed -i 's|^selection_small \(.*\)$|selection_small dark/icons/384-144/selection-small.png|g' "${target}/dark/theme.conf"
+sed -i 's|^font \(.*\)$|font dark/fonts/source-code-pro-extralight-18.png|g' "${target}/dark/theme.conf"
+
+#---------------------#
+#-----LIGHT THEME-----#
+#---------------------#
+[ -d "${target}/light" ] && rm -rf "${target}/light"
+/usr/bin/git clone https://github.com/bobafetthotmail/refind-theme-regular.git "${target}/light" || true
+
+# Change config
+sed -i 's|^icons_dir \(.*\)$|icons_dir light/384-144|g'         "${target}/light/theme.conf"
+sed -i 's|^big_icon_size \(.*\)$|big_icon_size 384|g'           "${target}/light/theme.conf"
+sed -i 's|^small_icon_size \(.*\)$|small_icon_size 144|g'       "${target}/light/theme.conf"
+sed -i 's|^banner \(.*\)$|banner light/icons/384-144/bk.png|g'  "${target}/light/theme.conf"
+sed -i 's|^selection_big \(.*\)$|selection_big light/icons/384-144/selection-big.png|g' "${target}/light/theme.conf"
+sed -i 's|^selection_small \(.*\)$|selection_small light/icons/384-144/selection-small.png|g' "${target}/light/theme.conf"
+sed -i 's|^font \(.*\)$|font light/fonts/source-code-pro-extralight-18.png|g' "${target}/light/theme.conf"

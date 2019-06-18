@@ -41,6 +41,7 @@
 # DEFAULT: Grab grub config
 !/default
 !/default/grub
+!/default/tlp
 
 # DRACUT: Grab the dracut config
 !/dracut.conf
