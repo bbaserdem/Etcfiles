@@ -16,28 +16,28 @@ target="/esp/EFI/rEFInd"
 #-----DARK THEME-----#
 #--------------------#
 [ -d "${target}/dark" ] && rm -rf "${target}/dark"
-/usr/bin/git clone https://github.com/htower/refind-theme-regular-black.git "${target}/dark"
+dark_repo="refind-theme-regular-black"
+git clone "https://github.com/htower/${dark_repo}.git" "${target}/dark"
 
 # Change config
-sed -i 's|^icons_dir \(.*\)$|icons_dir dark/384-144|g'          "${target}/dark/theme.conf"
-sed -i 's|^big_icon_size \(.*\)$|big_icon_size 384|g'           "${target}/dark/theme.conf"
-sed -i 's|^small_icon_size \(.*\)$|small_icon_size 144|g'       "${target}/dark/theme.conf"
-sed -i 's|^banner \(.*\)$|banner dark/icons/384-144/bk.png|g'   "${target}/dark/theme.conf"
-sed -i 's|^selection_big \(.*\)$|selection_big dark/icons/384-144/selection-big.png|g' "${target}/dark/theme.conf"
-sed -i 's|^selection_small \(.*\)$|selection_small dark/icons/384-144/selection-small.png|g' "${target}/dark/theme.conf"
-sed -i 's|^font \(.*\)$|font dark/fonts/source-code-pro-extralight-18.png|g' "${target}/dark/theme.conf"
+sed -i "s|$dark_repo|dark|g"                            "${target}/dark/theme.conf"
+sed -i 's|128|384|g'                                    "${target}/dark/theme.conf"
+sed -i 's|48|144|g'                                     "${target}/dark/theme.conf"
+sed -i 's|\(fonts/[a-z,A-Z,-]*\)[0-9]*\.png|\118.png|g' "${target}/dark/theme.conf"
 
 #---------------------#
 #-----LIGHT THEME-----#
 #---------------------#
 [ -d "${target}/light" ] && rm -rf "${target}/light"
-/usr/bin/git clone https://github.com/bobafetthotmail/refind-theme-regular.git "${target}/light" || true
+light_repo="refind-theme-regular"
+git clone "https://github.com/bobafetthotmail/${light_repo}.git" "${target}/light"
 
 # Change config
-sed -i 's|^icons_dir \(.*\)$|icons_dir light/384-144|g'         "${target}/light/theme.conf"
-sed -i 's|^big_icon_size \(.*\)$|big_icon_size 384|g'           "${target}/light/theme.conf"
-sed -i 's|^small_icon_size \(.*\)$|small_icon_size 144|g'       "${target}/light/theme.conf"
-sed -i 's|^banner \(.*\)$|banner light/icons/384-144/bk.png|g'  "${target}/light/theme.conf"
-sed -i 's|^selection_big \(.*\)$|selection_big light/icons/384-144/selection-big.png|g' "${target}/light/theme.conf"
-sed -i 's|^selection_small \(.*\)$|selection_small light/icons/384-144/selection-small.png|g' "${target}/light/theme.conf"
-sed -i 's|^font \(.*\)$|font light/fonts/source-code-pro-extralight-18.png|g' "${target}/light/theme.conf"
+sed -i "s|$light_repo|light|g"                          "${target}/light/theme.conf"
+sed -i 's|128|placeholder|g'                            "${target}/light/theme.conf"
+sed -i 's|384|128|g'                                    "${target}/light/theme.conf"
+sed -i 's|placeholder|384|g'                            "${target}/light/theme.conf"
+sed -i 's|48|placeholder|g'                             "${target}/light/theme.conf"
+sed -i 's|144|48|g'                                     "${target}/light/theme.conf"
+sed -i 's|placeholder|144|g'                            "${target}/light/theme.conf"
+sed -i 's|\(fonts/[a-z,A-Z,-]*\)[0-9]*\.png|\118.png|g' "${target}/light/theme.conf"
