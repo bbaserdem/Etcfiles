@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -290,6 +290,7 @@ package_sbp-sys-uefi() {
         'efitools'
         'efivar'
         'refind-efi'
+        'refind-theme-regular'
         'sbsigntools')
 }
 

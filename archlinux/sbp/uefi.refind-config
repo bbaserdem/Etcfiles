@@ -37,4 +37,4 @@ scan_all_linux_kernels true
 #---------------#
 #-----THEME-----#
 #---------------#
-include light/theme.conf
+include refind-theme-regular/theme.conf

@@ -11,33 +11,3 @@ target="/esp/EFI/rEFInd"
 # Copy the executable and sign it
 /bin/cp -rf "/usr/share/refind/refind_x64.efi" "${target}/refind_x64.efi"
 [ -x /usr/bin/sbp-sbsign.sh ] && /usr/bin/sbp-sbsign.sh "${target}/refind_x64.efi"
-
-#--------------------#
-#-----DARK THEME-----#
-#--------------------#
-[ -d "${target}/dark" ] && rm -rf "${target}/dark"
-dark_repo="refind-theme-regular-black"
-git clone "https://github.com/htower/${dark_repo}.git" "${target}/dark"
-
-# Change config
-sed -i "s|$dark_repo|dark|g"                            "${target}/dark/theme.conf"
-sed -i 's|128|384|g'                                    "${target}/dark/theme.conf"
-sed -i 's|48|144|g'                                     "${target}/dark/theme.conf"
-sed -i 's|\(fonts/[a-z,A-Z,-]*\)[0-9]*\.png|\118.png|g' "${target}/dark/theme.conf"
-
-#---------------------#
-#-----LIGHT THEME-----#
-#---------------------#
-[ -d "${target}/light" ] && rm -rf "${target}/light"
-light_repo="refind-theme-regular"
-git clone "https://github.com/bobafetthotmail/${light_repo}.git" "${target}/light"
-
-# Change config
-sed -i "s|$light_repo|light|g"                          "${target}/light/theme.conf"
-sed -i 's|128|placeholder|g'                            "${target}/light/theme.conf"
-sed -i 's|384|128|g'                                    "${target}/light/theme.conf"
-sed -i 's|placeholder|384|g'                            "${target}/light/theme.conf"
-sed -i 's|48|placeholder|g'                             "${target}/light/theme.conf"
-sed -i 's|144|48|g'                                     "${target}/light/theme.conf"
-sed -i 's|placeholder|144|g'                            "${target}/light/theme.conf"
-sed -i 's|\(fonts/[a-z,A-Z,-]*\)[0-9]*\.png|\118.png|g' "${target}/light/theme.conf"
