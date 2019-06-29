@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -35,7 +35,6 @@ source=(
     'uefi.refind-update'
     'uefi.sb-signscript'
     'gui.xinit-session'
-    'games.steam-session'
     'laptop.install'
     'notebook.install'
     'server.install'
@@ -45,8 +44,7 @@ source=(
 sha256sums=(SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP )
+            SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
 provides=('vim' 'vi' 'nano')
@@ -432,12 +430,10 @@ package_sbp-gui-extra() {
 
 package_sbp-gui-games() {
     depends=('sbp-gui-base')
-    install -dm 0755 "${pkgdir}/usr/share/xsessions"
-    install -Dm 0755 games.steam-session "${pkgdir}/usr/share/xsessions/steam-session.desktop"
     # Steam
     depends+=(
         'ttf-roboto' 'steam-fonts'
-        'steamos-compositor-plus'
+        'steamos-compositor'
         'sssm' 'air-for-steam'
         'steam'
         'steam-native-runtime')

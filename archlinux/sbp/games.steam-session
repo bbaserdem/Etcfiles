@@ -1,8 +1,0 @@
-# Maintained by sbp
-[Desktop Entry]
-Name=Steam Big Picture Mode
-Comment=Start Steam in Big Picture Mode
-Exec=/usr/bin/steam-native -bigpicture
-TryExec=/usr/bin/steam-native
-Icon=steam
-Type=Application
