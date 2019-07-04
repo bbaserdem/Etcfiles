@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -207,7 +207,7 @@ provides=('vim' 'vi' 'nano')
         'unzip' 'xz' 'zip'
         'ctags'
         'bash-completion'
-        'fbset'
+        'fzf'
         'git'
         'discount' 'jq' 'yajl'
         'msmtp'
