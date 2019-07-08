@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=10
+pkgrel=12
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -242,7 +242,7 @@ package_sbp-sys-extra() {
         'neomutt' 'isync' 'notmuch'
         'ncmpcpp' 'mpdscribble'
         'khal' 'khard'
-        'syncthing'
+        'syncthing' 'syncthing-relaysrv'
         'youtube-dl'
         'newsboat'
         'todoman'
@@ -426,6 +426,10 @@ package_sbp-gui-extra() {
         'arduino'
         'arduino-avr-core'
         'octave' )
+    # Utility
+    depends+=(
+        'syncthing-gtk'
+        'dhcpcd-ui' )
 }
 
 package_sbp-gui-games() {
