@@ -4,7 +4,7 @@ pkgname=python-maestral-git
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 pkgver=0.2.3.27.g7717c64
-pkgrel=4
+pkgrel=5
 url="https://pypi.org/project/maestral/"
 license=('MIT')
 depends=(
@@ -31,9 +31,10 @@ depends=(
     'python-cffi'
     'python-asn1crypto'
     'python-pycparser'
-    'python-setuptools')
+    'python-setuptools'
+    'python-pyqt5'
+    'pyqt5-common')
 makedepends=('python-setuptools' 'git')
-optdepends=('python-pyqt5: GUI interface')
 source=("git+https://github.com/SamSchott/maestral-dropbox.git")
 md5sums=('SKIP')
 
