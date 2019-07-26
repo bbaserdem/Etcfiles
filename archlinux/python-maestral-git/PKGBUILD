@@ -1,0 +1,33 @@
+# Maintainer: Batuhan Baserdem <lastname dot firstname at gmail>
+
+pkgname=python-maestral-git
+pkgdesc='A light-weight and open-source Dropbox client.'
+arch=('x86_64')
+pkgver=0.2.3.27.g7717c64
+pkgrel=1
+url="https://pypi.org/project/maestral/"
+license=('MIT')
+depends=(
+    'python'
+    'python-click'
+    'python-dropbox'
+    'python-watchdog'
+    'python-blinker'
+    'python-requests'
+    'python-u-msgpack'
+    'python-keyrings-alt'
+    'python-keyring')
+makedepends=('python-setuptools' 'git')
+optdepends=('python-pyqt5: GUI interface')
+source=("git+https://github.com/SamSchott/maestral-dropbox.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/maestral-dropbox"
+    git describe --long --tags | sed 's|^v\(.*\)$|\1|g' | tr - .
+}
+
+package() {
+    cd "${srcdir}/maestral-dropbox"
+    python setup.py install --root="$pkgdir/"
+}
