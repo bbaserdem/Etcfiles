@@ -3,6 +3,13 @@
 # Do not track anything by default
 /**
 !/.gitignore
+!/.etckeeper
+
+# DISTRO-SPECIFIC
+!/archlinux
+!/archlinux/**
+!/gentoo
+!/gentoo/**
 
 # X11: Get config overrides
 !/X11
@@ -26,11 +33,15 @@
 
 # CONF.D: Grab most thing
 !/conf.d
-!/conf.d/**
+!/conf.d/consolefont
+!/conf.d/keymaps
+!/conf.d/snapper
+!/conf.d/xdm
 
 # DEFAULT: Grab grub config
 !/default
 !/default/grub
+!/default/tlp
 
 # DRACUT: Grab the dracut config
 !/dracut.conf
@@ -38,9 +49,10 @@
 # DHCPD: Grab config
 !/dhcpd.conf
 
-# ETCKEEPER: Grab everything
+# ETCKEEPER: Grab everything but config
 !/etckeeper
 !/etckeeper/**
+/etckeeper/local.conf
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
@@ -95,7 +107,7 @@
 
 # SDDM: Grab theme
 !/sddm.conf.d
-!/sddm.conf.d/sbp**
+!/sddm.conf.d/**
 
 # SKEL: Grab skel
 !/skel

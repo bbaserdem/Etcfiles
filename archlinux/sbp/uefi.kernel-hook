@@ -1,0 +1,13 @@
+# Maintained by sbp
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = boot/vmlinuz*
+
+[Action]
+Description = Signing Kernels for Secure-Boot
+When = PostTransaction
+Exec = /usr/bin/sbp-sbsign.sh
+Depends = sbp-sys-uefi
+NeedsTargets

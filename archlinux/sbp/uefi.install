@@ -1,0 +1,12 @@
+# Managed by sbp
+
+post_install() {
+    echo "[sbp-sys-uefi]=> Make sure to put secure boot keys in /etc/keys directory."
+    echo "[sbp-sys-uefi]=> Files must be 'secureboot.{key,crt}'"
+}
+
+post_upgrade() {
+    if [ ! -e /etc/keys/secureboot.key ] || [ ! -e /etc/keys/secureboot.crt ] ; then
+        post_install
+    fi
+}
