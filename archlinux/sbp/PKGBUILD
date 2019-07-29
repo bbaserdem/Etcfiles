@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=13
+pkgrel=15
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -47,7 +47,7 @@ sha256sums=(SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
-provides=('vim' 'vi' 'nano')
+    provides=('vim' 'vi' 'nano')
     conflicts=('vim' 'vi' 'nano')
     depends=('sbp-sys-boot')
     # Install user scripts
@@ -169,7 +169,8 @@ provides=('vim' 'vi' 'nano')
         'polkit'
         'inotify-tools'
         'fcron'
-        'tzupdate' )
+        'tzupdate'
+        'lsb-release')
     # Arch stuff
     depends+=(
         'archiso' 
@@ -215,7 +216,8 @@ provides=('vim' 'vi' 'nano')
         'xdg-user-dirs'
         'xdg-utils'
         'cmake' 'clang'
-        's3cmd')
+        's3cmd'
+        'rasdaemon')
 }
 
 package_sbp-sys-extra() {
@@ -232,6 +234,7 @@ package_sbp-sys-extra() {
     depends+=(
         'languagetool'
         'fluidsynth' 'lib32-fluidsynth'
+        'flatpak'
         'trash-cli'
         'geoclue2'
         'imagemagick'
@@ -357,7 +360,7 @@ package_sbp-gui-base() {
         'blueman'
         'udiskie'
         'pavucontrol'
-        'remmina' 'remmina-plugin-rdesktop'
+        'remmina' 'remmina-plugin-rdesktop' 'freerdp'
         'spyder3'
         'imv'
         'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
@@ -371,7 +374,6 @@ package_sbp-gui-base() {
         'perl-image-exiftool'       # For exif data on ranger
         'python-tldextract'         # For password in qutebrowser
         'polkit-gnome'
-        'freerdp'
         'mpv'
         'trezor-bridge-bin' )
     # Matlab dependencies
@@ -486,6 +488,7 @@ package_sbp-gui-sway() {
         'swayidle'              # Timout manager
         'swaylock'              # Screen-locker
         'wlroots'               # Wayland library
+        'wl-clipboard'          # Clipboard utility
         'xfce4-power-manager'   # Battery notifications
     )
 }
@@ -509,6 +512,7 @@ package_sbp-cmp-laptop() {
         'libva-vdpau-driver'
         'xf86-video-amdgpu'
         'vulkan-radeon'
+        'rtlwifi_new-extended-dkms'
     )
 }
 
