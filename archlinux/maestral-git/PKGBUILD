@@ -6,7 +6,7 @@ _srcname="${_name}-dropbox"
 provides=("${_name}")
 conflicts=("${_name}")
 pkgver=0.2.3.27.g7717c64
-pkgrel=2
+pkgrel=3
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 url="https://github.com/SamSchott/${_srcname}"
@@ -31,13 +31,14 @@ prepare() {
         --categories=Network
 }
 
-pkgver() {
-    cd "${srcdir}/${_srcname}"
-    git describe --long --tags | sed 's|^v\(.*\)$|\1|g' | tr - .
-}
+#pkgver() {
+#    cd "${srcdir}/${_srcname}"
+#    git describe --long --tags | sed 's|^v\(.*\)$|\1|g' | tr - .
+#}
 
 build() {
     cd "${srcdir}/${_srcname}"
+    git checkout de8d1f1687b2e56e662d5607e8aba726c74db249
     python setup.py build
 }
 
