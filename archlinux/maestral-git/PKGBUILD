@@ -6,12 +6,12 @@ _srcname="${_name}-dropbox"
 provides=("${_name}")
 conflicts=("${_name}")
 pkgver=0.2.3.27.g7717c64
-pkgrel=4
+pkgrel=7
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 url="https://github.com/SamSchott/${_srcname}"
 license=('MIT')
-source=("git+${url}.git")
+source=("git+${url}#commit=de8d1f1687b2e56e662d5607e8aba726c74db249")
 makedepends=('git' 'python-setuptools' 'gendesk')
 depends=(
     'python-blinker'
@@ -33,12 +33,11 @@ prepare() {
 
 #pkgver() {
 #    cd "${srcdir}/${_srcname}"
-#    git describe --long --tags | sed 's|^v\(.*\)$|\1|g' | tr - .
+#    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #}
 
 build() {
     cd "${srcdir}/${_srcname}"
-    git checkout 2628453f7bd24995092b0813bfec4137a51101bd
     python setup.py build
 }
 
