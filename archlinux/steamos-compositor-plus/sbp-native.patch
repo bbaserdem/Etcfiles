@@ -1,9 +1,0 @@
-diff --unified --recursive --text package.orig/steamos-compositor-1.1.2/usr/bin/steamos-session package.new/steamos-compositor-1.1.2/usr/bin/steamos-session
---- package.orig/steamos-compositor-1.1.2/usr/bin/steamos-session	2019-04-17 22:49:17.000000000 -0400
-+++ package.new/steamos-compositor-1.1.2/usr/bin/steamos-session	2019-06-29 13:24:19.648411511 -0400
-@@ -39,4 +39,4 @@
- 	cp /usr/share/pixmaps/steam-bootstrapper.jpg "$BOOTSTRAP_IMAGE"
- fi
- 
--steam -tenfoot -steamos -enableremotecontrol -fulldesktopres
-+steam-native -tenfoot -steamos -enableremotecontrol -fulldesktopres
