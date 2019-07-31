@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -353,7 +353,8 @@ package_sbp-gui-base() {
         'xcursor-comix'
         'arc-gtk-theme'
         'gnome-themes-extra'
-        'kvantum-qt5' 'kvantum-theme-arc' )
+        'kvantum-qt5' 'kvantum-theme-arc'
+        'papirus-icon-theme')
     # Applications
     depends+=(
         'alacritty' 
