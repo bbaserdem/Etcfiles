@@ -8,6 +8,7 @@ pkgname=(
     'sbp-gui-base'
     'sbp-gui-extra'
     'sbp-gui-games'
+    'sbp-gui-virtual'
     'sbp-gui-bspwm'
     'sbp-gui-sway'
     'sbp-cmp-laptop'
@@ -15,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -109,7 +110,6 @@ package_sbp-sys-base() {
         'amd-ucode' 'intel-ucode'
         'linux-firmware'
         'dracut'
-        'edk2-ovmf'
         'terminess-powerline-font-git')
     # File system stuff
     depends+=(
@@ -241,7 +241,6 @@ package_sbp-sys-extra() {
         )
     # Apps
     depends+=(
-        'qemu'
         'abcde'
         'neomutt' 'isync' 'notmuch'
         'ncmpcpp' 'mpdscribble'
@@ -435,6 +434,20 @@ package_sbp-gui-extra() {
     depends+=(
         'syncthing-gtk'
         'dhcpcd-ui' )
+}
+
+package_sbp-gui-virtual() {
+    depends=('sbp-gui-base')
+    # Steam
+    depends+=(
+        'qemu'
+        'ovmf'
+        'libvirt'
+        'ebtables'
+        'dnsmasq'
+        'bridge-utils'
+        'virtmanager'
+    )
 }
 
 package_sbp-gui-games() {
