@@ -5,16 +5,10 @@ polkit.addRule(function(action, subject) {
     if ((action.id == "org.blueman.network.setup" ||
          action.id == "org.blueman.dhcp.client" ||
          action.id == "org.blueman.rfkill.setstate" ||
-         action.id == "org.blueman.pppd.pppconnect") &&
-        subject.isInGroup("wheel")) {
-
-        return polkit.Result.YES;
-    }
-});
-
-/* Pamac rules */
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.manjaro.pamac.commit" &&
+         action.id == "org.blueman.pppd.pppconnect" ||
+         action.id == "org.manjaro.pamac.commit" ||
+         action.id == "org.archlinux.pkexec.gparted" ||
+         action.id == "org.libvirt.unix.manage" ) &&
         subject.isInGroup("wheel")) {
 
         return polkit.Result.YES;
@@ -23,17 +17,7 @@ polkit.addRule(function(action, subject) {
 
 /* Virtualization rules */
 polkit.addRule(function(action, subject) {
-    if (action.id == "org.libvirt.unix.manage" &&
-        subject.isInGroup("kvm")) {
-
-            return polkit.Result.YES;
-    }
-});
-
-/* GParted */
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.archlinux.pkexec.gparted" &&
-        subject.isInGroup("wheel")) {
-            return polkit.Result.YES;
+    if (action.id == "org.libvirt.unix.manage" && subject.isInGroup("kvm")) {
+        return polkit.Result.YES;
     }
 });

@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=20
+pkgrel=21
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -177,6 +177,7 @@ package_sbp-sys-base() {
         'archiso' 
         'asp'
         'devtools'
+
         'reflector'
         'aurutils'
         'pacman-contrib' 
@@ -299,6 +300,7 @@ package_sbp-sys-uefi() {
 
 package_sbp-gui-base() {
     # Install required stuff
+
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit-session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
     # Dependencies
@@ -448,7 +450,8 @@ package_sbp-gui-virtual() {
         'ebtables'
         'dnsmasq'
         'bridge-utils'
-        'virtmanager'
+        'virt-manager'
+        'virtio-win'
     )
 }
 
