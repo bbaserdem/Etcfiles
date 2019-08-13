@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=18
+pkgrel=20
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -157,7 +157,8 @@ package_sbp-sys-base() {
         'cups' 'cups-pdf' 'cups-pk-helper'
         'iwd'
         'bluez' 'bluez-libs' 'bluez-utils'
-        'bridge-utils' 'hostapd' )
+        'bridge-utils' 'hostapd'
+        'nmap')
     # Administration
     depends+=(
         'logrotate'
@@ -418,6 +419,7 @@ package_sbp-gui-extra() {
         'tuxguitar'
         'zotero'
         'pdfsam'
+        'hamsket'
     )
     # Documents
     depends+=(
@@ -562,7 +564,7 @@ package_sbp-cmp-workstation() {
         'sbp-cmp-server' )
     install=workstation.install
     depends=(
-        'dropbox'
+        'maestral'
         'ocl-icd'
         'mesa'
         'lib32-mesa'
