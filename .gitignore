@@ -54,6 +54,10 @@
 !/etckeeper/**
 /etckeeper/local.conf
 
+# FIREWALLD: Grab config for now
+!/firewalld
+!/firewalld/firewalld.conf
+
 # FONTS: Grab overrides THAT I PUT
 !/fonts
 !/fonts/conf.avail
@@ -65,9 +69,13 @@
 !/geoclue
 !/geoclue/**
 
-# LIBVIRT: Grab all
+# LIBVIRT: Grab the configurations
 !/libvirt
-!/libvirt/**
+!/libvirt/libvirt-admin.conf
+!/libvirt/libvirt.conf
+!/libvirt/libvirtd.conf
+!/libvirt/qemu.conf
+!/libvirt/virtlogd.conf
 
 # LOCALE: Grab the files
 !/locale*
@@ -79,9 +87,6 @@
 !/mkinitcpio.conf
 !/mkinitcpio
 !/mkinitcpio/**
-
-# NFTABLES: Grab firewall example
-!/nftables.conf.sbp
 
 # PACMAN: Grab config and user hooks
 !/pacman.conf
