@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=21
+pkgrel=22
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -151,7 +151,10 @@ package_sbp-sys-base() {
     depends+=(
         'bind-tools'
         'openresolv'
+        'firewalld'
         'nftables'
+        'iptables'
+        'openbsd-netcat'
         'unbound'
         'dhcpcd'
         'cups' 'cups-pdf' 'cups-pk-helper'
@@ -445,6 +448,7 @@ package_sbp-gui-virtual() {
     # Steam
     depends+=(
         'qemu'
+        'vde2'
         'ovmf'
         'libvirt'
         'ebtables'
