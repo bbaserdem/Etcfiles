@@ -65,6 +65,9 @@
 !/fonts/conf.d
 !/fonts/conf.d/99-sbp**
 
+# FUSE: Grab config
+!/fuse.conf
+
 # GEOCLUE: Get config
 !/geoclue
 !/geoclue/**
