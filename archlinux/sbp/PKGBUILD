@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=23
+pkgrel=24
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -536,7 +536,6 @@ package_sbp-cmp-laptop() {
         'libva-vdpau-driver'
         'xf86-video-amdgpu'
         'vulkan-radeon'
-        'rtlwifi_new-extended-dkms'
     )
 }
 
