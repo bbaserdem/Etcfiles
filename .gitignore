@@ -134,17 +134,20 @@
 !/sysctl.d
 !/sysctl.d/99-sbp**
 
-# SYSTEMD: Grab overrides
+# SYSTEMD: Grab overrides, and custom units
 !/systemd
+/systemd/**
 !/systemd/logind.conf.d
 !/systemd/logind.conf.d/sbp**
 !/systemd/system.conf.d
 !/systemd/system.conf.d/sbp**
+!/systemd/user.conf.d
+!/systemd/user.conf.d/sbp**
 !/systemd/system
+!/systemd/system/*.d
+!/systemd/system/*.d/sbp**
 !/systemd/system/*.service
 !/systemd/system/*.timer
-!/systemd/system/*.d
-!/systemd/system/*.d/**
 
 # UDEV: Grab rules
 !/udev
