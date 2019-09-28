@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=24
+pkgrel=25
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -199,7 +199,7 @@ package_sbp-sys-base() {
     depends+=(
         'atool'
         'docker'
-        'zsh' 'grml-zsh-config' 'dash'
+        'dash'
         'tmux'
         'htop'
         'neofetch'
@@ -208,6 +208,11 @@ package_sbp-sys-base() {
         'pulsemixer'
         'vifm'
         'transmission-cli' )
+    # Shell
+    depends+=(
+        'zsh'
+        'zsh-zim-git'
+        'zsh-theme-powerlevel10k' )
     # Utilities
     depends+=(
         'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
