@@ -212,7 +212,9 @@ package_sbp-sys-base() {
     depends+=(
         'zsh'
         'zsh-zim-git'
-        'zsh-theme-powerlevel10k' )
+        'zsh-theme-powerlevel10k'
+        'zsh-theme-powerlevel10k'
+        'spaceship-prompt')
     # Utilities
     depends+=(
         'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
