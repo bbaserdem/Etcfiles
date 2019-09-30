@@ -91,6 +91,11 @@
 !/mkinitcpio
 !/mkinitcpio/**
 
+# PROFILE: Grab all
+!/profile
+!/profile.d
+!/profile.d/*.sh
+
 # PACMAN: Grab config and user hooks
 !/pacman.conf
 !/pacman.d
