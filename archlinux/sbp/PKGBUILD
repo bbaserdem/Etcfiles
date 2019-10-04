@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=37
+pkgrel=38
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -332,6 +332,7 @@ package_sbp-sys-virtual() {
     depends=('sbp-sys-base')
     # Steam
     depends+=(
+        'docker'
         'qemu'
         'vde2'
         'ovmf'
@@ -391,7 +392,7 @@ package_sbp-gui-base() {
         'nerd-fonts-source-code-pro'
         'adobe-source-serif-pro-fonts'
         'otf-nerd-fonts-fira-code'
-        'terminus-font'
+        'terminus-font' 'terminus-font-otb'
         'noto-fonts-emoji'
         'termsyn-font'
         'ttf-droid'
@@ -564,6 +565,7 @@ package_sbp-cmp-laptop() {
         'libva-vdpau-driver'
         'xf86-video-amdgpu'
         'vulkan-radeon'
+        'rtlwifi_new-extended-dkms'
     )
 }
 
