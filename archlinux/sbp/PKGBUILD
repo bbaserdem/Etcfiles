@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=33
+pkgrel=35
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -377,14 +377,16 @@ package_sbp-gui-base() {
         'qt5-quickcontrols2')
     # Fonts
     depends+=(
+        'nerd-fonts-source-code-pro'
         'adobe-source-serif-pro-fonts'
-        'otf-fira-code'
+        'otf-nerd-fonts-fira-code'
         'terminus-font'
         'noto-fonts-emoji'
         'termsyn-font'
         'ttf-droid'
         'ttf-inconsolata'
-        'ibus' 'ibus-m17n')
+        'ibus' 'ibus-m17n'
+        'ttf-iosevka')
     # Themes
     depends+=(
         'xcursor-comix'
@@ -403,7 +405,7 @@ package_sbp-gui-base() {
         'imv'
         'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
         'smplayer'
-        'qutebrowser' 'chromium-widevine'
+        'firefox' 'flashplugin'
         'transmission-qt' 'transmission-remote-gtk')
     # Utilities
     depends+=(
@@ -442,7 +444,6 @@ package_sbp-gui-extra() {
     depends=('sbp-gui-base')
     # Apps
     depends+=(
-        'firefox'
         'stellarium'
         'openscad'
         'kitty' 'python-pillow'
