@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=38
+pkgrel=40
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -490,6 +490,8 @@ package_sbp-gui-extra() {
 
 package_sbp-gui-games() {
     depends=('sbp-gui-base')
+    install -dm 0755 "${pkgdir}/opt"
+    install -dm 0775 -g games "${pkgdir}/opt/steam"
     # Steam
     depends+=(
         'ttf-roboto' 'steam-fonts'
