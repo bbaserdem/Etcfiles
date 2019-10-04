@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=32
+pkgrel=33
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -589,18 +589,20 @@ package_sbp-cmp-workstation() {
     depends=(
         'dropbox'
         'ocl-icd'
-        'mesa'
-        'lib32-mesa'
-        'mesa-demos'
-        'lib32-mesa-demos' 
-        'libva-mesa-driver'
-        'lib32-libva-mesa-driver'
-        'mesa-vdpau'
-        'lib32-mesa-vdpau'
-        'libva-vdpau-driver'
-        'xf86-video-amdgpu'
-        'vulkan-radeon'
-    )
+        'amdvlk'
+        'clang-git'
+        'libclc-git'
+        'libdrm-git'
+        'llvm-git'
+        'llvm-libs-git'
+        'mesa-git'
+        'opencl-mesa-git'
+        'vulkan-mesa-layer-git'
+        'vulkan-radeon-git'
+        'xf86-video-amdgpu-git'
+        'lib32-mesa-git'
+        'lib32-vulkan-radeon-git'
+        'lib32-vulkan-mesa-layer-git')
 }
 
 package_sbp-cmp-server() {

@@ -182,8 +182,9 @@ I also usually mount the ESP at /esp, and bind mount to /boot
 
 ```
 mount <partition> /mnt/esp
-mkdir -p /mnt/esp/EFI/Arch
+mkdir -p /mnt/esp/EFI/Arch/EFI
 mount --bind /mnt/esp/EFI/Arch /boot
+mount --bind /mnt/esp/EFI /boot/EFI
 ```
 
 #### XFS
@@ -222,13 +223,68 @@ pacstrap /mnt <MY-PACKAGES>
 ```
 
 
+### Keys
+
+To restore keys, use my special usb.
+
+```
+gpg --pinentry-mode loopback --import <secret.subkey>
+cp -r <SSHKEYS> ~/.ssh
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+```
+
+There will be a tar file to do this in the future
 
 ### Etc
 
-To restore etckeeper git files, clone to temp then copy over all files;
+To restore etckeeper git files, I need to clone to temp then copy over all files;
+To do that, the root user needs my machine specific SSH keys from the user.
+My packagen should do this automatically, but if not;
+put this in the config line of the root user.
+
+```
+Host github.com
+    User bbaserdem
+    IdentitiesOnly yes
+    IdentityFile /home/sbp/.ssh/id_ed25519_GITHUB
+```
+
+Then clone the repo to temporary location, and overwrite the directory.
+
 ```
 git clone <REPO> /tmp/etc
 cp -r /tmp/etc/. /etc/
 ```
 
+The etckeeper config needs a `/etc/etckeeper/local.conf` to function.
+```
+```
 
+### Booting
+
+Several steps needs to be taken to ensure successful boot.
+
+### Fstab
+
+The fstab will be screwed up on generation. Still, from archiso, do;
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+#### rEFInd
+
+The main repo has scripts that will automatically load refind to `/esp/EFI/rEFInd`.
+The config needs to be hand-generated.
+After generation, use the following command to register refind in bios;
+```
+efibootmgr --create --disk /dev/sda --part 1 --loader /EFI/refind/refind_x64.efi --label "rEFInd Boot Manager" --verbose
+```
+
+#### Grub2
+
+Will switch to this later, less configuration I suppose.
+
+#### Initramfs
+
+Need to generate a proper initramfs.
