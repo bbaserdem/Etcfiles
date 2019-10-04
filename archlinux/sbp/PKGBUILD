@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=40
+pkgrel=41
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -424,7 +424,6 @@ package_sbp-gui-base() {
         'gtk2fontsel' 'gucharmap'
         'system-config-printer'
         'perl-image-exiftool'       # For exif data on ranger
-        'python-tldextract'         # For password in qutebrowser
         'polkit-gnome'
         'mpv'
         'trezor-bridge-bin' )
@@ -522,7 +521,7 @@ package_sbp-gui-bspwm() {
         'maim'                  # Screenshot utility
         'polybar'               # AUR: Status bar
         'redshift'              # Screen dimmer
-        'rofi'                  # Application launcher
+        'rofi' 'rofi-pass'      # Application launcher
         'sxhkd'                 # Simple X hotkey daemon
         'xfce4-power-manager'   # Battery notifications
         'xss-lock'              # Locks screen on power events
