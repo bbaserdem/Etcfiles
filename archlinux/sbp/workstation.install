@@ -5,10 +5,10 @@ post_install() {
 
     # Do hostname
     echo '[sbp-cmp-workstation]==> Doing hostname and hosts . . .'
-    echo 'sbpworkstation' > /etc/hostname
+    echo 'sbp-workstation' > /etc/hostname
     echo '127.0.0.1 localhost' >  /etc/hosts
     echo '::1       localhost' >> /etc/hosts
-    echo '127.0.1.1 sbpworkstation.localdomain sbpworkstation' >> /etc/hosts
+    echo '127.0.1.1 sbp-workstation.localdomain sbp-workstation' >> /etc/hosts
 
     echo '[sbp-cmp-workstation]==> Installation done! Check log for errors.'
     post_upgrade

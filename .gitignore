@@ -151,8 +151,9 @@
 !/systemd/system
 !/systemd/system/*.d
 !/systemd/system/*.d/sbp**
-!/systemd/system/*.service
-!/systemd/system/*.timer
+
+# TIMEZONE: Grab it
+!/timezone
 
 # UDEV: Grab rules
 !/udev

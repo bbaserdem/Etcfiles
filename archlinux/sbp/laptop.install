@@ -5,10 +5,10 @@ post_install() {
 
     # Do hostname
     echo '[sbp-cmp-laptop]==> Doing hostname and hosts . . .'
-    echo 'sbplaptop' > /etc/hostname
+    echo 'sbp-laptop' > /etc/hostname
     echo '127.0.0.1 localhost' >  /etc/hosts
     echo '::1       localhost' >> /etc/hosts
-    echo '127.0.1.1 sbplaptop.localdomain sbplaptop' >> /etc/hosts
+    echo '127.0.1.1 sbp-laptop.localdomain sbp-laptop' >> /etc/hosts
 
     echo '[sbp-cmp-laptop]==> Installation done! Check log for errors.'
     post_upgrade

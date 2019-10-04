@@ -5,10 +5,10 @@ pkgname=(
     'sbp-sys-extra'
     'sbp-sys-bios'
     'sbp-sys-uefi'
+    'sbp-sys-virtual'
     'sbp-gui-base'
     'sbp-gui-extra'
     'sbp-gui-games'
-    'sbp-gui-virtual'
     'sbp-gui-bspwm'
     'sbp-gui-sway'
     'sbp-cmp-laptop'
@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=25
+pkgrel=32
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -25,39 +25,47 @@ validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 groups=('sbp')
 source=(
     'base.chroot-os'
+    'base.install'
     'base.mpc-prev'
     'base.repo-build'
     'base.repo-remove'
     'base.repo-sync'
+    'base.root-ssh'
     'uefi.install'
     'uefi.kernel-hook'
     'uefi.refind-hook'
     'uefi.refind-config'
     'uefi.refind-update'
     'uefi.sb-signscript'
+    'gui.install'
     'gui.xinit-session'
     'laptop.install'
     'notebook.install'
     'server.install'
+    'virtual.install'
     'workstation.install'
 )
 
 sha256sums=(SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
+    install=base.install
     provides=('vim' 'vi' 'nano')
     conflicts=('vim' 'vi' 'nano')
     depends=('sbp-sys-boot')
     # Install user scripts
     install -dm 0755 "${pkgdir}/usr/bin"
+    install -dm 0700 "${pkgdir}/root/.ssh"
     install -Dm 0755 base.chroot-os     "${pkgdir}/usr/bin/chroot-os"
     install -Dm 0755 base.mpc-prev      "${pkgdir}/usr/bin/mpc-prev"
     install -Dm 0755 base.repo-remove   "${pkgdir}/usr/bin/archrepo-remove"
     install -Dm 0755 base.repo-sync     "${pkgdir}/usr/bin/archrepo-sync"
     install -Dm 0755 base.repo-build    "${pkgdir}/usr/bin/archrepo-build"
+    install -Dm 0600 base.root-ssh      "${pkgdir}/root/.ssh/config"
     # Remove alternative editors
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vim"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
@@ -308,11 +316,28 @@ package_sbp-sys-uefi() {
         'sbsigntools')
 }
 
+package_sbp-sys-virtual() {
+    install=virtual.install
+    depends=('sbp-sys-base')
+    # Steam
+    depends+=(
+        'qemu'
+        'vde2'
+        'ovmf'
+        'libvirt'
+        'ebtables'
+        'dnsmasq'
+        'bridge-utils'
+        'virt-manager'
+        'virtio-win'
+    )
+}
+
 package_sbp-gui-base() {
     # Install required stuff
-
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit-session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
+    install=gui.install
     # Dependencies
     depends=('sbp-sys-base')
     # Xorg stuff
@@ -450,22 +475,6 @@ package_sbp-gui-extra() {
         'dhcpcd-ui' )
 }
 
-package_sbp-gui-virtual() {
-    depends=('sbp-gui-base')
-    # Steam
-    depends+=(
-        'qemu'
-        'vde2'
-        'ovmf'
-        'libvirt'
-        'ebtables'
-        'dnsmasq'
-        'bridge-utils'
-        'virt-manager'
-        'virtio-win'
-    )
-}
-
 package_sbp-gui-games() {
     depends=('sbp-gui-base')
     # Steam
@@ -578,11 +587,19 @@ package_sbp-cmp-workstation() {
         'sbp-cmp-server' )
     install=workstation.install
     depends=(
-        'maestral'
+        'dropbox'
         'ocl-icd'
         'mesa'
         'lib32-mesa'
-        'xf86-video-nouveau'
+        'mesa-demos'
+        'lib32-mesa-demos' 
+        'libva-mesa-driver'
+        'lib32-libva-mesa-driver'
+        'mesa-vdpau'
+        'lib32-mesa-vdpau'
+        'libva-vdpau-driver'
+        'xf86-video-amdgpu'
+        'vulkan-radeon'
     )
 }
 
