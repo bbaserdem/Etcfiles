@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=36
+pkgrel=37
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -58,6 +58,7 @@ package_sbp-sys-base() {
     conflicts=('vim' 'vi' 'nano')
     depends=('sbp-sys-boot')
     # Install user scripts
+    install -dm 0755 "${pkgdir}/usr"
     install -dm 0755 "${pkgdir}/usr/bin"
     install -dm 0750 "${pkgdir}/root"
     install -dm 0700 "${pkgdir}/root/.ssh"
@@ -71,6 +72,15 @@ package_sbp-sys-base() {
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vim"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vi"
+    # Add powerlevel10k integration
+    install -dm 0755 "${pkgdir}/usr/lib"
+    install -dm 0755 "${pkgdir}/usr/lib/zim"
+    install -dm 0755 "${pkgdir}/usr/lib/zim/modules"
+    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt"
+    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/functions"
+    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/external-themes"
+    ln -sf /usr/share/zsh-theme-powerlevel10k "${pkgdir}/usr/lib/zim/modules/prompt/external-themes/powerlevel10k"
+    ln -sf /usr/lib/zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme "${pkgdir}/usr/lib/zim/modules/prompt/functions/prompt_powerlevel10k_setup"
     #-----Packages
     depends+=(      # Gentoo has: baselayout
         'coreutils'
