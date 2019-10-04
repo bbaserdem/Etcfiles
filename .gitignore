@@ -149,7 +149,7 @@
 !/systemd/user.conf.d
 !/systemd/user.conf.d/sbp**
 !/systemd/system
-!/systemd/system/*.d
+!/systemd/system/*.d/
 !/systemd/system/*.d/sbp**
 
 # TIMEZONE: Grab it
