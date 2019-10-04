@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=35
+pkgrel=36
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -59,6 +59,7 @@ package_sbp-sys-base() {
     depends=('sbp-sys-boot')
     # Install user scripts
     install -dm 0755 "${pkgdir}/usr/bin"
+    install -dm 0750 "${pkgdir}/root"
     install -dm 0700 "${pkgdir}/root/.ssh"
     install -Dm 0755 base.chroot-os     "${pkgdir}/usr/bin/chroot-os"
     install -Dm 0755 base.mpc-prev      "${pkgdir}/usr/bin/mpc-prev"
