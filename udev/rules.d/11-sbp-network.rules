@@ -9,6 +9,6 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="a0:a8:cd:63:2b:bc", NAME="wifi"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5d", NAME="ethernet"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5a", NAME="broadcast"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="60:f6:77:df:23:e3", NAME="wifi"
-# Workstation (Ethernet is the top most port)
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:10:18:55:3c:e1", NAME="ethernet"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:25:64:a4:bf:10", NAME="broadcast"
+# Workstation
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ethernet"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi"
