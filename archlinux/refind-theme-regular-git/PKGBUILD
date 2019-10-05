@@ -9,6 +9,7 @@ url="https://github.com/bobafetthotmail/refind-theme-regular"
 license=('AGPL3' 'custom:OFL' 'custom:Ubuntu Font License 1.0')
 depends=('refind-efi')
 provides=('refind-theme-regular')
+conflicts=('refind-theme-regular')
 makedepends=('git')
 source=('git+https://github.com/bobafetthotmail/refind-theme-regular')
 md5sums=('SKIP')
