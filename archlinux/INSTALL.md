@@ -283,7 +283,7 @@ efibootmgr --create --disk /dev/sda --part 1 --loader /EFI/refind/refind_x64.efi
 
 #### Grub2
 
-Will switch to this later, less configuration I suppose.
+The various configuration files are kept in `/etc/default`, symlink the appropriate one.
 
 #### Initramfs
 

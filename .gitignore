@@ -38,10 +38,10 @@
 !/conf.d/snapper
 !/conf.d/xdm
 
-# DEFAULT: Grab grub config
+# DEFAULT: Grab grub config for each setup
 !/default
-!/default/grub
-!/default/tlp
+!/default/grub.*
+!/default/tlp.*
 
 # DRACUT: Grab the dracut config
 !/dracut.conf
