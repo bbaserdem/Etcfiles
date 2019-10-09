@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=41
+pkgrel=42
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -522,6 +522,7 @@ package_sbp-gui-bspwm() {
         'polybar'               # AUR: Status bar
         'redshift'              # Screen dimmer
         'rofi' 'rofi-pass'      # Application launcher
+        'rofi-file-browser-extended'
         'sxhkd'                 # Simple X hotkey daemon
         'xfce4-power-manager'   # Battery notifications
         'xss-lock'              # Locks screen on power events
