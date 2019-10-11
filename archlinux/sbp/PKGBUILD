@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=44
+pkgrel=45
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -561,7 +561,7 @@ package_sbp-cmp-homestation() {
         'sbp-cmp-server' )
     install=homestation.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0755 homestation.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 homestation.hostname "${pkgdir}/etc/hostname"
     depends=(                       # Graphics related
         'mesa'
         'mesa-demos'
@@ -589,7 +589,7 @@ package_sbp-cmp-notebook() {
         'sbp-cmp-server' )
     install=notebook.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0755 notebook.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 notebook.hostname "${pkgdir}/etc/hostname"
     depends=(
         'bbswitch-dkms'
         'bumblebee'
@@ -615,7 +615,7 @@ package_sbp-cmp-workstation() {
         'sbp-cmp-server' )
     install=workstation.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0755 workstation.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 workstation.hostname "${pkgdir}/etc/hostname"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa-git'
         'amdvlk'
@@ -644,7 +644,7 @@ package_sbp-cmp-server() {
         'sbp-cmp-workstation' )
     install=server.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0755 server.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 server.hostname "${pkgdir}/etc/hostname"
     #depends=(
     #    'apache'            # Web server
     #    'dovecot'           # IMAP email server
