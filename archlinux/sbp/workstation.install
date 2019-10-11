@@ -1,11 +1,10 @@
 # Maintained by sbp
 post_install() {
 
-    echo '[sbp-workstation]==> Installing meta package . . .'
+    echo '[sbp-cmp-workstation]==> Installing meta package . . .'
 
     # Do hostname
-    echo '[sbp-cmp-workstation]==> Doing hostname and hosts . . .'
-    echo 'sbp-workstation' > /etc/hostname
+    echo '[sbp-cmp-workstation]==> Doing hosts . . .'
     echo '127.0.0.1 localhost' >  /etc/hosts
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbp-workstation.localdomain sbp-workstation' >> /etc/hosts

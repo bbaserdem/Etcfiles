@@ -11,12 +11,12 @@ pkgname=(
     'sbp-gui-games'
     'sbp-gui-bspwm'
     'sbp-gui-sway'
-    'sbp-cmp-laptop'
+    'sbp-cmp-homestation'
     'sbp-cmp-notebook'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=42
+pkgrel=44
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -39,14 +39,19 @@ source=(
     'uefi.sb-signscript'
     'gui.install'
     'gui.xinit-session'
-    'laptop.install'
+    'homestation.hostname'
+    'homestation.install'
+    'notebook.hostname'
     'notebook.install'
+    'server.hostname'
     'server.install'
     'virtual.install'
+    'workstation.hostname'
     'workstation.install'
 )
 
 sha256sums=(SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
@@ -100,7 +105,10 @@ package_sbp-sys-base() {
         'autoconf'      # Gentoo has gnuconf, probably analogues
         'file'
         'psmisc'
-        'patch'
+        'patch'FILE=/etc/resolv.conf
+if test -f "$FILE"; then
+    echo "$FILE exist"
+fi
         'device-mapper'
         'bash'
         'shadow'
@@ -548,36 +556,43 @@ package_sbp-gui-sway() {
     )
 }
 
-package_sbp-cmp-laptop() {
+package_sbp-cmp-homestation() {
     provides=('sbp-cmp')
     conflicts=(
         'sbp-cmp-notebook'
         'sbp-cmp-workstation'
         'sbp-cmp-server' )
-    install=laptop.install
-    depends=(
+    install=homestation.install
+    install -dm 0755 "${pkgdir}/etc"
+    install -Dm 0755 homestation.hostname "${pkgdir}/etc/hostname"
+    depends=(                       # Graphics related
         'mesa'
-        'lib32-mesa'
         'mesa-demos'
-        'lib32-mesa-demos' 
-        'libva-mesa-driver'
-        'lib32-libva-mesa-driver'
         'mesa-vdpau'
-        'lib32-mesa-vdpau'
+        'libva-mesa-driver'
         'libva-vdpau-driver'
-        'xf86-video-amdgpu'
         'vulkan-radeon'
-        'rtlwifi_new-extended-dkms'
+        'xf86-video-amdgpu'
+        'lib32-mesa'                # Lib32 for required applications
+        'lib32-mesa-demos' 
+        'lib32-mesa-vdpau'
+        'lib32-libva-mesa-driver'
+        'lib32-vulkan-radeon')
+    depends+=(
+        'rtlwifi_new-extended-dkms' # Needed for wifi to work
+        'nbfc'                      # Fan controls
     )
 }
 
 package_sbp-cmp-notebook() {
     provides=('sbp-cmp')
     conflicts=(
-        'sbp-cmp-laptop'
+        'sbp-cmp-homestation'
         'sbp-cmp-workstation'
         'sbp-cmp-server' )
     install=notebook.install
+    install -dm 0755 "${pkgdir}/etc"
+    install -Dm 0755 notebook.hostname "${pkgdir}/etc/hostname"
     depends=(
         'bbswitch-dkms'
         'bumblebee'
@@ -598,20 +613,20 @@ package_sbp-cmp-notebook() {
 package_sbp-cmp-workstation() {
     provides=('sbp-cmp')
     conflicts=(
-        'sbp-cmp-laptop'
+        'sbp-cmp-homestation'
         'sbp-cmp-notebook'
         'sbp-cmp-server' )
     install=workstation.install
-    depends=(
-        'dropbox'
-        'ocl-icd'
+    install -dm 0755 "${pkgdir}/etc"
+    install -Dm 0755 workstation.hostname "${pkgdir}/etc/hostname"
+    depends=(                   # Graphics drivers for RX 5800 XT
+        'mesa-git'
         'amdvlk'
         'clang-git'
         'libclc-git'
         'libdrm-git'
-        'llvm-git'
+        'llvm'
         'llvm-libs-git'
-        'mesa-git'
         'opencl-mesa-git'
         'vulkan-mesa-layer-git'
         'vulkan-radeon-git'
@@ -619,15 +634,20 @@ package_sbp-cmp-workstation() {
         'lib32-mesa-git'
         'lib32-vulkan-radeon-git'
         'lib32-vulkan-mesa-layer-git')
+    depends+=(
+        'dropbox'               # File synching
+        )
 }
 
 package_sbp-cmp-server() {
     provides=('sbp-cmp')
     conflicts=(
-        'sbp-cmp-laptop'
+        'sbp-cmp-homestation'
         'sbp-cmp-notebook'
         'sbp-cmp-workstation' )
     install=server.install
+    install -dm 0755 "${pkgdir}/etc"
+    install -Dm 0755 server.hostname "${pkgdir}/etc/hostname"
     #depends=(
     #    'apache'            # Web server
     #    'dovecot'           # IMAP email server
