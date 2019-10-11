@@ -9,11 +9,27 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbp-notebook.localdomain sbp-notebook' >> /etc/hosts
 
+    # Enable fan control using NBFC
+    echo '[sbp-cmp-notebook]==> Enabling fans control using nbfc . . .'
+    /bin/systemctl enable nbfc
+
     echo '[sbp-cmp-notebook]==> Installation done! Check log for errors.'
     post_upgrade
 }
 
 post_upgrade() {
     echo '[sbp-cmp-notebook]==> Upgrading . . .'
-    echo '[sbp-cmp-notebook]==> Nothing to do.'
+
+    echo '[sbp-cmp-notebook]==> Checking fan profile...'
+    if [ -f '/opt/nbfc/Configs/Asus N550JK.xml'] ; then
+        echo '[sbp-cmp-notebook]==> Fan profile; Asus N550JK found.'
+        nbfc config --apply 'Asus N550JK'
+    else
+        echo '[sbp-cmp-notebook]==> Fan profile; Asus N550JK not found! Trying similar...'
+
+        if [ -f '/opt/nbfc/Configs/Asus N550JV.xml'] ; then
+            echo '[sbp-cmp-notebook]==> Fan profile; Asus N550JV found.'
+            nbfc config --apply 'Asus N550JV'
+        fi
+    fi
 }
