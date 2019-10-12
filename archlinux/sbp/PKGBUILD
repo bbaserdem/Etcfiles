@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=45
+pkgrel=46
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -88,44 +88,25 @@ package_sbp-sys-base() {
     ln -sf /usr/lib/zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme "${pkgdir}/usr/lib/zim/modules/prompt/functions/prompt_powerlevel10k_setup"
     #-----Packages
     depends+=(      # Gentoo has: baselayout
-        'coreutils'
+        'base'          # Arch meta-package
         'wget'
         'man-pages'
-        'bzip2'
         'rsync'         # Gentoo has this on system
         'which'
-        'gcc' 'gcc-libs'
-        'iproute2'
-        'sed'
-        'findutils'
+        'gcc'
         'diffutils'
-        'grep'
-        'iputils'
-        'xz'            # Gentoo has this on system
         'autoconf'      # Gentoo has gnuconf, probably analogues
-        'file'
-        'psmisc'
         'patch'
         'device-mapper'
-        'bash'
-        'shadow'
-        'procps-ng'
-        'tar'
         'make'
-        'gzip'
         'less'
-        'pacman'
         'openssh'       # Gentoo has ssh on system
         'e2fsprogs'
-        'filesystem'    # Gentoo has baselayout: probably similar
         'inetutils'     # Gentoo has net-tools
         'binutils'
-        'gawk'
-        'util-linux'
-        'glibc'         # Gentoo has libc
         'busybox'
         'kbd'           # NON-gentoo from here
-        'automake' 'gettext' 'licenses' 'man-db' 'pciutils' 'perl' 's-nail'
+        'automake' 'man-db' 'perl' 's-nail'
         'texinfo' 'usbutils' 'bison' 'fakeroot' 'flex' 'groff' 'libtool'
         'm4' 'pkgconf' )
     # Kernel and booting
@@ -210,8 +191,7 @@ package_sbp-sys-base() {
         'archlinux-appstream-data'
         'archlinux-keyring'
         'archlinux-xdg-menu'
-        'sysfsutils'
-        'systemd-sysvcompat')
+        'sysfsutils')
     # Media
     depends+=(
         'alsa-utils' 'lib32-alsa-plugins'
