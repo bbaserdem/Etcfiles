@@ -1,0 +1,3 @@
+# Managed by sbp
+"Boot stable kernel" "initrd=/EFI/Arch/amd-ucode.img initrd=/EFI/Arch/initramfs-linux.img rw cryptdevice=UUID=da9c7226-d355-4dcd-a40a-32418f052f9b:cryptlvm root=/dev/Linux/Root resume=/dev/Linux/Swap rootflags=subvol=@arch verbose mem_encrypt=off i8042.reset module_blacklist=rtw88,rtwpci"
+"Boot stable kernel with fallback initrd" "initrd=/EFI/Arch/amd-ucode.img initrd=/EFI/Arch/initramfs-linux-fallback.img rw cryptdevice=UUID=da9c7226-d355-4dcd-a40a-32418f052f9b:cryptlvm root=/dev/Linux/Root resume=/dev/Linux/Swap rootflags=subvol=@arch verbose mem_encrypt=off i8042.reset module_blacklist=rtw88,rtwpci"
