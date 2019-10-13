@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=47
+pkgrel=48
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -400,7 +400,7 @@ package_sbp-gui-base() {
         'udiskie'
         'pavucontrol'
         'remmina' 'remmina-plugin-rdesktop' 'freerdp'
-        'spyder3'
+        'spyder'
         'imv'
         'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
         'smplayer'

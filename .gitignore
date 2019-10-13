@@ -115,6 +115,11 @@
 !/portage/**
 /portage/local.conf
 
+# PRIVATE-INTERNET-ACCESS: Grab only the config file, nothing else!
+!/private-internet-access
+!/private-internet-access/pia.conf
+/private-internet-access/login.conf
+
 # RESOLVCONF: Grab config
 !/resolvconf.conf
 
