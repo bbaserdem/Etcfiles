@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=48
+pkgrel=52
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -25,6 +25,7 @@ validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 groups=('sbp')
 source=(
     'base.chroot-os'
+    'base.etckeeper'
     'base.install'
     'base.mpc-prev'
     'base.repo-build'
@@ -57,11 +58,11 @@ sha256sums=(SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP
-            SKIP )
+            SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
-    provides=('vim' 'vi' 'nano')
+    provides=('vim' 'vi' 'nano')https://bugs.freedesktop.org/show_bug.cgi?id=104835
     conflicts=('vim' 'vi' 'nano')
     depends=('sbp-sys-boot')
     # Install user scripts
@@ -88,6 +89,11 @@ package_sbp-sys-base() {
     install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/external-themes"
     ln -sf /usr/share/zsh-theme-powerlevel10k "${pkgdir}/usr/lib/zim/modules/prompt/external-themes/powerlevel10k"
     ln -sf /usr/lib/zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme "${pkgdir}/usr/lib/zim/modules/prompt/functions/prompt_powerlevel10k_setup"
+    # Put pacman override to etckeeper config
+    install -dm 0755 "${pkgdir}/etc"
+    install -dm 0755 "${pkgdir}/etc/etckeeper"
+    install -Dm 0755 base.etckeeper "${pkgdir}/etc/etckeeper/local.conf"
+    
     #-----Packages
     depends+=(      # Gentoo has: baselayout
         'base'          # Arch meta-package
@@ -212,7 +218,7 @@ package_sbp-sys-base() {
         'neovim' 'python-neovim' 'python-pexpect' 'neovim-remote'
         'w3m'
         'pulsemixer'
-        'vifm'
+        'vifm'To
         'transmission-cli' )
     # Shell
     depends+=(
@@ -445,7 +451,7 @@ package_sbp-gui-extra() {
         'stellarium'
         'openscad'
         'kitty' 'python-pillow'
-        'inkscape'
+        'inkscape' 'python-lxml'
         'gimp'
         'blender'
         'darktable'
@@ -461,7 +467,7 @@ package_sbp-gui-extra() {
     depends+=(
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures'
         'texlive-pstricks' 'texlive-core' 'texlive-science'
-        'latex-mk'
+        'latex-mk' 'fontawesome.sty'
         'libreoffice-fresh')
     # Programming
     depends+=(
@@ -574,20 +580,12 @@ package_sbp-cmp-notebook() {
     install=notebook.install
     install -dm 0755 "${pkgdir}/etc"
     install -Dm 0644 notebook.hostname "${pkgdir}/etc/hostname"
-    depends=(
+    depends=(               # Graphics driver things
         'bbswitch-dkms'
-        'bumblebee'
-        'cuda'
-        'lib32-nvidia-utils'
-        'lib32-virtualgl'
-        'mesa'
-        'mesa-demos'
         'nvidia-dkms'
-        'nvidia-settings'
         'nvidia-utils'
-        'ocl-icd'
-        'opencl-nvidia'
-        'primus'
+        'opencl-nvidia' 'cuda' 'gdb' 'ocl-icd'
+        'mesa' 'lib32-mesa' 'mesa-demos' 'vulkan-intel'
     )
 }
 
