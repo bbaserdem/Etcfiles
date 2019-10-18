@@ -62,7 +62,7 @@ sha256sums=(SKIP SKIP SKIP SKIP
 
 package_sbp-sys-base() {
     install=base.install
-    provides=('vim' 'vi' 'nano')https://bugs.freedesktop.org/show_bug.cgi?id=104835
+    provides=('vim' 'vi' 'nano')
     conflicts=('vim' 'vi' 'nano')
     depends=('sbp-sys-boot')
     # Install user scripts
