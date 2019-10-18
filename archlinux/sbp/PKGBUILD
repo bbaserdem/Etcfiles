@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=52
+pkgrel=54
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -218,7 +218,7 @@ package_sbp-sys-base() {
         'neovim' 'python-neovim' 'python-pexpect' 'neovim-remote'
         'w3m'
         'pulsemixer'
-        'vifm'To
+        'vifm'
         'transmission-cli' )
     # Shell
     depends+=(
