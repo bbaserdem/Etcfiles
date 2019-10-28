@@ -9,6 +9,9 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbp-workstation.localdomain sbp-workstation' >> /etc/hosts
 
+    echo '[sbp-cmp-workstation]==> Enabling UPS power daemon . . .'
+    /usr/bin/systemctl enable pwrstatd.service
+
     echo '[sbp-cmp-workstation]==> Installation done! Check log for errors.'
     post_upgrade
 }
