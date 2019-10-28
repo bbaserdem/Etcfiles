@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=54
+pkgrel=55
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -614,7 +614,8 @@ package_sbp-cmp-workstation() {
         'lib32-vulkan-radeon-git'
         'lib32-vulkan-mesa-layer-git')
     depends+=(
-        'dropbox'               # File synching
+        'dropbox'                       # File synching
+        'powerpanel' 'libusb-compat'    # UPS response
         )
 }
 
