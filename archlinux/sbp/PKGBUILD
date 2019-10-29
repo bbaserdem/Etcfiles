@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=56
+pkgrel=57
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -566,9 +566,9 @@ package_sbp-cmp-homestation() {
         'lib32-libva-mesa-driver'
         'lib32-vulkan-radeon')
     depends+=(
-        'rtlwifi_new-extended-dkms' # Needed for wifi to work
         'nbfc'                      # Fan controls
     )
+        #'rtlwifi_new-extended-dkms' # Needed for wifi to work
 }
 
 package_sbp-cmp-notebook() {
