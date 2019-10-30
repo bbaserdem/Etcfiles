@@ -106,7 +106,7 @@ cryptsetup [--key-slot X] luksAddKey <PART> /path/to.keyfile
 
 To create an image of the header as a backup, run
 ```
-fillhere
+cryptsetup luksHeaderBackup <PART> --header-backup-file <FILE>.img
 ```
 
 ### LVM

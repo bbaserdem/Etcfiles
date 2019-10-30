@@ -12,11 +12,11 @@ pkgname=(
     'sbp-gui-bspwm'
     'sbp-gui-sway'
     'sbp-cmp-homestation'
-    'sbp-cmp-notebook'
+    'sbp-cmp-laptop'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=57
+pkgrel=58
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -43,8 +43,8 @@ source=(
     'homestation.hostname'
     'homestation.install'
     'homestation.refind'
-    'notebook.hostname'
-    'notebook.install'
+    'laptop.hostname'
+    'laptop.install'
     'server.hostname'
     'server.install'
     'virtual.install'
@@ -571,15 +571,15 @@ package_sbp-cmp-homestation() {
         #'rtlwifi_new-extended-dkms' # Needed for wifi to work
 }
 
-package_sbp-cmp-notebook() {
+package_sbp-cmp-laptop() {
     provides=('sbp-cmp')
     conflicts=(
         'sbp-cmp-homestation'
         'sbp-cmp-workstation'
         'sbp-cmp-server' )
-    install=notebook.install
+    install=laptop.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0644 notebook.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 laptop.hostname "${pkgdir}/etc/hostname"
     depends=(               # Graphics driver things
         'bbswitch-dkms'
         'nvidia-dkms'
