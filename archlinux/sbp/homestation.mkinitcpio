@@ -1,4 +1,5 @@
 # vim:set ft=sh
+# Managed by sbp
 # MODULES
 # The following modules are loaded before any boot hooks are
 # run.  Advanced users may wish to specify all system modules
