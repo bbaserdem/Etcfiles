@@ -86,8 +86,7 @@
 # MAKEPKG: Grab config
 !/makepkg.conf*
 
-# MKINITCPIO: Grab this
-!/mkinitcpio.conf
+# MKINITCPIO: Grab the presets
 !/mkinitcpio
 !/mkinitcpio/**
 
