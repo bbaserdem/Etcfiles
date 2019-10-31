@@ -135,6 +135,10 @@
 !/snapper/configs
 !/snapper/configs/**
 
+# SSH: Allow the sshd config
+!/ssh
+!/sshd_config
+
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
 !/sudoers.d/sbp**

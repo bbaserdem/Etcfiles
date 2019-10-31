@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=62
+pkgrel=63
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -592,7 +592,7 @@ package_sbp-cmp-laptop() {
         'nvidia-dkms'
         'nvidia-utils'
         'opencl-nvidia' 'cuda' 'gdb' 'ocl-icd'
-        'mesa' 'lib32-mesa' 'mesa-demos' 'vulkan-intel'
+        'xf86-video-intel' 'mesa' 'lib32-mesa' 'mesa-demos' 'vulkan-intel'
     )
 }
 
