@@ -11,7 +11,7 @@
 !/gentoo
 !/gentoo/**
 
-# X11: Get config overrides
+# X11: Get config overrides specific for sbp
 !/X11
 !/X11/xorg.conf.d
 !/X11/xorg.conf.d/10-sbp**
