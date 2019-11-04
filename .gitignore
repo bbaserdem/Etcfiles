@@ -181,6 +181,13 @@
 # VCONSOLE: Grab config
 !/vconsole.conf
 
+# XDG: Grab some stuff
+!/xdg
+!/xdg/autorandr
+!/xdg/autorandr/**
+!/xdg/systemd
+!/xdg/systemd/**
+
 # ZSH: Grab environment
 !/zsh
 !/zsh/zshenv
