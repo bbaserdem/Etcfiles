@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=59
+pkgrel=64
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -42,23 +42,25 @@ source=(
     'gui.xinit-session'
     'homestation.hostname'
     'homestation.install'
+    'homestation.mkinitcpio'
     'homestation.refind'
     'laptop.hostname'
     'laptop.install'
+    'laptop.mkinitcpio'
+    'laptop.refind'
     'server.hostname'
     'server.install'
     'virtual.install'
     'workstation.hostname'
     'workstation.install'
+    'workstation.mkinitcpio'
+    'workstation.refind'
 )
 
-sha256sums=(SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP
-            SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -195,7 +197,7 @@ package_sbp-sys-base() {
         'devtools'
         'reflector'
         'aurutils'
-        'pacman-contrib' 
+        'pacman-contrib' 'pacman-cleanup-hook'
         'archlinux-appstream-data'
         'archlinux-keyring'
         'archlinux-xdg-menu'
@@ -550,9 +552,10 @@ package_sbp-cmp-homestation() {
         'sbp-cmp-server' )
     install=homestation.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0644 homestation.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
+    install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
     install -dm 0755 "${pkgdir}/boot"
-    install -Dm 0755 homestation.refind   "${pkgdir}/boot/refind_linux.conf"
+    install -Dm 0755 homestation.refind     "${pkgdir}/boot/refind_linux.conf"
     depends=(                       # Graphics related
         'mesa'
         'mesa-demos'
@@ -580,13 +583,16 @@ package_sbp-cmp-laptop() {
         'sbp-cmp-server' )
     install=laptop.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0644 laptop.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 laptop.hostname    "${pkgdir}/etc/hostname"
+    install -Dm 0644 laptop.mkinitcpio  "${pkgdir}/etc/mkinitcpio.conf"
+    install -dm 0755 "${pkgdir}/boot"
+    install -Dm 0755 laptop.refind      "${pkgdir}/boot/refind_linux.conf"
     depends=(               # Graphics driver things
         'bbswitch-dkms'
         'nvidia-dkms'
         'nvidia-utils'
         'opencl-nvidia' 'cuda' 'gdb' 'ocl-icd'
-        'mesa' 'lib32-mesa' 'mesa-demos' 'vulkan-intel'
+        'xf86-video-intel' 'mesa' 'lib32-mesa' 'mesa-demos' 'vulkan-intel'
     )
 }
 
@@ -598,7 +604,10 @@ package_sbp-cmp-workstation() {
         'sbp-cmp-server' )
     install=workstation.install
     install -dm 0755 "${pkgdir}/etc"
-    install -Dm 0644 workstation.hostname "${pkgdir}/etc/hostname"
+    install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
+    install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    install -dm 0755 "${pkgdir}/boot"
+    install -Dm 0755 workstation.refind     "${pkgdir}/boot/refind_linux.conf"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa-git'
         'amdvlk'

@@ -86,8 +86,7 @@
 # MAKEPKG: Grab config
 !/makepkg.conf*
 
-# MKINITCPIO: Grab this
-!/mkinitcpio.conf
+# MKINITCPIO: Grab the presets
 !/mkinitcpio
 !/mkinitcpio/**
 
@@ -136,6 +135,10 @@
 !/snapper/configs
 !/snapper/configs/**
 
+# SSH: Allow the sshd config
+!/ssh
+!/sshd_config
+
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
 !/sudoers.d/sbp**
@@ -177,6 +180,13 @@
 
 # VCONSOLE: Grab config
 !/vconsole.conf
+
+# XDG: Grab some stuff
+!/xdg
+!/xdg/autorandr
+!/xdg/autorandr/**
+!/xdg/systemd
+!/xdg/systemd/**
 
 # ZSH: Grab environment
 !/zsh
