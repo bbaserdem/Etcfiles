@@ -130,10 +130,15 @@
 !/skel
 !/skel/**
 
-# SNAPPER: Use the same config
+# SNAPPER: Use the same configs for all computers, and grab snap-pac as well
 !/snapper
 !/snapper/configs
 !/snapper/configs/**
+!/snapper/filters
+!/snapper/filters/**
+!/snap-pac.conf
+!/snap-pac
+!/snap-pac/**
 
 # SSH: Allow the sshd config
 !/ssh
