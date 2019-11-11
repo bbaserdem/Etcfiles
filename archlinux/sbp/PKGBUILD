@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=64
+pkgrel=65
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -609,20 +609,18 @@ package_sbp-cmp-workstation() {
     install -dm 0755 "${pkgdir}/boot"
     install -Dm 0755 workstation.refind     "${pkgdir}/boot/refind_linux.conf"
     depends=(                   # Graphics drivers for RX 5800 XT
-        'mesa-git'
+        'mesa'
         'amdvlk'
-        'clang-git'
-        'libclc-git'
-        'libdrm-git'
-        'llvm'
-        'llvm-libs-git'
-        'opencl-mesa-git'
-        'vulkan-mesa-layer-git'
-        'vulkan-radeon-git'
-        'xf86-video-amdgpu-git'
-        'lib32-mesa-git'
-        'lib32-vulkan-radeon-git'
-        'lib32-vulkan-mesa-layer-git')
+        'clang'
+        'libclc'
+        'libdrm'
+        'llvm' 'llvm-libs'
+        'opencl-mesa'
+        'vulkan-mesa-layer'
+        'vulkan-radeon'
+        'xf86-video-amdgpu'
+        'lib32-mesa'
+        'lib32-vulkan-radeon')
     depends+=(
         'dropbox'                       # File synching
         'powerpanel' 'libusb-compat'    # UPS response
