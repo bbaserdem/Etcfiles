@@ -522,6 +522,7 @@ package_sbp-gui-bspwm() {
         'sxhkd'                 # Simple X hotkey daemon
         'xfce4-power-manager'   # Battery notifications
         'xss-lock'              # Locks screen on power events
+        'compton'               # Compositor for window effects
     )
 }
 
