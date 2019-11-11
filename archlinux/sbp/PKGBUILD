@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=65
+pkgrel=66
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -111,7 +111,7 @@ package_sbp-sys-base() {
         'make'
         'less'
         'openssh'       # Gentoo has ssh on system
-        'e2fsprogs'
+        'e2fsprogs' 
         'inetutils'     # Gentoo has net-tools
         'binutils'
         'busybox'
@@ -622,7 +622,7 @@ package_sbp-cmp-workstation() {
         'lib32-mesa'
         'lib32-vulkan-radeon')
     depends+=(
-        'dropbox'                       # File synching
+        'maestral'                      # File synching
         'powerpanel' 'libusb-compat'    # UPS response
         )
 }
