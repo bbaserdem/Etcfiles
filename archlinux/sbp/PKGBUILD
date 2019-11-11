@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=66
+pkgrel=67
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -197,7 +197,7 @@ package_sbp-sys-base() {
         'devtools'
         'reflector'
         'aurutils'
-        'pacman-contrib' 'pacman-cleanup-hook'
+        'pacman-contrib' 'pacman-cleanup-hook' 'snap-pac'
         'archlinux-appstream-data'
         'archlinux-keyring'
         'archlinux-xdg-menu'
