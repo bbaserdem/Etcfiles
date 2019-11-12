@@ -38,7 +38,7 @@
 !/conf.d/snapper
 !/conf.d/xdm
 
-# DEFAULT: Grab grub config for each setup
+# DEFAULT: Grab only some configs
 !/default
 !/default/grub.*
 !/default/tlp.*
@@ -121,6 +121,9 @@
 
 # RESOLVCONF: Grab config
 !/resolvconf.conf
+
+# SBUPDATE: Grab config
+!/sbupdate.conf
 
 # SDDM: Grab theme
 !/sddm.conf.d

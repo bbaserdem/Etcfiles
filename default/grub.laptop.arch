@@ -3,8 +3,8 @@
 GRUB_DEFAULT=saved
 GRUB_TIMEOUT=-1
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="verbose rw cryptdevice=UUID=da9c7226-d355-4dcd-a40a-32418f052f9b:cryptlvm"
-GRUB_CMDLINE_LINUX="mem_encrypt=off i8042.reset module_blacklist=rtw88,rtwpci nosmt"
+GRUB_CMDLINE_LINUX_DEFAULT="verbose rw cryptdevice=UUID=a8a178f6-fe9a-4346-aeb6-98522a448657:cryptlvm"
+GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt"

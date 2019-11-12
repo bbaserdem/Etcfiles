@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=70
+pkgrel=72
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -32,11 +32,11 @@ source=(
     'base.repo-remove'
     'base.repo-sync'
     'base.root-ssh'
+    'uefi.grub-hook'
+    'uefi.grub-update'
     'uefi.install'
-    'uefi.kernel-hook'
-    'uefi.refind-hook'
     'uefi.refind-config'
-    'uefi.refind-update'
+    'uefi.refind-hook'
     'uefi.sb-signscript'
     'gui.install'
     'gui.xinit-session'
@@ -57,10 +57,10 @@ source=(
     'workstation.refind'
 )
 
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -292,31 +292,52 @@ package_sbp-sys-uefi() {
     provides=('sbp-sys-boot')
     conflicts=('sbp-sys-bios')
     install=uefi.install
+
     # Install refind config
-    install -dm 0755 "${pkgdir}/esp"
-    install -dm 0755 "${pkgdir}/esp/EFI"
-    install -dm 0755 "${pkgdir}/esp/EFI/rEFInd"
-    install -Dm 0755 uefi.refind-config "${pkgdir}/esp/EFI/rEFInd/refind.conf"
+    install -dm 0755 "${pkgdir}/boot"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/rEFInd"
+    install -Dm 0755 uefi.refind-config "${pkgdir}/boot/efi/EFI/rEFInd/refind.conf"
+
     # Install update hooks
     install -dm 0755 "${pkgdir}/usr"
     install -dm 0755 "${pkgdir}/usr/share"
     install -dm 0755 "${pkgdir}/usr/share/libalpm"
     install -dm 0755 "${pkgdir}/usr/share/libalpm/hooks"
-    install -Dm 0755 uefi.kernel-hook   "${pkgdir}/usr/share/libalpm/hooks/98-linux-sb.hook"
     install -Dm 0755 uefi.refind-hook   "${pkgdir}/usr/share/libalpm/hooks/99-refind-sb.hook"
-    # Install refind update script
-    install -dm 0755 "${pkgdir}/usr/share/refind"
-    install -Dm 0755 uefi.refind-update "${pkgdir}/usr/share/refind/update-refind.sh"
+    install -Dm 0755 uefi.grub-hook     "${pkgdir}/usr/share/libalpm/hooks/99-grub-sb.hook"
+
+    # Install grub update script
+    install -dm 0755 "${pkgdir}/usr/share/grub"
+    install -Dm 0755 uefi.grub-update "${pkgdir}/usr/share/grub/update-grub.sh"
+
     # Install secure boot signing script
     install -dm 0755 "${pkgdir}/usr/bin"
     install -Dm 0755 uefi.sb-signscript "${pkgdir}/usr/bin/sbp-sbsign.sh"
+
     # Create directory for storing secure-boot keys
     install -dm 0755 "${pkgdir}/etc"
-    install -dm 0755 "${pkgdir}/etc/keys"
+    install -dm 0700 "${pkgdir}/etc/sbkeys"
+    install -dm 0755 "${pkgdir}/etc/refind.d"
+    install -dm 0700 "${pkgdir}/etc/refind.d/keys"
+    ln -sf "/etc/sbkeys/DB.key" "${pkgdir}/etc/refind.d/keys/refind_local.key"
+    ln -sf "/etc/sbkeys/DB.crt" "${pkgdir}/etc/refind.d/keys/refind_local.crt"
+    ln -sf "/etc/sbkeys/DB.cer" "${pkgdir}/etc/refind.d/keys/refind_local.cer"
     depends=(
-        'efibootmgr' 'efitools' 'efivar' 'sbsigntools' 'openssl'    # Tools
-        'refind-efi'  'refind-theme-regular'                        # Main loader
-        'grub' 'grub-btrfs' 'os-prober' 'grub-theme-tela')                           
+        'efibootmgr'            # Write to bios
+        'efitools'              # EFI manip tools
+        'efivar'                # Don't know why this is neccessary
+        'sbsigntools'           # To sign kernels
+        'openssl'               # For signing
+        'sbupdate-git'          # Signs kernel automatically
+        'refind-efi'            # Refind loader
+        'refind-theme-regular'      # Theme
+        'grub'                  # Secondary loader
+        'grub-btrfs'                # BTRFS snapshots menu
+        'os-prober'                 # Other OS's
+        'grub-theme-tela'           # Theme
+        )                                             
 }
 
 package_sbp-sys-virtual() {
@@ -550,10 +571,15 @@ package_sbp-cmp-homestation() {
         'sbp-cmp-server' )
     install=homestation.install
     install -dm 0755 "${pkgdir}/etc"
+    install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
-    install -Dm 0755 homestation.refind     "${pkgdir}/boot/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 homestation.refind     "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     depends=(                       # Graphics related
         'mesa'
         'mesa-demos'
@@ -581,10 +607,15 @@ package_sbp-cmp-laptop() {
         'sbp-cmp-server' )
     install=laptop.install
     install -dm 0755 "${pkgdir}/etc"
+    install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 laptop.hostname    "${pkgdir}/etc/hostname"
     install -Dm 0644 laptop.mkinitcpio  "${pkgdir}/etc/mkinitcpio.conf"
+    ln -sf /etc/default/grub.laptop.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
-    install -Dm 0755 laptop.refind      "${pkgdir}/boot/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 laptop.refind      "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     depends=(               # Graphics driver things
         'bbswitch-dkms'
         'nvidia-dkms'
@@ -602,10 +633,15 @@ package_sbp-cmp-workstation() {
         'sbp-cmp-server' )
     install=workstation.install
     install -dm 0755 "${pkgdir}/etc"
+    install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    ln -sf /etc/default/grub.workstation.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
-    install -Dm 0755 workstation.refind     "${pkgdir}/boot/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 workstation.refind     "${pkgdir}/boot/EFI/Arch/refind_linux.conf"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa'
         'amdvlk'

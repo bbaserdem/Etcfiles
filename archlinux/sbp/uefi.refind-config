@@ -26,8 +26,8 @@ enable_touch
 #dont_scan_dirs EFI/systemd
 #dont_scan_files shim.efi,MokManager.efi
 scan_all_linux_kernels true
-#fold_linux_kernels false
-#extra_kernel_version_strings linux-lts,linux
+fold_linux_kernels true
+extra_kernel_version_strings linux-zen,linux-hardened,linux-lts,linux
 #max_tags 0
 #default_selection "+,bzImage,vmlinuz"
 #enable_and_lock_vmx false

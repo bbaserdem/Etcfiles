@@ -1,3 +1,3 @@
 # Managed by sbp
-"Boot with defaults" "initrd=/EFI/Arch/intel-ucode.img initrd=/EFI/Arch/initramfs-linux.img rw cryptdevice=UUID=a8a178f6-fe9a-4346-aeb6-98522a448657:cryptlvm root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root verbose"
-"Boot with fallback" "initrd=/EFI/Arch/intel-ucode.img initrd=/EFI/Arch/initramfs-linux-fallback.img rw cryptdevice=UUID=a8a178f6-fe9a-4346-aeb6-98522a448657:cryptlvm root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root verbose"
+"Boot with defaults" "cryptdevice=UUID=a8a178f6-fe9a-4346-aeb6-98522a448657:cryptlvm root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root"
+"Boot with fallback" "initrd=/EFI/Arch/initramfs-linux-fallback.img cryptdevice=UUID=a8a178f6-fe9a-4346-aeb6-98522a448657:cryptlvm root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root"
