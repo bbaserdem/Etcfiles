@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=68
+pkgrel=70
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -302,8 +302,8 @@ package_sbp-sys-uefi() {
     install -dm 0755 "${pkgdir}/usr/share"
     install -dm 0755 "${pkgdir}/usr/share/libalpm"
     install -dm 0755 "${pkgdir}/usr/share/libalpm/hooks"
-    install -Dm 0755 uefi.kernel-hook   "${pkgdir}/usr/share/libalpm/hooks/99-linux-sb.hook"
-    install -Dm 0755 uefi.refind-hook   "${pkgdir}/usr/share/libalpm/hooks/refind-sb.hook"
+    install -Dm 0755 uefi.kernel-hook   "${pkgdir}/usr/share/libalpm/hooks/98-linux-sb.hook"
+    install -Dm 0755 uefi.refind-hook   "${pkgdir}/usr/share/libalpm/hooks/99-refind-sb.hook"
     # Install refind update script
     install -dm 0755 "${pkgdir}/usr/share/refind"
     install -Dm 0755 uefi.refind-update "${pkgdir}/usr/share/refind/update-refind.sh"
@@ -314,12 +314,9 @@ package_sbp-sys-uefi() {
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/keys"
     depends=(
-        'efibootmgr'
-        'efitools'
-        'efivar'
-        'refind-efi'
-        'refind-theme-regular'
-        'sbsigntools')
+        'efibootmgr' 'efitools' 'efivar' 'sbsigntools' 'openssl'    # Tools
+        'refind-efi'  'refind-theme-regular'                        # Main loader
+        'grub' 'grub-btrfs' 'os-prober' 'grub-theme-tela')                           
 }
 
 package_sbp-sys-virtual() {

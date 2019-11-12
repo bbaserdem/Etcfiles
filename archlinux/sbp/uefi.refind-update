@@ -3,7 +3,12 @@
 #
 # REFIND install/update script
 #
-target="/esp/EFI/rEFInd"
+esp="/esp"
+efi="/EFI/rEFInd"
+title='rEFInd Boot Manager'
+mount "${esp}" 2>&1 1>/dev/null
+
+target="${esp}${efi}"
 
 # Create directory if doesn't exist!
 /bin/mkdir -p "${target}"
@@ -11,3 +16,23 @@ target="/esp/EFI/rEFInd"
 # Copy the executable and sign it
 /bin/cp -rf "/usr/share/refind/refind_x64.efi" "${target}/refind_x64.efi"
 [ -x /usr/bin/sbp-sbsign.sh ] && /usr/bin/sbp-sbsign.sh "${target}/refind_x64.efi"
+
+# Get the partition that the ESP is on
+part="$(df --output=source "${esp}" | sed 1d)"
+
+# Get disk and number
+/bin/lsblk -r | grep 'disk' | cut -f 1 -d ' ' | while IFS= read -r _disk ; do
+    if echo "${part}" | grep -q "${_disk}" ; then
+        disk="/dev/${_disk}"
+        pnum="$(echo ${part} | sed 's|'"${disk}"'.*\([0-9]\)|\1|g')"
+    fi
+done
+
+# Check if efi entry is done
+if efibootmgr | grep -q "${title}" ; then
+    bnum="$(efibootmgr | grep 'rEFInd Boot Manager' | sed 's|Boot\([0-9]*\).*|\1|')"
+else
+    # Create entry
+    efibootmgr --create --disk "${disk}" --part "${pnum}" --loader "${efi}/refind_x64.efi" --label "${title}"
+    bnum="$(efibootmgr | grep 'rEFInd Boot Manager' | sed 's|Boot\([0-9]*\).*|\1|')"
+fi

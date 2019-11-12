@@ -2,7 +2,7 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Type = Package
+Type = Path
 Target = boot/vmlinuz*
 
 [Action]
