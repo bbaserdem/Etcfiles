@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=74
+pkgrel=75
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -54,7 +54,7 @@ source=(
     'workstation.hostname'
     'workstation.install'
     'workstation.mkinitcpio'
-    'workstation.refind'
+    'workstation.sbupdate'
 )
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
@@ -636,12 +636,8 @@ package_sbp-cmp-workstation() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    install -Dm 0755 workstation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     ln -sf /etc/default/grub.workstation.arch "${pkgdir}/etc/default/grub"
-    install -dm 0755 "${pkgdir}/boot"
-    install -dm 0755 "${pkgdir}/boot/efi"
-    install -dm 0755 "${pkgdir}/boot/efi/EFI"
-    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
-    install -Dm 0755 workstation.refind     "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa'
         'amdvlk'
