@@ -15,8 +15,8 @@ pkgname=(
     'sbp-cmp-laptop'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
-pkgver=3.0
-pkgrel=75
+pkgver=4.0
+pkgrel=1
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -54,7 +54,7 @@ source=(
     'workstation.hostname'
     'workstation.install'
     'workstation.mkinitcpio'
-    'workstation.sbupdate'
+    'workstation.refind'
 )
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
@@ -574,12 +574,12 @@ package_sbp-cmp-homestation() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
-    ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
     install -dm 0755 "${pkgdir}/boot/efi"
     install -dm 0755 "${pkgdir}/boot/efi/EFI"
     install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
     install -Dm 0755 homestation.refind     "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
+    ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     depends=(                       # Graphics related
         'mesa'
         'mesa-demos'
@@ -610,12 +610,12 @@ package_sbp-cmp-laptop() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 laptop.hostname    "${pkgdir}/etc/hostname"
     install -Dm 0644 laptop.mkinitcpio  "${pkgdir}/etc/mkinitcpio.conf"
-    ln -sf /etc/default/grub.laptop.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
     install -dm 0755 "${pkgdir}/boot/efi"
     install -dm 0755 "${pkgdir}/boot/efi/EFI"
     install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
     install -Dm 0755 laptop.refind      "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
+    ln -sf /etc/default/grub.laptop.arch "${pkgdir}/etc/default/grub"
     depends=(               # Graphics driver things
         'bbswitch-dkms'
         'nvidia-dkms'
@@ -636,7 +636,11 @@ package_sbp-cmp-workstation() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
-    install -Dm 0755 workstation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
+    install -dm 0755 "${pkgdir}/boot"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 workstation.refind    "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     ln -sf /etc/default/grub.workstation.arch "${pkgdir}/etc/default/grub"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa'

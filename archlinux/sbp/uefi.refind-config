@@ -10,7 +10,7 @@ enable_touch
 
 #textonly
 #textmode 2
-#enable_mouse
+enable_mouse
 #mouse_size
 #mouse_speed 4
 #use_graphics_for osx,linux
@@ -27,7 +27,7 @@ enable_touch
 #dont_scan_files shim.efi,MokManager.efi
 scan_all_linux_kernels true
 fold_linux_kernels true
-extra_kernel_version_strings linux-zen,linux-hardened,linux-lts,linux
+extra_kernel_version_strings linux-zen-fallback,linux-hardened-fallback,linux-lts-fallback,linux-fallback,linux-zen,linux-hardened,linux-lts,linux
 #max_tags 0
 #default_selection "+,bzImage,vmlinuz"
 #enable_and_lock_vmx false
