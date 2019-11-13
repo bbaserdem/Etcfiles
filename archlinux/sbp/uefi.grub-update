@@ -3,12 +3,12 @@
 #
 # GRUB install/update script
 #
-esp="/boot/efi"
+esp="/boot"
 title='Grub'
 mount "${esp}" 2>&1 1>/dev/null
 
 # Reinstall grub to ESP
-grub-install --target=x86_64-efi --efi-directory="${esp}" --boot-directory="${esp}" --bootloader-id="${title}"
+grub-install --target=x86_64-efi --efi-directory="${esp}" --bootloader-id="${title}"
 # Rebuild grub config
 grub-mkconfig -o "${esp}/grub/grub.cfg"
 # Sign the bootloader with secure boot keys

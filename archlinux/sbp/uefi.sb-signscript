@@ -2,8 +2,8 @@
 # Maintained by sbp
 
 _loc="/etc/sbkeys"
-_key="${_loc}/DB.key"
-_crt="${_loc}/DB.crt"
+_key="${_loc}/db.key"
+_crt="${_loc}/db.crt"
 
 _files=("$@")
 
