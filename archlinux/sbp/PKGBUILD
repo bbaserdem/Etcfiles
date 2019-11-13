@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=78
+pkgrel=80
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -49,6 +49,7 @@ source=(
     'laptop.install'
     'laptop.mkinitcpio'
     'laptop.refind'
+    'laptop.sbupdate'
     'server.hostname'
     'server.install'
     'virtual.install'
@@ -56,12 +57,13 @@ source=(
     'workstation.install'
     'workstation.mkinitcpio'
     'workstation.refind'
+    'workstation.sbupdate'
 )
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP)
+            SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -613,6 +615,7 @@ package_sbp-cmp-laptop() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 laptop.hostname    "${pkgdir}/etc/hostname"
     install -Dm 0644 laptop.mkinitcpio  "${pkgdir}/etc/mkinitcpio.conf"
+    install -Dm 0644 laptop.sbupdate    "${pkgdir}/etc/sbupdate.local.conf"
     install -dm 0755 "${pkgdir}/boot"
     install -dm 0755 "${pkgdir}/boot/EFI"
     install -dm 0755 "${pkgdir}/boot/EFI/Arch"
@@ -638,6 +641,7 @@ package_sbp-cmp-workstation() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    install -Dm 0644 workstation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     install -dm 0755 "${pkgdir}/boot"
     install -dm 0755 "${pkgdir}/boot/EFI"
     install -dm 0755 "${pkgdir}/boot/EFI/Arch"
