@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=76
+pkgrel=77
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -44,6 +44,7 @@ source=(
     'homestation.install'
     'homestation.mkinitcpio'
     'homestation.refind'
+    'homestation.sbupdate'
     'laptop.hostname'
     'laptop.install'
     'laptop.mkinitcpio'
@@ -574,6 +575,7 @@ package_sbp-cmp-homestation() {
     install -dm 0755 "${pkgdir}/etc/default"
     install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
+    install -Dm 0644 homestation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
     install -dm 0755 "${pkgdir}/boot/efi"

@@ -7,10 +7,10 @@ small_icon_size 144
 big_icon_size 384
 resolution 1920 1080
 enable_touch
+enable_mouse
 
 #textonly
 #textmode 2
-#enable_mouse
 #mouse_size
 #mouse_speed 4
 #use_graphics_for osx,linux
@@ -27,9 +27,9 @@ enable_touch
 #dont_scan_files shim.efi,MokManager.efi
 scan_all_linux_kernels true
 fold_linux_kernels true
-extra_kernel_version_strings linux-zen,linux-hardened,linux-lts,linux
+extra_kernel_version_strings linux-zen-fallback,linux-hardened-fallback,linux-lts-fallback,linux-fallback,linux-zen,linux-hardened,linux-lts,linux
+default_selection "+,bzImage,vmlinuz"
 #max_tags 0
-#default_selection "+,bzImage,vmlinuz"
 #enable_and_lock_vmx false
 #spoof_osx_version 10.9
 #csr_values 10,77
