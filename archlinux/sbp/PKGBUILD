@@ -15,8 +15,8 @@ pkgname=(
     'sbp-cmp-laptop'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
-pkgver=4.0
-pkgrel=1
+pkgver=3.0
+pkgrel=76
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
