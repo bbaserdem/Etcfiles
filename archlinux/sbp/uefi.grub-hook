@@ -3,11 +3,10 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = boot/vmlinuz*
+Target = grub
 
 [Action]
-Description = Signing Kernels for Secure-Boot
+Description = Reinstalling, updating and signing grub
 When = PostTransaction
-Exec = /usr/bin/sbp-sbsign.sh
+Exec = /usr/share/grub/update-grub.sh
 Depends = sbp-sys-uefi
-NeedsTargets

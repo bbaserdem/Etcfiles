@@ -1,9 +1,9 @@
 #!/bin/bash
 # Maintained by sbp
 
-_loc="/etc/keys"
-_key="${_loc}/secureboot.key"
-_crt="${_loc}/secureboot.crt"
+_loc="/etc/sbkeys"
+_key="${_loc}/DB.key"
+_crt="${_loc}/DB.crt"
 
 _files=("$@")
 

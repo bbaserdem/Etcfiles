@@ -6,7 +6,7 @@ post_install() {
 }
 
 post_upgrade() {
-    if [ ! -e /etc/keys/secureboot.key ] || [ ! -e /etc/keys/secureboot.crt ] ; then
+    if [ ! -e /etc/sbkeys/secureboot.key ] && [ ! -e /etc/sbkeys/secureboot.crt ] ; then
         post_install
     fi
 }

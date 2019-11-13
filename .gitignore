@@ -38,7 +38,7 @@
 !/conf.d/snapper
 !/conf.d/xdm
 
-# DEFAULT: Grab grub config for each setup
+# DEFAULT: Grab only some configs
 !/default
 !/default/grub.*
 !/default/tlp.*
@@ -122,6 +122,9 @@
 # RESOLVCONF: Grab config
 !/resolvconf.conf
 
+# SBUPDATE: Grab config
+!/sbupdate.conf
+
 # SDDM: Grab theme
 !/sddm.conf.d
 !/sddm.conf.d/**
@@ -130,10 +133,15 @@
 !/skel
 !/skel/**
 
-# SNAPPER: Use the same config
+# SNAPPER: Use the same configs for all computers, and grab snap-pac as well
 !/snapper
 !/snapper/configs
 !/snapper/configs/**
+!/snapper/filters
+!/snapper/filters/**
+!/snap-pac.conf
+!/snap-pac
+!/snap-pac/**
 
 # SSH: Allow the sshd config
 !/ssh
