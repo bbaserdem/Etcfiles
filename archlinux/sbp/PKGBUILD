@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=80
+pkgrel=82
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -298,9 +298,10 @@ package_sbp-sys-uefi() {
 
     # Install refind config
     install -dm 0755 "${pkgdir}/boot"
-    install -dm 0755 "${pkgdir}/boot/EFI"
-    install -dm 0755 "${pkgdir}/boot/EFI/rEFInd"
-    install -Dm 0755 uefi.refind-config "${pkgdir}/boot/EFI/rEFInd/refind.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/rEFInd"
+    install -Dm 0755 uefi.refind-config "${pkgdir}/boot/efi/EFI/rEFInd/refind.conf"
 
     # Install update hooks
     install -dm 0755 "${pkgdir}/usr"
@@ -581,9 +582,10 @@ package_sbp-cmp-homestation() {
     install -Dm 0644 homestation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     install -dm 0755 "${pkgdir}/boot"
-    install -dm 0755 "${pkgdir}/boot/EFI"
-    install -dm 0755 "${pkgdir}/boot/EFI/Arch"
-    install -Dm 0755 homestation.refind     "${pkgdir}/boot/EFI/Arch/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 homestation.refind     "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
     depends=(                       # Graphics related
         'mesa'
@@ -617,9 +619,10 @@ package_sbp-cmp-laptop() {
     install -Dm 0644 laptop.mkinitcpio  "${pkgdir}/etc/mkinitcpio.conf"
     install -Dm 0644 laptop.sbupdate    "${pkgdir}/etc/sbupdate.local.conf"
     install -dm 0755 "${pkgdir}/boot"
-    install -dm 0755 "${pkgdir}/boot/EFI"
-    install -dm 0755 "${pkgdir}/boot/EFI/Arch"
-    install -Dm 0755 laptop.refind      "${pkgdir}/boot/EFI/Arch/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 laptop.refind      "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     ln -sf /etc/default/grub.laptop.arch "${pkgdir}/etc/default/grub"
     depends=(               # Graphics driver things
         'bbswitch-dkms'
@@ -643,9 +646,10 @@ package_sbp-cmp-workstation() {
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
     install -Dm 0644 workstation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     install -dm 0755 "${pkgdir}/boot"
-    install -dm 0755 "${pkgdir}/boot/EFI"
-    install -dm 0755 "${pkgdir}/boot/EFI/Arch"
-    install -Dm 0755 workstation.refind    "${pkgdir}/boot/efi/Arch/refind_linux.conf"
+    install -dm 0755 "${pkgdir}/boot/efi"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI"
+    install -dm 0755 "${pkgdir}/boot/efi/EFI/Arch"
+    install -Dm 0755 workstation.refind    "${pkgdir}/boot/efi/EFI/Arch/refind_linux.conf"
     ln -sf /etc/default/grub.workstation.arch "${pkgdir}/etc/default/grub"
     depends=(                   # Graphics drivers for RX 5800 XT
         'mesa'

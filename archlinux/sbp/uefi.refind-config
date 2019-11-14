@@ -25,10 +25,10 @@ enable_mouse
 #also_scan_dirs boot,ESP2:EFI/linux/kernels
 #dont_scan_volumes "Recovery HD"
 #dont_scan_dirs EFI/systemd
-dont_scan_files +,ESP:/vmlinuz-linux,ESP:/vmlinuz-linux-lts,ESP:/vmlinuz-linux-zen,ESP:/vmlinuz-linux-hardened
+#dont_scan_files +,ESP:/vmlinuz-linux,ESP:/vmlinuz-linux-lts,ESP:/vmlinuz-linux-zen,ESP:/vmlinuz-linux-hardened
 scan_all_linux_kernels true
 fold_linux_kernels true
-extra_kernel_version_strings linux-zen-fallback,linux-hardened-fallback,linux-lts-fallback,linux-fallback,linux-zen,linux-hardened,linux-lts,linux
+extra_kernel_version_strings zen-fallback,zen,hardened-fallback,hardened,lts-fallback,lts
 default_selection "+,bzImage,vmlinuz"
 #max_tags 0
 #enable_and_lock_vmx false

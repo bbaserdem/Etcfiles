@@ -3,7 +3,7 @@
 #
 # GRUB install/update script
 #
-esp="/boot"
+esp="/boot/efi"
 title='Grub'
 mount "${esp}" 2>&1 1>/dev/null
 
