@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=82
+pkgrel=84
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -324,9 +324,10 @@ package_sbp-sys-uefi() {
     install -dm 0700 "${pkgdir}/etc/sbkeys"
     install -dm 0755 "${pkgdir}/etc/refind.d"
     install -dm 0700 "${pkgdir}/etc/refind.d/keys"
-    ln -sf "/etc/sbkeys/DB.key" "${pkgdir}/etc/refind.d/keys/refind_local.key"
-    ln -sf "/etc/sbkeys/DB.crt" "${pkgdir}/etc/refind.d/keys/refind_local.crt"
-    ln -sf "/etc/sbkeys/DB.cer" "${pkgdir}/etc/refind.d/keys/refind_local.cer"
+    ln -sf "/etc/sbkeys/db.key" "${pkgdir}/etc/refind.d/keys/refind_local.key"
+    ln -sf "/etc/sbkeys/db.esl" "${pkgdir}/etc/refind.d/keys/refind_local.esl"
+    ln -sf "/etc/sbkeys/db.crt" "${pkgdir}/etc/refind.d/keys/refind_local.crt"
+    ln -sf "/etc/sbkeys/db.cer" "${pkgdir}/etc/refind.d/keys/refind_local.cer"
 
     depends=(
         'efibootmgr'            # Write to bios
