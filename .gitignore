@@ -74,6 +74,10 @@
 !/geoclue
 !/geoclue/**
 
+# IWD: Grab config
+!/iwd
+!/iwd/main.conf
+
 # LIBVIRT: Grab the configurations
 !/libvirt
 !/libvirt/libvirt-admin.conf
