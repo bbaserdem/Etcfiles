@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=86
+pkgrel=88
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -489,6 +489,8 @@ package_sbp-gui-extra() {
         'zotero'
         'pdfsam'
         'hamsket'
+        'thunar' 'tumbler' 'ffmpegthumbnailer' 'thunar-media-tags-plugin' 'thunar-archive-plugin' 'raw-thumbnailer'
+        'ristretto'
     )
     # Documents
     depends+=(
