@@ -74,6 +74,10 @@
 !/geoclue
 !/geoclue/**
 
+# GRUB: Get the fixed linux config
+!/grub.d
+!/grub.d/10_linux
+
 # IWD: Grab config
 !/iwd
 !/iwd/main.conf
