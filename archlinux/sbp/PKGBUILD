@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=88
+pkgrel=90
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -267,6 +267,7 @@ package_sbp-sys-extra() {
         'trash-cli'
         'geoclue2'
         'imagemagick'
+        'pamac-aur'
         )
     # Apps
     depends+=(
