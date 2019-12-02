@@ -15,13 +15,13 @@ if [ -n "$1" ]; then
 		if [ "x$1" = "x-m" ]; then
 			shift 1
 		fi
-		echo "$1" > "$logfile"
+		echo "${@#-m}" > "$logfile"
 	fi
 else
 	logfile=""
 fi
 
-hostname=`hostname`
+hostname=`hostname 2>/dev/null || cat /etc/hostname`
 hostname="${hostname%%.*}"
 dnsdomainname=`dnsdomainname 2>/dev/null || true`
 if [ -n "$dnsdomainname" ]; then
