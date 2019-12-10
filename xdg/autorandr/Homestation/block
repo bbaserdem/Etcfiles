@@ -1,0 +1,2 @@
+#!/bin/dash
+exec grep -q close /proc/acpi/button/lid/LID0/state
