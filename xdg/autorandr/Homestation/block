@@ -1,3 +1,0 @@
-#!/bin/dash
-# Checks if the lid of the computer is down, and blocks this layout if not down
-exec grep -q close /proc/acpi/button/lid/LID0/state
