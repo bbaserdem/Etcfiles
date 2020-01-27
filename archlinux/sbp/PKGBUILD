@@ -3,7 +3,6 @@ pkgbase='sbp'
 pkgname=(
     'sbp-sys-base'
     'sbp-sys-extra'
-    'sbp-sys-bios'
     'sbp-sys-uefi'
     'sbp-sys-virtual'
     'sbp-gui-base'
@@ -16,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=90
+pkgrel=91
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -284,14 +283,6 @@ package_sbp-sys-extra() {
     depends+=('private-internet-access-vpn')
 }
 
-package_sbp-sys-bios() {
-    provides=('sbp-sys-boot')
-    conflicts=('sbp-sys-uefi')
-    depends=(
-        'grub'
-        'os-prober' )
-}
-
 package_sbp-sys-uefi() {
     provides=('sbp-sys-boot')
     conflicts=('sbp-sys-bios')
@@ -310,11 +301,11 @@ package_sbp-sys-uefi() {
     install -dm 0755 "${pkgdir}/usr/share/libalpm"
     install -dm 0755 "${pkgdir}/usr/share/libalpm/hooks"
     install -Dm 0755 uefi.refind-hook   "${pkgdir}/usr/share/libalpm/hooks/99-refind-sb.hook"
-    install -Dm 0755 uefi.grub-hook     "${pkgdir}/usr/share/libalpm/hooks/99-grub-sb.hook"
 
     # Install grub update script
-    install -dm 0755 "${pkgdir}/usr/share/grub"
-    install -Dm 0755 uefi.grub-update "${pkgdir}/usr/share/grub/update-grub.sh"
+    # install -dm 0755 "${pkgdir}/usr/share/grub"
+    # install -Dm 0755 uefi.grub-update "${pkgdir}/usr/share/grub/update-grub.sh"
+    # install -Dm 0755 uefi.grub-hook     "${pkgdir}/usr/share/libalpm/hooks/99-grub-sb.hook"
 
     # Install secure boot signing script
     install -dm 0755 "${pkgdir}/usr/bin"
@@ -340,11 +331,10 @@ package_sbp-sys-uefi() {
         'cryptboot'             # Generate SB keys easily
         'refind-efi'            # Refind loader
         'refind-theme-regular'      # Theme
-        'grub'                  # Secondary loader
-        'grub-btrfs'                # BTRFS snapshots menu
-        'os-prober'                 # Other OS's
-        'grub-theme-tela'           # Theme
-        )                                             
+        )
+
+    # Grub stuff
+    # depends+=('grub' 'grub-btrfs' 'os-prober' 'grub-theme-tela')
 }
 
 package_sbp-sys-virtual() {
@@ -437,7 +427,8 @@ package_sbp-gui-base() {
         'imv'
         'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
         'smplayer'
-        'firefox' 'flashplugin'
+        'firefox' 'flashplugin' 'qutebrowser'
+        'gparted'
         'transmission-qt' 'transmission-remote-gtk')
     # Utilities
     depends+=(
@@ -507,7 +498,8 @@ package_sbp-gui-extra() {
     # Utility
     depends+=(
         'syncthing-gtk'
-        'dhcpcd-ui' )
+        'dhcpcd-ui' 
+        'projectm' 'projectm-pulseaudio')
 }
 
 package_sbp-gui-games() {
