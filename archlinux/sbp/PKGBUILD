@@ -15,7 +15,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.0
-pkgrel=91
+pkgrel=92
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -599,7 +599,6 @@ package_sbp-cmp-homestation() {
     depends+=(
         'nbfc'                      # Fan controls
     )
-        #'rtlwifi_new-extended-dkms' # Needed for wifi to work
 }
 
 package_sbp-cmp-laptop() {
