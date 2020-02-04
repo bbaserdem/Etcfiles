@@ -178,6 +178,8 @@
 !/systemd/system/sbp*.service
 !/systemd/system/*.d/
 !/systemd/system/*.d/sbp**
+!/systemd/user
+!/systemd/user/*.service
 
 # TIMEZONE: Grab it
 !/timezone
