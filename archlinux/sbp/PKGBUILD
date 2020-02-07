@@ -14,8 +14,8 @@ pkgname=(
     'sbp-cmp-laptop'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
-pkgver=3.0
-pkgrel=92
+pkgver=3.1
+pkgrel=1
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -234,7 +234,7 @@ package_sbp-sys-base() {
     # Utilities
     depends+=(
         'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
-        'unzip' 'xz' 'zip'
+        'unzip' 'xz' 'zip' 'rpm-tools'
         'ctags'
         'bash-completion'
         'fzf'
@@ -405,7 +405,7 @@ package_sbp-gui-base() {
         'terminus-font' 'terminus-font-otb'
         'noto-fonts-emoji'
         'termsyn-font'
-        'ttf-droid'
+        'ttf-droid' 'ttf-liberation'
         'ttf-inconsolata'
         'ibus' 'ibus-m17n'
         'ttf-iosevka')
