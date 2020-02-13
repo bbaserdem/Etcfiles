@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -423,7 +423,9 @@ package_sbp-gui-base() {
         'arc-gtk-theme'
         'gnome-themes-extra'
         'kvantum-qt5' 'kvantum-theme-arc'
-        'papirus-icon-theme')
+        'papirus-icon-theme'
+        'kvantum-theme-layan' 'layan-gtk-theme'
+    )
     # Applications
     depends+=(
         'alacritty' 
@@ -576,6 +578,9 @@ package_sbp-gui-plasma() {
         'polkit-kde-agent'
         'kate'
         'kdevelop' 'kdevelop-python'
+        'layan-kde'
+        'konsole' 'yakuake'
+        'latte-dock'
     )
 }
 
