@@ -37,6 +37,7 @@
 !/conf.d/keymaps
 !/conf.d/snapper
 !/conf.d/xdm
+!/conf.d/reflector
 
 # DEFAULT: Grab only some configs
 !/default

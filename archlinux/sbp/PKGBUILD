@@ -9,13 +9,14 @@ pkgname=(
     'sbp-gui-extra'
     'sbp-gui-games'
     'sbp-gui-bspwm'
+    'sbp-gui-plasma'
     'sbp-gui-sway'
     'sbp-cmp-homestation'
     'sbp-cmp-laptop'
     'sbp-cmp-server'
     'sbp-cmp-workstation')
-pkgver=3.0
-pkgrel=92
+pkgver=3.1
+pkgrel=4
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -27,6 +28,8 @@ source=(
     'base.etckeeper'
     'base.install'
     'base.mpc-prev'
+    'base.reflect-service'
+    'base.reflect-timer'
     'base.repo-build'
     'base.repo-remove'
     'base.repo-sync'
@@ -62,7 +65,7 @@ source=(
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP)
+            SKIP SKIP SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -97,6 +100,11 @@ package_sbp-sys-base() {
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/etckeeper"
     install -Dm 0755 base.etckeeper "${pkgdir}/etc/etckeeper/local.conf"
+    # Create reflector timers
+    install -dm 0755 "${pkgdir}/usr/lib/systemd"
+    install -dm 0755 "${pkgdir}/usr/lib/systemd/system"
+    install -Dm 0644 base.reflect-service "${pkgdir}/usr/lib/systemd/system/reflector.service"
+    install -Dm 0644 base.reflect-timer   "${pkgdir}/usr/lib/systemd/system/reflector.timer"
     
     #-----Packages
     depends+=(      # Gentoo has: baselayout
@@ -234,7 +242,7 @@ package_sbp-sys-base() {
     # Utilities
     depends+=(
         'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
-        'unzip' 'xz' 'zip'
+        'unzip' 'xz' 'zip' 'rpm-tools'
         'ctags'
         'bash-completion'
         'fzf'
@@ -405,7 +413,7 @@ package_sbp-gui-base() {
         'terminus-font' 'terminus-font-otb'
         'noto-fonts-emoji'
         'termsyn-font'
-        'ttf-droid'
+        'ttf-droid' 'ttf-liberation'
         'ttf-inconsolata'
         'ibus' 'ibus-m17n'
         'ttf-iosevka')
@@ -415,7 +423,9 @@ package_sbp-gui-base() {
         'arc-gtk-theme'
         'gnome-themes-extra'
         'kvantum-qt5' 'kvantum-theme-arc'
-        'papirus-icon-theme')
+        'papirus-icon-theme'
+        'kvantum-theme-layan' 'layan-gtk-theme'
+    )
     # Applications
     depends+=(
         'alacritty' 
@@ -542,6 +552,35 @@ package_sbp-gui-bspwm() {
         'xfce4-power-manager'   # Battery notifications
         'xss-lock'              # Locks screen on power events
         'picom'                 # Compositor for window effects
+    )
+}
+
+package_sbp-gui-plasma() {
+    depends=('sbp-gui-base')
+    depends+=(
+        'plasma-desktop'
+        'plasma-workspace'
+        'plasma-wayland-session'
+        'xdg-desktop-portal-kde'
+        'plasma-browser-integration'
+        'plasma-pa'
+        'plasma-sdk'
+        'powerdevil'
+        'kgamma5'
+        'bluedevil'
+        'discover'
+        'khotkeys'
+        'kscreen'
+        'kwayland-integration'
+        'kwrited'
+        'kscreenlocker'
+        'libkscreen'
+        'polkit-kde-agent'
+        'kate'
+        'kdevelop' 'kdevelop-python'
+        'layan-kde'
+        'konsole' 'yakuake'
+        'latte-dock'
     )
 }
 
