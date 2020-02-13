@@ -1,0 +1,9 @@
+AGE=5
+COUNTRY='United States'
+LATEST=30
+NUMBER=20
+SORT=rate
+### remove an entry if you don't want it as available protocol
+PROTOCOL1='-p http'
+PROTOCOL2='-p https'
+PROTOCOL3='-p ftp'
