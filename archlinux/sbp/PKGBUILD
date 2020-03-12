@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -507,6 +507,7 @@ package_sbp-gui-extra() {
         'octave' )
     # Utility
     depends+=(
+        'baobab'
         'syncthing-gtk'
         'dhcpcd-ui' 
         'projectm' 'projectm-pulseaudio')
