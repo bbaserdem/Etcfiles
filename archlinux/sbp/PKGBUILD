@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -55,6 +55,7 @@ source=(
     'server.hostname'
     'server.install'
     'virtual.install'
+    'workstation.crypttab'
     'workstation.fstab'
     'workstation.hostname'
     'workstation.install'
@@ -66,7 +67,7 @@ source=(
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -680,6 +681,7 @@ package_sbp-cmp-workstation() {
     install=workstation.install
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/default"
+    install -Dm 0644 workstation.crypttab   "${pkgdir}/etc/crypttab"
     install -Dm 0644 workstation.fstab      "${pkgdir}/etc/fstab"
     install -Dm 0644 workstation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 workstation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
