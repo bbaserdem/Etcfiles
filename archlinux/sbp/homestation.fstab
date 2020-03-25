@@ -1,0 +1,13 @@
+# Managed by sbp
+
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system>         <dir>               <type>  <options>                                                                                                   <dump>  <pass>
+/dev/mapper/Linux-Arch      /               btrfs   rw,noatime,nodiratime,compress=lzo,ssd,space_cache,subvol=@root                                             0       0
+/dev/mapper/Linux-Arch      /.snapshots     btrfs   rw,noatime,nodiratime,compress=lzo,ssd,space_cache,subvol=@snapshots                                        0       0
+/dev/mapper/Linux-Opt       /opt            ext4    defaults                                                                                                    0       0
+UUID=7653-3DB8              /boot/efi       vfat    rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro   0       2
+/dev/mapper/Linux-Home      /home           xfs     rw,relatime,attr2,inode64,noquota                                                                           0       2
+/dev/mapper/cryptarchive    /media/archive  ext4    defaults                                                                                                    0       2
+/swap/swapfile              none            swap    defaults                                                                                                    0       0

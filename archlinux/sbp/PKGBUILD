@@ -42,6 +42,8 @@ source=(
     'uefi.sb-signscript'
     'gui.install'
     'gui.xinit-session'
+    'homestation.crypttab'
+    'homestation.fstab'
     'homestation.hostname'
     'homestation.install'
     'homestation.mkinitcpio'
@@ -67,7 +69,7 @@ source=(
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -617,6 +619,8 @@ package_sbp-cmp-homestation() {
     install=homestation.install
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/default"
+    install -Dm 0644 homestation.crypttab   "${pkgdir}/etc/crypttab"
+    install -Dm 0644 homestation.fstab   "${pkgdir}/etc/fstab"
     install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
     install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
     install -Dm 0644 homestation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
