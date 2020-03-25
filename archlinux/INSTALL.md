@@ -4,30 +4,34 @@ This is my Arch installation guide, specialized to pull from my personal repo.
 
 # Installation
 
+Generic instructions for installation are noted here.
+
+## Create ISO (Optional)
+
+This is an alternative; to customize an iso image.
+<Revisit this once I actually do this again>
+
 ## Create live usb
 
 Install the live-iso either from the torrent, or the mirrors.
 Checking the gpg-keys can be made with the following commands;
 
 ```
-gpg --keyserver-options auto-key-retrieve --verify archlinux-2019.10.01-x86_64.iso.sig
-pacman-key -v archlinux-2019.10.01-x86_64.iso.sig
+gpg --keyserver-options auto-key-retrieve --verify archlinux-20XX.YY.ZZ-x86_64.iso.sig
+pacman-key -v archlinux-20XX.YY.ZZ-x86_64.iso.sig
 ```
 
-To write the live USB (the archiso is compatible with all boot modes)
+To write the live USB (the archiso is compatible with all boot modes by default)
 
 ```
-sudo dd if=Downloads/archlinux-20XX.XX.XX-ARCH.iso of=/dev/sdX bs=4M status=progress oflag=sync 
+sudo dd if=Downloads/archlinux-20XX.YY.ZZ-ARCH.iso of=/dev/sdX bs=4M status=progress oflag=sync 
 ```
 
+## Booting to live-usb
 Boot from the usb from there.
-May need to run `loadkeys dvorak` to work with my intuitive keyboard.
+May want to run `loadkeys dvorak`
 
-## Filesystem Layout
-
-I use a common filesystem layout, which includes LVM on LUKS for flexibility.
-
-### Clean drives
+## Clean drives (Optional)
 
 To clean drives, open an encrypted container and write zeros on top of it.
 ```
@@ -36,7 +40,7 @@ dd if=/dev/zero of=/dev/mapper/container bs=1M status=progress
 cryptsetup close container
 ```
 
-### Partition table
+## Partition table
 
 Usually, will want to do GPT, with `parted /dev/DRIVE mklabel gpt`.
 
@@ -64,26 +68,24 @@ n
 8309
 ```
 
-### LUKS
+## LUKS
 
-LUKS is encryption for the partition map.
+I use LUKS to encrypt my logical volumes.
+
+### Decrypting container
 To decrypt a luks container, run the following;
 ```
 cryptsetup luksOpen [--key-file /path/to.keyfile] <device> <mapper-name>
 ```
 
-#### Random keys
-
+### Random key generation
 Random keys can be generated using
-
 ```
 dd bs=512 count=4 if=/dev/random of=<OUTPUT_FILE> iflag=fullblock
 ```
 
-#### Container
-
+### Creating new container
 To create LUKS containers, the following command should be enough.
-
 ```
 cryptsetup \
     --cipher aes-xts-plain64 \
@@ -91,34 +93,35 @@ cryptsetup \
     --hash sha384 \
     --iter-time 2500
     --use-random \
-<o> --key-slot X \
+    --key-slot X <THIS IS OPTIONAL> \
     luksformat /dev/xxx2
 ```
 
-#### Adding keys
-
-To add keys from a keyfile;
+### Adding additional keys
+To add keys from a keyfile (such as the one you randomly generated);
 ```
 cryptsetup [--key-slot X] luksAddKey <PART> /path/to.keyfile
 ```
+Omit the keyfile argument to just input using self.
 
-#### Backup
-
+### Backup the container header
 To create an image of the header as a backup, run
 ```
 cryptsetup luksHeaderBackup <PART> --header-backup-file <FILE>.img
 ```
 
-### LVM
-
+## LVM
 LVM allows to be flexible with the partitioning layout.
-To create, follow the instructions;
+I usually use LVM on LUKS; because it makes it such that all partitions are
+encryted using one container.
+
+### Create container
 ```
 pvcreate <device>
 vgcreate <group-name> <device>
 ```
 
-#### Logical Volumes
+### Create logical Volumes
 
 After LVM is created, create logical volumes either by hard coding the size;
 ```
@@ -130,31 +133,55 @@ lvcreate --extent <size;100%FREE> <group-name> --name <volume-name>
 
 ```
 
-### Filetypes
+## File-systems
 
-#### FAT32
+### FAT32
 
 The boot partition should be fat32
 ```
 mkfs.fat -F 32 -n <name> <partition>
 ```
 
-#### Swap
+### Swap
 
+#### Partition
 To declare swap space;
 ```
 mkswap -L Swapspace <device>
 swapon <device>
 ```
 
-#### BTRFS
+### BTRFS
 
 Formatting partition as btrfs
 ```
 mkfs.btrfs --label <part-label> <device>
 ```
 
-##### System layout
+#### Swap-file using btrfs
+On kernels greater then 5.0; btrfs and swap files can be used.
+The swap file needs to be on a non-snapshotted volume; hence will need it's own
+subvolume.
+The swapfile needs to be generated as a 0 length file.
+```
+truncate -s 0 /swapfile/swap
+chattr +C /swapfile/swap
+btrfs property set /swapfile/swap compression none
+fallocate -l <SWAPSIZE> /swapfile/swap
+chmod 600 /swapfile/swap
+mkswap /swapfile/swap
+```
+
+### XFS
+
+Use the following command to format a volume as XFS.
+Mount will detect the best parameters for XFS.
+
+```
+mkfs.xfs -L <partition-label> <volume>
+```
+
+## System layout
 
 I use btrfs on the system partition.
 The following layout I find to be most beneficial.
@@ -166,10 +193,11 @@ btrfs subvolume create /mnt/@snapshots
 umount /mnt
 
 mount -o rw,nodiscard,noatime,nodiratime,compress=lzo,space_cache,subvol=@root /dev/mapper/Linux-Root /mnt
-mkdir -p /mnt/{boot,esp,home,.snapshots}
+mkdir -p /mnt/{boot/efi,esp,home,.snapshots}
 mount -o rw,nodiscard,noatime,nodiratime,compress=lzo,space_cache,subvol=@snapshots /dev/mapper/Linux-Root /mnt/.snapshots
 mkdir -p /mnt/var/cache/pacman
 mkdir -p /mnt/var/lib
+btrfs subvolume create /mnt/swapfile
 btrfs subvolume create /mnt/var/abs
 btrfs subvolume create /mnt/var/cache/pacman/pkg
 btrfs subvolume create /mnt/var/lib/machines
@@ -178,22 +206,10 @@ btrfs subvolume create /mnt/var/log
 btrfs subvolume create /mnt/srv
 ```
 
-I also usually mount the ESP at /esp, and bind mount to /boot
+I also usually mount the ESP at /boot/efi
 
 ```
-mount <partition> /mnt/esp
-mkdir -p /mnt/esp/EFI/Arch/EFI
-mount --bind /mnt/esp/EFI/Arch /boot
-mount --bind /mnt/esp/EFI /boot/EFI
-```
-
-#### XFS
-
-Use the following command to format a volume as XFS.
-Mount will detect the best parameters for XFS.
-
-```
-mkfs.xfs -L <partition-label> <volume>
+mount <partition> /mnt/boot/efi
 ```
 
 ## Installation
@@ -222,22 +238,17 @@ pacman -Sy
 pacstrap /mnt <MY-PACKAGES>
 ```
 
-
 ### Keys
-
 To restore keys, use my special usb.
-
 ```
 gpg --pinentry-mode loopback --import <secret.subkey>
 cp -r <SSHKEYS> ~/.ssh
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 ```
-
 There will be a tar file to do this in the future
 
 ### Etc
-
 To restore etckeeper git files, I need to clone to temp then copy over all files;
 To do that, the root user needs my machine specific SSH keys from the user.
 My packagen should do this automatically, but if not;
@@ -257,12 +268,7 @@ git clone <REPO> /tmp/etc
 cp -r /tmp/etc/. /etc/
 ```
 
-The etckeeper config needs a `/etc/etckeeper/local.conf` to function.
-```
-```
-
-### Booting
-
+## Booting
 Several steps needs to be taken to ensure successful boot.
 
 ### Fstab
@@ -272,7 +278,7 @@ The fstab will be screwed up on generation. Still, from archiso, do;
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-#### rEFInd
+### rEFInd
 
 The main repo has scripts that will automatically load refind to `/esp/EFI/rEFInd`.
 The config needs to be hand-generated.
@@ -281,10 +287,6 @@ After generation, use the following command to register refind in bios;
 efibootmgr --create --disk /dev/sda --part 1 --loader /EFI/refind/refind_x64.efi --label "rEFInd Boot Manager" --verbose
 ```
 
-#### Grub2
-
-The various configuration files are kept in `/etc/default`, symlink the appropriate one.
-
-#### Initramfs
+### Initramfs
 
 Need to generate a proper initramfs.
