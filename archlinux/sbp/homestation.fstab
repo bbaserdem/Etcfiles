@@ -19,3 +19,4 @@ UUID=7653-3DB8              /boot/efi       vfat    rw,relatime,fmask=0022,dmask
 /home                       /media/gentoo/home          none    defaults,bind                                                                                               0       0
 /opt                        /media/gentoo/opt           none    defaults,bind                                                                                               0       0
 /media/archive              /media/gentoo/media/archive none    defaults,bind                                                                                               0       0
+
