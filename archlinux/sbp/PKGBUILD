@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -92,14 +92,14 @@ package_sbp-sys-base() {
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vi"
     # Add powerlevel10k integration
-    install -dm 0755 "${pkgdir}/usr/lib"
-    install -dm 0755 "${pkgdir}/usr/lib/zim"
-    install -dm 0755 "${pkgdir}/usr/lib/zim/modules"
-    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt"
-    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/functions"
-    install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/external-themes"
-    ln -sf /usr/share/zsh-theme-powerlevel10k "${pkgdir}/usr/lib/zim/modules/prompt/external-themes/powerlevel10k"
-    ln -sf /usr/lib/zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme "${pkgdir}/usr/lib/zim/modules/prompt/functions/prompt_powerlevel10k_setup"
+    #install -dm 0755 "${pkgdir}/usr/lib"
+    #install -dm 0755 "${pkgdir}/usr/lib/zim"
+    #install -dm 0755 "${pkgdir}/usr/lib/zim/modules"
+    #install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt"
+    #install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/functions"
+    #install -dm 0755 "${pkgdir}/usr/lib/zim/modules/prompt/external-themes"
+    #ln -sf /usr/share/zsh-theme-powerlevel10k "${pkgdir}/usr/lib/zim/modules/prompt/external-themes/powerlevel10k"
+    #ln -sf /usr/lib/zim/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme "${pkgdir}/usr/lib/zim/modules/prompt/functions/prompt_powerlevel10k_setup"
     # Put pacman override to etckeeper config
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/etckeeper"
@@ -239,9 +239,7 @@ package_sbp-sys-base() {
     # Shell
     depends+=(
         'zsh'
-        'zsh-zim-git'
-        'zsh-theme-powerlevel10k'
-        'zsh-theme-powerlevel10k'
+        #'zsh-zim-git' 'zsh-theme-powerlevel10k'
         'spaceship-prompt')
     # Utilities
     depends+=(
