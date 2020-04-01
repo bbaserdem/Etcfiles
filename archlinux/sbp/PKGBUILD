@@ -16,7 +16,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -109,194 +109,194 @@ package_sbp-sys-base() {
     install -dm 0755 "${pkgdir}/usr/lib/systemd/system"
     install -Dm 0644 base.reflect-service "${pkgdir}/usr/lib/systemd/system/reflector.service"
     install -Dm 0644 base.reflect-timer   "${pkgdir}/usr/lib/systemd/system/reflector.timer"
-    
+
     #-----Packages
     depends+=(      # Gentoo has: baselayout
-        'base'          # Arch meta-package
-        'wget'
-        'man-pages'
-        'rsync'         # Gentoo has this on system
-        'which'
-        'gcc'
-        'diffutils'
-        'autoconf'      # Gentoo has gnuconf, probably analogues
-        'patch'
-        'device-mapper'
-        'make'
-        'less'
-        'openssh'       # Gentoo has ssh on system
-        'e2fsprogs' 
-        'inetutils'     # Gentoo has net-tools
-        'binutils'
-        'busybox'
-        'kbd'           # NON-gentoo from here
-        'automake' 'man-db' 'perl' 's-nail'
-        'texinfo' 'usbutils' 'bison' 'fakeroot' 'flex' 'groff' 'libtool'
-        'm4' 'pkgconf' )
+    'base'          # Arch meta-package
+    'wget'
+    'man-pages'
+    'rsync'         # Gentoo has this on system
+    'which'
+    'gcc'
+    'diffutils'
+    'autoconf'      # Gentoo has gnuconf, probably analogues
+    'patch'
+    'device-mapper'
+    'make'
+    'less'
+    'openssh'       # Gentoo has ssh on system
+    'e2fsprogs' 
+    'inetutils'     # Gentoo has net-tools
+    'binutils'
+    'busybox'
+    'kbd'           # NON-gentoo from here
+    'automake' 'man-db' 'perl' 's-nail'
+    'texinfo' 'usbutils' 'bison' 'fakeroot' 'flex' 'groff' 'libtool'
+    'm4' 'pkgconf' )
     # Kernel and booting
     depends+=(
-        'linux' 'linux-headers'
-        'amd-ucode' 'intel-ucode'
-        'linux-firmware'
-        'dracut'
-        'terminess-powerline-font-git')
+    'linux' 'linux-headers'
+    'amd-ucode' 'intel-ucode'
+    'linux-firmware'
+    'dracut'
+    'terminus-font' 'terminus-font-otb')
     # File system stuff
     depends+=(
-        'snapper'
-        'parted'
-        'btrfs-progs'
-        'xfsprogs'
-        'lvm2'
-        'f2fs-tools'
-        'fuse3'
-        'jfsutils'
-        'reiserfsprogs'
-        'exfat-utils'
-        'udftools'
-        'udisks2')
+    'snapper'
+    'parted'
+    'btrfs-progs'
+    'xfsprogs'
+    'lvm2'
+    'f2fs-tools'
+    'fuse3'
+    'jfsutils'
+    'reiserfsprogs'
+    'exfat-utils'
+    'udftools'
+    'udisks2')
     # Hardware
     depends+=( 
-        'dmidecode'
-        'hdparm'
-        'i2c-tools'
-        'lm_sensors'
-        'lshw'
-        'stress'
-        'acpid'
-        'cpupower'
-        'powertop'
-        'libinput')
+    'dmidecode'
+    'hdparm'
+    'i2c-tools'
+    'lm_sensors'
+    'lshw'
+    'stress'
+    'acpid'
+    'cpupower'
+    'powertop'
+    'libinput')
     # Encryption
     depends+=(
-        'pass' 'qrencode'
-        'cryptsetup' 
-        'gnupg'
-        'openssh'
-        'tor'
-        'openconnect'
-        'sshfs' 
-        'openvpn' )
+    'pass' 'qrencode'
+    'cryptsetup' 
+    'gnupg'
+    'openssh'
+    'tor'
+    'openconnect'
+    'sshfs' 
+    'openvpn' )
     # Network
     depends+=(
-        'bind-tools'
-        'openresolv'
-        'firewalld'
-        'nftables'
-        'iptables'
-        'openbsd-netcat'
-        'unbound'
-        'dhcpcd'
-        'cups' 'cups-pdf' 'cups-pk-helper'
-        'iwd'
-        'bluez' 'bluez-libs' 'bluez-utils'
-        'bridge-utils' 'hostapd'
-        'nmap')
+    'bind-tools'
+    'openresolv'
+    'firewalld'
+    'nftables'
+    'iptables'
+    'openbsd-netcat'
+    'unbound'
+    'dhcpcd'
+    'cups' 'cups-pdf' 'cups-pk-helper'
+    'iwd'
+    'bluez' 'bluez-libs' 'bluez-utils'
+    'bridge-utils' 'hostapd'
+    'nmap')
     # Administration
     depends+=(
-        'logrotate'
-        'sudo'
-        'dbus'
-        'etckeeper'
-        'mlocate'
-        'pam'
-        'polkit'
-        'inotify-tools'
-        'fcron'
-        'tzupdate'
-        'lsb-release')
+    'logrotate'
+    'sudo'
+    'dbus'
+    'etckeeper'
+    'mlocate'
+    'pam'
+    'polkit'
+    'inotify-tools'
+    'fcron'
+    'tzupdate'
+    'lsb-release')
     # Arch stuff
     depends+=(
-        'archiso' 
-        'asp'
-        'devtools'
-        'reflector'
-        'aurutils'
-        'pacman-contrib' 'pacman-cleanup-hook' 'snap-pac'
-        'archlinux-appstream-data'
-        'archlinux-keyring'
-        'archlinux-xdg-menu'
-        'sysfsutils')
+    'archiso' 
+    'asp'
+    'devtools'
+    'reflector'
+    'aurutils'
+    'pacman-contrib' 'pacman-cleanup-hook' 'snap-pac'
+    'archlinux-appstream-data'
+    'archlinux-keyring'
+    'archlinux-xdg-menu'
+    'sysfsutils')
     # Media
     depends+=(
-        'alsa-utils' 'lib32-alsa-plugins'
-        'pulseaudio' 'lib32-libpulse' 'pulseaudio-alsa' 'pulseaudio-bluetooth'
-        'pamixer'
-        'mpc' 'mpd' 
-        'cdparanoia' )
+    'alsa-utils' 'lib32-alsa-plugins'
+    'pulseaudio' 'lib32-libpulse' 'pulseaudio-alsa' 'pulseaudio-bluetooth'
+    'pamixer'
+    'mpc' 'mpd' 
+    'cdparanoia' )
     # Applications
     depends+=(
-        'atool'
-        'docker'
-        'dash'
-        'tmux'
-        'htop'
-        'neofetch'
-        'neovim' 'python-neovim' 'python-pexpect' 'neovim-remote'
-        'w3m'
-        'pulsemixer'
-        'vifm'
-        'transmission-cli' )
+    'atool'
+    'docker'
+    'dash'
+    'tmux'
+    'htop'
+    'neofetch'
+    'neovim' 'python-neovim' 'python-pexpect' 'neovim-remote'
+    'w3m'
+    'pulsemixer'
+    'vifm'
+    'transmission-cli' )
     # Shell
     depends+=(
-        'zsh'
-        #'zsh-zim-git' 'zsh-theme-powerlevel10k'
-        'spaceship-prompt')
+    'zsh'
+    #'zsh-zim-git' 'zsh-theme-powerlevel10k'
+    'spaceship-prompt')
     # Utilities
     depends+=(
-        'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
-        'unzip' 'xz' 'zip' 'rpm-tools'
-        'ctags'
-        'bash-completion'
-        'fzf'
-        'git'
-        'discount' 'jq' 'yajl'
-        'msmtp'
-        'xdg-user-dirs'
-        'xdg-utils'
-        'cmake' 'clang'
-        's3cmd'
-        'rasdaemon')
+    'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar'
+    'unzip' 'xz' 'zip' 'rpm-tools'
+    'ctags'
+    'bash-completion'
+    'fzf'
+    'git'
+    'discount' 'jq' 'yajl'
+    'msmtp'
+    'xdg-user-dirs'
+    'xdg-utils'
+    'cmake' 'clang'
+    's3cmd'
+    'rasdaemon')
 }
 
 package_sbp-sys-extra() {
-    depends=('sbp-sys-base')
-    # Developement
-    depends+=(
-        'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib'
-        'avr-binutils' 'avr-gcc' 'avr-libc' 'avrdude' 'dfu-util'
-        'dfu-programmer' 'android-tools' 'android-udev' 'libmtp'
-        'bpython'
-        'lapack' 'openblas'
-        'python-pip' 'python-pipenv' )
-    # Utilities
-    depends+=(
-        'languagetool'
-        'fluidsynth' 'lib32-fluidsynth'
-        'flatpak'
-        'trash-cli'
-        'geoclue2'
-        'imagemagick'
-        'pamac-aur'
-        )
-    # Apps
-    depends+=(
-        'abcde'
-        'neomutt' 'isync' 'notmuch'
-        'ncmpcpp' 'mpdscribble'
-        'khal' 'khard'
-        'syncthing' 'syncthing-relaysrv'
-        'youtube-dl'
-        'newsboat'
-        'todoman'
-        'weechat' )
-    # Other
-    depends+=('private-internet-access-vpn')
+depends=('sbp-sys-base')
+# Developement
+depends+=(
+'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib'
+'avr-binutils' 'avr-gcc' 'avr-libc' 'avrdude' 'dfu-util'
+'dfu-programmer' 'android-tools' 'android-udev' 'libmtp'
+'bpython'
+'lapack' 'openblas'
+'python-pip' 'python-pipenv' )
+# Utilities
+depends+=(
+'languagetool'
+'fluidsynth' 'lib32-fluidsynth'
+'flatpak'
+'trash-cli'
+'geoclue2'
+'imagemagick'
+'pamac-aur'
+)
+# Apps
+depends+=(
+'abcde'
+'neomutt' 'isync' 'notmuch'
+'ncmpcpp' 'mpdscribble'
+'khal' 'khard'
+'syncthing' 'syncthing-relaysrv'
+'youtube-dl'
+'newsboat'
+'todoman'
+'weechat' )
+# Other
+depends+=('private-internet-access-vpn')
 }
 
 package_sbp-sys-uefi() {
-    provides=('sbp-sys-boot')
-    conflicts=('sbp-sys-bios')
-    install=uefi.install
+provides=('sbp-sys-boot')
+conflicts=('sbp-sys-bios')
+install=uefi.install
 
     # Install refind config
     install -dm 0755 "${pkgdir}/boot"
@@ -341,84 +341,84 @@ package_sbp-sys-uefi() {
         'cryptboot'             # Generate SB keys easily
         'refind-efi'            # Refind loader
         'refind-theme-regular'      # Theme
-        )
+    )
 
     # Grub stuff
     # depends+=('grub' 'grub-btrfs' 'os-prober' 'grub-theme-tela')
 }
 
 package_sbp-sys-virtual() {
-    install=virtual.install
-    depends=('sbp-sys-base')
-    # Steam
-    depends+=(
-        'docker'
-        'qemu'
-        'vde2'
-        'ovmf'
-        'libvirt'
-        'ebtables'
-        'dnsmasq'
-        'bridge-utils'
-        'virt-manager'
-        'virtio-win'
-    )
+install=virtual.install
+depends=('sbp-sys-base')
+# Steam
+depends+=(
+'docker'
+'qemu'
+'vde2'
+'ovmf'
+'libvirt'
+'ebtables'
+'dnsmasq'
+'bridge-utils'
+'virt-manager'
+'virtio-win'
+)
 }
 
 package_sbp-gui-base() {
-    # Install required stuff
-    install -dm 0755 "${pkgdir}/usr/share/xsessions"
-    install -Dm 0755 gui.xinit-session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
-    install=gui.install
-    # Dependencies
-    depends=('sbp-sys-base')
-    # Xorg stuff
-    depends+=(
-        'xorg-server'
-        'xorg-setxkbmap'
-        'xorg-xauth'
-        'xorg-xev'
-        'xorg-xinit'
-        'xorg-xprop'
-        'xorg-xrandr'
-        'xorg-xrdb'
-        'xorg-xset'
-        'xorg-xsetroot'
-        'xorg-xwininfo'
-        'xdotool'
-        'xkb-switch'
-        'xorgproto' 'xf86-video-vesa' 'xorg-bdftopcf' 'xorg-docs'
-        'xorg-font-util' 'xorg-fonts-encodings' 'xorg-iceauth' 'xorg-luit'
-        'xorg-mkfontdir' 'xorg-mkfontscale' 'xorg-server-common'
-        'xorg-server-devel' 'xorg-server-xdmx' 'xorg-server-xephyr'
-        'xorg-server-xnest' 'xorg-server-xvfb'  'xorg-sessreg' 
-        'xorg-smproxy' 'xorg-x11perf'  'xorg-xbacklight' 'xorg-xcmsdb'
-        'xorg-xcursorgen' 'xorg-xdpyinfo' 'xorg-xdriinfo' 'xorg-xgamma'
-        'xorg-xhost' 'xorg-xinput' 'xorg-xkbcomp' 'xorg-xkbevd' 'xorg-xkbutils'
-        'xorg-xkill' 'xorg-xlsatoms' 'xorg-xlsclients' 'xorg-xmodmap' 'xorg-xpr'
-        'xorg-xrefresh'  'xorg-xvinfo' 'xorg-xwd'  'xorg-xwud'
-        'xf86-input-libinput'  'xorg-fonts-misc' 'xdo'  'xsel')
-    # Wayland stuff
-    depends+=(
-        'wayland'
-        'xorg-server-xwayland')
-    # Login manager
-    depends+=(
-        'sddm'
-        'chili-sddm-theme'
-        'qt5-quickcontrols2')
-    # Fonts
-    depends+=(
-        'nerd-fonts-source-code-pro'
-        'adobe-source-serif-pro-fonts'
-        'otf-nerd-fonts-fira-code'
-        'terminus-font' 'terminus-font-otb'
-        'noto-fonts-emoji'
-        'termsyn-font'
-        'ttf-droid' 'ttf-liberation'
-        'ttf-inconsolata'
-        'ibus' 'ibus-m17n'
-        'ttf-iosevka')
+# Install required stuff
+install -dm 0755 "${pkgdir}/usr/share/xsessions"
+install -Dm 0755 gui.xinit-session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
+install=gui.install
+# Dependencies
+depends=('sbp-sys-base')
+# Xorg stuff
+depends+=(
+'xorg-server'
+'xorg-setxkbmap'
+'xorg-xauth'
+'xorg-xev'
+'xorg-xinit'
+'xorg-xprop'
+'xorg-xrandr'
+'xorg-xrdb'
+'xorg-xset'
+'xorg-xsetroot'
+'xorg-xwininfo'
+'xdotool'
+'xkb-switch'
+'xorgproto' 'xf86-video-vesa' 'xorg-bdftopcf' 'xorg-docs'
+'xorg-font-util' 'xorg-fonts-encodings' 'xorg-iceauth' 'xorg-luit'
+'xorg-mkfontdir' 'xorg-mkfontscale' 'xorg-server-common'
+'xorg-server-devel' 'xorg-server-xdmx' 'xorg-server-xephyr'
+'xorg-server-xnest' 'xorg-server-xvfb'  'xorg-sessreg' 
+'xorg-smproxy' 'xorg-x11perf'  'xorg-xbacklight' 'xorg-xcmsdb'
+'xorg-xcursorgen' 'xorg-xdpyinfo' 'xorg-xdriinfo' 'xorg-xgamma'
+'xorg-xhost' 'xorg-xinput' 'xorg-xkbcomp' 'xorg-xkbevd' 'xorg-xkbutils'
+'xorg-xkill' 'xorg-xlsatoms' 'xorg-xlsclients' 'xorg-xmodmap' 'xorg-xpr'
+'xorg-xrefresh'  'xorg-xvinfo' 'xorg-xwd'  'xorg-xwud'
+'xf86-input-libinput'  'xorg-fonts-misc' 'xdo'  'xsel')
+# Wayland stuff
+depends+=(
+'wayland'
+'xorg-server-xwayland')
+# Login manager
+depends+=(
+'sddm'
+'chili-sddm-theme'
+'qt5-quickcontrols2')
+# Fonts
+depends+=(
+'noto-fonts-emoji'              # Emoji fonts
+'ttf-nerd-fonts-symbols'        # Nerd font glyphs
+'otf-fira-code'                 # Ligature font
+'termsyn-font'                  # Font for status-bars
+'ttf-inconsolata'               # Monospace font
+'ttf-iosevka'                   # Thin monospace font (with ligatures)
+        'ttf-droid'                     # Sans and serif fonts
+        'ttf-liberation'                # Compatibility with Windows fonts
+        'ibus' 'ibus-m17n'              # Input methods
+    )
     # Themes
     depends+=(
         'xcursor-comix'
