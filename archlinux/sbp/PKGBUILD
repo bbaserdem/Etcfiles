@@ -139,7 +139,7 @@ package_sbp-sys-base() {
     'amd-ucode' 'intel-ucode'
     'linux-firmware'
     'dracut'
-    'terminus-font' 'terminus-font-otb')
+    'powerline-console-fonts')
     # File system stuff
     depends+=(
     'snapper'
