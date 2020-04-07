@@ -1,4 +1,5 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+# vim: ft=PKGBUILD
 pkgbase='sbp'
 pkgname=(
     'sbp-sys-base'
