@@ -1,6 +1,6 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 # vim: ft=PKGBUILD
-pkgbase='sbp'
+pkgbase=sbp
 pkgname=(
     'sbp-sys-base'
     'sbp-sys-extra'
@@ -17,7 +17,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=14
+pkgrel=16
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -443,6 +443,7 @@ package_sbp-gui-base() {
         'smplayer'
         'firefox' 'flashplugin' 'qutebrowser'
         'gparted'
+        'snapper-gui'
         'transmission-qt' 'transmission-remote-gtk')
     # Utilities
     depends+=(
@@ -711,7 +712,7 @@ package_sbp-cmp-workstation() {
         'lib32-mesa'
         'lib32-vulkan-radeon')
     depends+=(
-        'maestral'                      # File synching
+        'maestral' 'maestral-qt'        # File synching
         'powerpanel' 'libusb-compat'    # UPS response
         )
 }
