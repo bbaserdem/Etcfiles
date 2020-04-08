@@ -15,9 +15,10 @@ pkgname=(
     'sbp-cmp-homestation'
     'sbp-cmp-laptop'
     'sbp-cmp-server'
-    'sbp-cmp-workstation')
+    'sbp-cmp-workstation'
+    'sbp-prg-matlab')
 pkgver=3.1
-pkgrel=16
+pkgrel=17
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -43,9 +44,11 @@ source=(
     'uefi.sb-signscript'
     'gui.install'
     'gui.xinit-session'
+    'homestation.cmdline'
     'homestation.crypttab'
     'homestation.fstab'
     'homestation.hostname'
+    'homestation.initrdtab'
     'homestation.install'
     'homestation.mkinitcpio'
     'homestation.refind'
@@ -70,7 +73,8 @@ source=(
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
             SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
-            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+            SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP
+            SKIP SKIP)
 
 package_sbp-sys-base() {
     install=base.install
@@ -194,6 +198,7 @@ package_sbp-sys-base() {
         'nmap')
     # Administration
     depends+=(
+        'supervisord'
         'logrotate'
         'sudo'
         'dbus'
@@ -599,14 +604,13 @@ package_sbp-gui-sway() {
         'light'                 # Brightness controls
         'dex'                   # Autostart launcher
         'grim'                  # Screenshot
-        'i3blocks'              # Input to status-bar
         'mako'                  # Notification daemon
-        'rofi'                  # App launcher
+        'wofi'                  # App launcher
         'slurp'                 # Region selector
         'sway'                  # Wayland compositor
         'swayidle'              # Timout manager
         'swaylock'              # Screen-locker
-        'wlroots'               # Wayland library
+        'waybar'                # Info bar
         'wl-clipboard'          # Clipboard utility
         'xfce4-power-manager'   # Battery notifications
     )
@@ -621,9 +625,12 @@ package_sbp-cmp-homestation() {
     install=homestation.install
     install -dm 0755 "${pkgdir}/etc"
     install -dm 0755 "${pkgdir}/etc/default"
+    install -dm 0755 "${pkgdir}/etc/cmdline.d"
+    install -Dm 0644 homestation.cmdline    "${pkgdir}/etc/cmdline.d/sbp.conf"
     install -Dm 0644 homestation.crypttab   "${pkgdir}/etc/crypttab"
-    install -Dm 0644 homestation.fstab   "${pkgdir}/etc/fstab"
+    install -Dm 0644 homestation.fstab      "${pkgdir}/etc/fstab"
     install -Dm 0644 homestation.hostname   "${pkgdir}/etc/hostname"
+    install -Dm 0644 homestation.initrdtab  "${pkgdir}/etc/crypttab.initrd"
     install -Dm 0644 homestation.mkinitcpio "${pkgdir}/etc/mkinitcpio.conf"
     install -Dm 0644 homestation.sbupdate   "${pkgdir}/etc/sbupdate.local.conf"
     ln -sf /etc/default/grub.homestation.arch "${pkgdir}/etc/default/grub"
@@ -736,4 +743,10 @@ package_sbp-cmp-server() {
     #    'transmission-cli'  # Torrenting
     #    'radicale'          # CalDAV and CardDAV server
     #)
+}
+
+package_sbp-prg-matlab() {
+    depends=(
+        'matlab'
+        'jupyter-matlab_kernel-git')
 }
