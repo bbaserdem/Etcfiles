@@ -19,7 +19,7 @@
 # ABCDE: Get config
 !/abcde.conf
 
-# ACPI: Grab things
+# ACPI: Grab configuration
 !/acpi
 !/acpi/**
 

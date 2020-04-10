@@ -18,7 +18,7 @@ pkgname=(
     'sbp-cmp-server'
     'sbp-cmp-workstation')
 pkgver=3.1
-pkgrel=17
+pkgrel=18
 pkgdesc="Meta packages for sbp"
 arch=('any')
 url="https://github.com/bbaserdem/Etcfiles"
@@ -167,6 +167,7 @@ package_sbp-sys-base() {
         'lm_sensors'
         'lshw'
         'stress'
+        'acpi'
         'acpid'
         'cpupower'
         'powertop'
@@ -198,7 +199,7 @@ package_sbp-sys-base() {
         'nmap')
     # Administration
     depends+=(
-        'supervisord'
+        'supervisor'
         'logrotate'
         'sudo'
         'dbus'
