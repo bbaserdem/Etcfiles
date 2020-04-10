@@ -6,6 +6,7 @@ pkgname=(
     'sbp-sys-extra'
     'sbp-sys-uefi'
     'sbp-sys-virtual'
+    'sbp-sys-matlab'
     'sbp-gui-base'
     'sbp-gui-extra'
     'sbp-gui-games'
@@ -15,8 +16,7 @@ pkgname=(
     'sbp-cmp-homestation'
     'sbp-cmp-laptop'
     'sbp-cmp-server'
-    'sbp-cmp-workstation'
-    'sbp-prg-matlab')
+    'sbp-cmp-workstation')
 pkgver=3.1
 pkgrel=17
 pkgdesc="Meta packages for sbp"
@@ -301,6 +301,13 @@ package_sbp-sys-extra() {
     depends+=('private-internet-access-vpn')
 }
 
+package_sbp-sys-matlab() {
+    depends=('sbp-sys-base')
+    depends+=(
+        'matlab'
+        'jupyter-matlab_kernel-git')
+}
+
 package_sbp-sys-uefi() {
     provides=('sbp-sys-boot')
     conflicts=('sbp-sys-bios')
@@ -350,9 +357,6 @@ package_sbp-sys-uefi() {
         'refind-efi'            # Refind loader
         'refind-theme-regular'      # Theme
     )
-
-    # Grub stuff
-    # depends+=('grub' 'grub-btrfs' 'os-prober' 'grub-theme-tela')
 }
 
 package_sbp-sys-virtual() {
@@ -743,10 +747,4 @@ package_sbp-cmp-server() {
     #    'transmission-cli'  # Torrenting
     #    'radicale'          # CalDAV and CardDAV server
     #)
-}
-
-package_sbp-prg-matlab() {
-    depends=(
-        'matlab'
-        'jupyter-matlab_kernel-git')
 }

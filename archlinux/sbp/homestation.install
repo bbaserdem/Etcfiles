@@ -15,6 +15,7 @@ post_install() {
     /bin/systemctl enable nbfc-sleep
     if [ -f '/opt/nbfc/Configs/Asus ROG GL702ZC.xml' ] ; then
         echo '[sbp-cmp-homestation]==> Fan profile; Asus ROG GL702ZC . . .'
+        rm /opt/nbfc/Plugins/StagWare.Plugins.ECSysLinux.dll
         nbfc config --apply 'Asus ROG GL702ZC'
     fi
 
