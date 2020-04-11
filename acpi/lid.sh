@@ -5,6 +5,6 @@ name="$1"
 butn="$2"
 
 # If autorandr is loaded and there is an external display; refresh
-#if [ -x '/usr/bin/autorandr' ] ; then
-#    autorandr
-#fi
+if [ -x '/usr/bin/autorandr' ] ; then
+    autorandr --batch --change
+fi
