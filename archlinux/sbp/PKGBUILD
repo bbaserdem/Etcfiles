@@ -11,7 +11,6 @@ pkgname=(
     'sbp-gui-extra'
     'sbp-gui-games'
     'sbp-gui-bspwm'
-    'sbp-gui-plasma'
     'sbp-gui-sway'
     'sbp-cmp-homestation'
     'sbp-cmp-laptop'
@@ -569,37 +568,6 @@ package_sbp-gui-bspwm() {
         'xfce4-power-manager'   # Battery notifications
         'xss-lock'              # Locks screen on power events
         'picom'                 # Compositor for window effects
-    )
-}
-
-package_sbp-gui-plasma() {
-    depends=('sbp-gui-base')
-    depends+=(
-        'plasma-desktop'
-        'plasma-workspace'
-        'plasma-wayland-session'
-        'xdg-desktop-portal-kde'
-        'plasma-browser-integration'
-        'plasma-pa'
-        'plasma-sdk'
-        'powerdevil'
-        'kgamma5'
-        'bluedevil'
-        'discover'
-        'khotkeys'
-        'kscreen'
-        'kwayland-integration'
-        'kwrited'
-        'kscreenlocker'
-        'libkscreen'
-        'polkit-kde-agent' 'kwallet-pam' 'kwalletmanager'
-        'kate'
-        'kdevelop' 'kdevelop-python'
-        'layan-kde'
-        'yakuake'
-        'latte-dock'
-        'dolphin' 'dolphin-plugins' 'kdegraphics-thumbnailers' 'ffmpegthumbs'
-        'raw-thumbnailer' 'taglib'
     )
 }
 
