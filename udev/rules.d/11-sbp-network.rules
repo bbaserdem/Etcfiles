@@ -6,6 +6,8 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ether
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi"
 # Laptop
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether"
 # Server (Ethernet is the inner port, while broadcast is the outer port)
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5d", NAME="ethernet"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5a", NAME="broadcast"
