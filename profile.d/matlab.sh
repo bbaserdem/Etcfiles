@@ -17,10 +17,15 @@ for lib in $MATLAB_LIBS ; do
         if [ -z "${LD_PRELOAD}" ]; then
             export LD_PRELOAD="${lib}"
         else
-            LD_PRELOAD="${LD_PRELOAD}:${lib}"
+            export LD_PRELOAD="${LD_PRELOAD}:${lib}"
         fi
     fi
 done
+
+# Tell MATLAB to use mesa driver i965 instead of Iris on intel cards
+if [ "$(hostname)" = 'sbp-laptop' ] ; then
+  export MATLAB_INTEL_OVERRIDE=yes
+fi
 
 # Set matlab Java version
 # export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
