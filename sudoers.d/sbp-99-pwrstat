@@ -1,0 +1,2 @@
+#%wheel ALL=(ALL) NOEXEC: /usr/bin/pwrstat
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/pwrstat
