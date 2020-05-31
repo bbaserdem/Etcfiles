@@ -107,6 +107,12 @@
 !/mkinitcpio
 !/mkinitcpio/**
 
+# Network UPS Tools: Grab the config files
+!/ups
+!/ups/ups.conf
+!/ups/upssched.conf
+!/ups/upsmon.conf
+
 # PROFILE: Grab all
 !/profile
 !/profile.d
