@@ -23,10 +23,9 @@
 !/acpi
 !/acpi/**
 
-# AVAHI: Grab services
+# AVAHI: (DONT) Grab services
 !/avahi
 !/avahi/services
-!/avahi/services/*
 
 # BLUETOOTH: Grab config
 !/bluetooth
