@@ -107,11 +107,8 @@
 !/mkinitcpio
 !/mkinitcpio/**
 
-# Network UPS Tools: Grab the config files
-!/ups
-!/ups/ups.conf
-!/ups/upssched.conf
-!/ups/upsmon.conf
+# NSSWITCH: Grab for avahi
+!/nsswitch.conf
 
 # PROFILE: Grab all
 !/profile
@@ -210,6 +207,12 @@
 # UNBOUND: Grab config
 !/unbound
 !/unbound/unbound.conf*
+
+# UPS Tools: Grab the config files
+!/ups
+!/ups/ups.conf
+!/ups/upssched.conf
+!/ups/upsmon.conf
 
 # VCONSOLE: Grab config
 !/vconsole.conf
