@@ -55,7 +55,7 @@
 !/dracut.conf
 
 # DHCPD: Grab config
-!/dhcpd.conf
+!/dhcpcd.conf
 
 # ETCKEEPER: Grab everything but config
 !/etckeeper
