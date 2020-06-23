@@ -109,6 +109,10 @@
 # NSSWITCH: Grab for avahi
 !/nsswitch.conf
 
+# NUT: Grab teh ups config
+!/nut
+!/nut/ups.conf
+
 # PROFILE: Grab all
 !/profile
 !/profile.d
