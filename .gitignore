@@ -169,6 +169,7 @@
 # SSH: Allow the configs to be shared
 !/ssh
 !/sshd_config
+!/ssh_config
 
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
