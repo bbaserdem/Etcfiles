@@ -9,6 +9,5 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether-laptop"
 # Server (Ethernet is the inner port, while broadcast is the outer port)
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5d", NAME="ethernet-server"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5a", NAME="broadcast-server"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="60:f6:77:df:23:e3", NAME="wifi-server"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="54:b2:03:1b:c2:83", NAME="ethernet-server"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="1c:1b:b5:f9:13:98", NAME="wifi-server"
