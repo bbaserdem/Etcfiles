@@ -62,6 +62,11 @@
 !/etckeeper/**
 /etckeeper/local.conf
 
+# EXPORTS: Grab the main config
+!/exports
+!/exports.d
+!/exports.d/sbp*
+
 # FIREWALLD: Grab config for now
 !/firewalld
 !/firewalld/firewalld.conf
