@@ -8,6 +8,10 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi-
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether-laptop"
+<<<<<<< HEAD
 # Server (Ethernet is the inner port, while broadcast is the outer port)
+=======
+# Server
+>>>>>>> 16d9fa1451c67f159521fd5927e503d54a38c8c9
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="54:b2:03:1b:c2:83", NAME="ethernet-server"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="1c:1b:b5:f9:13:98", NAME="wifi-server"
