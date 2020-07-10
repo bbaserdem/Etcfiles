@@ -10,7 +10,10 @@
 #  /srv/nfs4/home   *(rw,sync,sec=krb5i,nohide)
 #
 # Use `exportfs -arv` to reload.
+<<<<<<< HEAD
 
 # Share the SBP users' Shared folder
 /srv/nfs        192.168.1.0/24(ro,sync,crossmnt,fsid=0)
 /srv/nfs/sbp    192.168.1.0/24(ro,sync,insecure,no_subtree_check)
+=======
+>>>>>>> bc69011f751eb55158d74ff0c55149d37d2721bd

@@ -66,6 +66,8 @@
 
 # EXPORTS: Keep global config to all computers here; but don't take additional
 !/exports
+!/exports.d
+!/exports.d/sbp**
 
 # FIREWALLD: Grab config for now
 !/firewalld
