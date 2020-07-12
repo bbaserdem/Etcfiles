@@ -23,9 +23,11 @@
 !/acpi
 !/acpi/**
 
-# AVAHI: (DONT) Grab services
+# AVAHI: (DONT) Grab services prefixed with sbp, and daemon settings
 !/avahi
 !/avahi/services
+!/avahi/services/sbp*
+!/avahi/avahi-daemon.conf
 
 # BLUETOOTH: Grab config
 !/bluetooth
@@ -62,10 +64,10 @@
 !/etckeeper/**
 /etckeeper/local.conf
 
-# EXPORTS: Grab the main config
+# EXPORTS: Keep global config to all computers here; but don't take additional
 !/exports
 !/exports.d
-!/exports.d/sbp*
+!/exports.d/sbp**
 
 # FIREWALLD: Grab config for now
 !/firewalld
