@@ -59,10 +59,29 @@
 # DHCPD: Grab config
 !/dhcpcd.conf
 
-# ETCKEEPER: Grab everything but config
+# ETCKEEPER: Grab config; excluding the local one and self-hooks
 !/etckeeper
-!/etckeeper/**
-/etckeeper/local.conf
+!/etckeeper/etckeeper.conf
+!/etckeeper/commit.d
+!/etckeeper/commit.d/sbp*
+!/etckeeper/init.d
+!/etckeeper/init.d/sbp*
+!/etckeeper/list-installed.d
+!/etckeeper/list-installed.d/sbp*
+!/etckeeper/post-install.d
+!/etckeeper/post-install.d/sbp*
+!/etckeeper/pre-commit.d
+!/etckeeper/pre-commit.d/sbp*
+!/etckeeper/pre-install.d
+!/etckeeper/pre-install.d/sbp*
+!/etckeeper/unclean.d
+!/etckeeper/unclean.d/sbp*
+!/etckeeper/uninit.d
+!/etckeeper/uninit.d/sbp*
+!/etckeeper/update-ignore.d
+!/etckeeper/update-ignore.d/sbp*
+!/etckeeper/vcs.d
+!/etckeeper/vcs.d/sbp*
 
 # EXPORTS: Keep global config to all computers here; but don't take additional
 !/exports
