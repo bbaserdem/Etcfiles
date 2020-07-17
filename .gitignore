@@ -88,9 +88,21 @@
 !/exports.d
 !/exports.d/sbp**
 
-# FIREWALLD: Grab config for now
+# FIREWALLD: Grab config, and overrides
+!/firewall
+!/firewall/applet.conf
 !/firewalld
 !/firewalld/firewalld.conf
+!/firewalld/helpers
+!/firewalld/helpers/*
+!/firewalld/icmptypes
+!/firewalld/icmptypes/*
+!/firewalld/ipsets
+!/firewalld/ipsets/*
+!/firewalld/services
+!/firewalld/services/*
+!/firewalld/zones
+!/firewalld/zones/*
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
