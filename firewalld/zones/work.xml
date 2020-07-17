@@ -2,8 +2,8 @@
 <zone>
   <short>Work</short>
   <description>For use in work areas. You mostly trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.</description>
-  <interface name="wifi-workstation"/>
-  <interface name="ethernet-workstation"/>
+  <interface name="wifi-work"/>
+  <interface name="ethernet-work"/>
   <service name="ssh"/>
   <service name="dhcpv6-client"/>
   <service name="nfs"/>
