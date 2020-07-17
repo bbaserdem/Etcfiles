@@ -8,4 +8,21 @@
   <service name="mdns"/>
   <service name="samba-client"/>
   <service name="dhcpv6-client"/>
+  <service name="ftp"/>
+  <service name="git"/>
+  <service name="http"/>
+  <service name="https"/>
+  <service name="kerberos"/>
+  <service name="kodi-jsonrpc"/>
+  <service name="kodi-http"/>
+  <service name="kodi-eventserver"/>
+  <service name="libvirt"/>
+  <service name="libvirt-tls"/>
+  <service name="nfs"/>
+  <service name="nfs3"/>
+  <service name="rpc-bind"/>
+  <service name="syncthing"/>
+  <service name="syncthing-gui"/>
+  <service name="mysql"/>
+  <service name="mountd"/>
 </zone>
