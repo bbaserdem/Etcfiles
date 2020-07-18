@@ -6,7 +6,6 @@
   <interface name="ethernet-server"/>
   <service name="ssh"/>
   <service name="mdns"/>
-  <service name="samba-client"/>
   <service name="dhcpv6-client"/>
   <service name="ftp"/>
   <service name="git"/>
@@ -19,7 +18,6 @@
   <service name="libvirt"/>
   <service name="libvirt-tls"/>
   <service name="nfs"/>
-  <service name="nfs3"/>
   <service name="rpc-bind"/>
   <service name="syncthing"/>
   <service name="syncthing-gui"/>
