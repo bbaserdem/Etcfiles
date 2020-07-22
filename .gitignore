@@ -48,10 +48,8 @@
 
 # DEFAULT: Grab only some configs
 !/default
-!/default/grub.*
-!/default/grub-btrfs
-!/default/grub-btrfs/config
-!/default/tlp.*
+!/default/tlp
+!/default/useradd
 
 # DRACUT: Grab the dracut config
 !/dracut.conf
