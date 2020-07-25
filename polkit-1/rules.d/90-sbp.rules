@@ -17,7 +17,7 @@ polkit.addRule(function(action, subject) {
 
 /* Virtualization rules */
 polkit.addRule(function(action, subject) {
-    if (action.id == "org.libvirt.unix.manage" && subject.isInGroup("kvm")) {
+    if (action.id == "org.libvirt.unix.manage" && subject.isInGroup("libvirt")) {
         return polkit.Result.YES;
     }
 });

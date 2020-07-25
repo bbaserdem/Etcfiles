@@ -7,18 +7,11 @@
   <service name="ssh"/>
   <service name="dhcpv6-client"/>
   <service name="nfs"/>
-  <service name="nfs3"/>
   <service name="syncthing"/>
   <service name="syncthing-gui"/>
-  <service name="steam-streaming"/>
-  <service name="rsyncd"/>
   <service name="mysql"/>
+  <service name="mdns"/>
   <service name="libvirt"/>
   <service name="libvirt-tls"/>
-  <service name="kodi-eventserver"/>
-  <service name="kodi-http"/>
-  <service name="kodi-jsonrpc"/>
-  <service name="dhcpv6"/>
-  <service name="dhcp"/>
-  <port port="5353" protocol="udp"/>
+  <service name="mpd"/>
 </zone>

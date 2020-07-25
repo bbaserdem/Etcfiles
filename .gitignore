@@ -93,14 +93,19 @@
 !/firewalld/firewalld.conf
 !/firewalld/helpers
 !/firewalld/helpers/*
+/firewalld/helpers/*.old
 !/firewalld/icmptypes
 !/firewalld/icmptypes/*
+/firewalld/icmptypes/*.old
 !/firewalld/ipsets
 !/firewalld/ipsets/*
+/firewalld/ipsets/*.old
 !/firewalld/services
 !/firewalld/services/*
+/firewalld/services/*.old
 !/firewalld/zones
 !/firewalld/zones/*
+/firewalld/zones/*.old
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
