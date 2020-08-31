@@ -121,9 +121,8 @@
 !/geoclue
 !/geoclue/**
 
-# GRUB: Get the fixed linux config
-!/grub.d
-!/grub.d/10_linux
+# GEOCLUE: Get git config
+!/gitconfig
 
 # IWD: Grab config
 !/iwd
