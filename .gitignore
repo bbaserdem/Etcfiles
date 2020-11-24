@@ -182,6 +182,10 @@
 !/private-internet-access/pia.conf
 /private-internet-access/login.conf
 
+# PULSEAUDIO: Grab configuration
+!/pulse
+!/pulse/*.pa
+
 # RESOLVCONF: Grab config
 !/resolvconf.conf
 
