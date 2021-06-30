@@ -153,16 +153,15 @@
 !/nut
 !/nut/ups.conf
 
-# PROFILE: Grab all
-!/profile
-!/profile.d
-!/profile.d/*.sh
-
 # PACMAN: Grab config and user hooks
 !/pacman.conf
 !/pacman.d
 !/pacman.d/hooks
 !/pacman.d/hooks/90-sbp**
+
+# PIPEWIRE
+!/pipewire
+!/pipewire/*.conf
 
 # POLKIT: Grab overrides
 !/polkit
@@ -182,9 +181,10 @@
 !/private-internet-access/pia.conf
 /private-internet-access/login.conf
 
-# PULSEAUDIO: Grab configuration
-!/pulse
-!/pulse/*.pa
+# PROFILE: Grab all
+!/profile
+!/profile.d
+!/profile.d/*.sh
 
 # RESOLVCONF: Grab config
 !/resolvconf.conf
@@ -271,6 +271,8 @@
 !/xdg/autorandr/**
 !/xdg/systemd
 !/xdg/systemd/**
+!/xdg/reflector
+!/xdg/reflector/**
 
 # ZSH: Grab every needed zthing
 !/zsh
