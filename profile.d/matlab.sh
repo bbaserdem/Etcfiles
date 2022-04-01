@@ -9,18 +9,18 @@ else
 fi
 
 # Matlab libraries
-export MATLAB_LIBS="/usr/lib/libstdc++.so
-/usr/lib/libfreetype.so.6"
-for lib in $MATLAB_LIBS ; do
-    if [ -f "${lib}" ]; then
-        # Sequentially add to LD_PRELOAD
-        if [ -z "${LD_PRELOAD}" ]; then
-            export LD_PRELOAD="${lib}"
-        else
-            export LD_PRELOAD="${LD_PRELOAD}:${lib}"
-        fi
-    fi
-done
+#export MATLAB_LIBS="/usr/lib/libstdc++.so
+#/usr/lib/libfreetype.so.6"
+#for lib in $MATLAB_LIBS ; do
+#    if [ -f "${lib}" ]; then
+#        # Sequentially add to LD_PRELOAD
+#        if [ -z "${LD_PRELOAD}" ]; then
+#            export LD_PRELOAD="${lib}"
+#        else
+#            export LD_PRELOAD="${LD_PRELOAD}:${lib}"
+#        fi
+#    fi
+#done
 
 # Tell MATLAB to use mesa driver i965 instead of Iris on intel cards
 if [ "$(hostname)" = 'sbp-laptop' ] ; then

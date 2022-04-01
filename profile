@@ -15,7 +15,7 @@ fi
 umask 022
 
 # Append our default paths
-appendpath () {
+append_path () {
     case ":$PATH:" in
         *:"$1":*)
             ;;
@@ -24,15 +24,12 @@ appendpath () {
     esac
 }
 
-appendpath '/usr/local/sbin'
-appendpath '/usr/local/bin'
-appendpath '/usr/sbin'
-appendpath '/usr/bin'
-appendpath '/sbin'
-appendpath '/bin'
-unset appendpath
-
-export PATH
+append_path '/usr/local/sbin'
+append_path '/usr/local/bin'
+append_path '/usr/sbin'
+append_path '/usr/bin'
+append_path '/sbin'
+append_path '/bin'
 
 # Load sh files from /etc/profile.d
 if test -d /etc/profile.d/; then
@@ -41,6 +38,12 @@ if test -d /etc/profile.d/; then
 	done
 	unset sh
 fi
+
+# Remove the function
+unset append_path
+
+# Make sure our PATH is exported
+export PATH
 
 # Source global bash config; bash.bashrc if present, bash/bashrc if that exists
 if test "$PS1" && test "$BASH" && test -z ${POSIXLY_CORRECT+x} && test -r /etc/bash.bashrc; then
