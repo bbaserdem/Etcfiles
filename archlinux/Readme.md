@@ -1,33 +1,6 @@
-# Arch packages
+# Archlinux
 
-This directory contains my main pkgbuild to manage 
-
-# System
-
-Packages to build the operating system
-This directory contains `sbp-sys`, which have;
-
-* **sbp-sys-base**: Common package to get system running.
-* **sbp-sys-extra**: Programs I don't neccessarily need for things.
-* **sbp-sys-uefi**: Programs for booting UEFI compliant systems.
-* **sbp-sys-virtual**: Programs I need to run virtual OS's.
-
-All the packages here are dependent on the base one.
-Base package requites a boot and an init implementation.
-The implementations themselves are mutually exclusive.
-
-# Gui
-
-This directory contains `sbp-gui`, which has;
-
-* **sbp-gui-base**: Common gui programs and libraries
-* **sbp-gui-extra**: Common gui programs and libraries
-* **sbp-gui-sway**: Sway desktop (for wayland)
-* **sbp-gui-bspwm**: Bspwm desktop
-* **sbp-gui-games**: Packages to run Steam and other games.
-
-All packages are dependent on the base one.
-Between themselves, they have no interdependence.
+This directory contains information and scripts on how I use Archlinux
 
 # Hardware
 

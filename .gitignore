@@ -52,7 +52,8 @@
 !/default/useradd
 
 # DRACUT: Grab the dracut config
-!/dracut.conf
+!/dracut.conf.d
+!/dracut.conf.d/10-sbp-common.conf
 
 # DHCPD: Grab config
 !/dhcpcd.conf
