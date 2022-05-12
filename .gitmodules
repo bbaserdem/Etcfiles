@@ -1,0 +1,6 @@
+[submodule "skel/.config"]
+	path = skel/.config
+	url = git@github.com:bbaserdem/dotfiles.git
+[submodule "skel/.local"]
+	path = skel/.local
+	url = git@github.com:bbaserdem/Local.git
