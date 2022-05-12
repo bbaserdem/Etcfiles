@@ -109,10 +109,11 @@
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
+!/fonts/fonts.conf
 !/fonts/conf.avail
-!/fonts/conf.avail/99-sbp**
+!/fonts/conf.avail/*sbp*.conf
 !/fonts/conf.d
-!/fonts/conf.d/99-sbp**
+!/fonts/conf.d/*sbp*.conf
 
 # FUSE: Grab config
 !/fuse.conf
