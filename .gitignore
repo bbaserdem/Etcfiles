@@ -58,29 +58,31 @@
 # DHCPD: Grab config
 !/dhcpcd.conf
 
-# ETCKEEPER: Grab config; excluding the local one and self-hooks
+# ETCKEEPER: Grab config; excluding the local config
 !/etckeeper
 !/etckeeper/etckeeper.conf
+/etckeeper/local.conf
+# Hooks to grab
 !/etckeeper/commit.d
-!/etckeeper/commit.d/sbp*
+!/etckeeper/commit.d/*sbp*
 !/etckeeper/init.d
-!/etckeeper/init.d/sbp*
+!/etckeeper/init.d/*sbp*
 !/etckeeper/list-installed.d
-!/etckeeper/list-installed.d/sbp*
+!/etckeeper/list-installed.d/*sbp*
 !/etckeeper/post-install.d
-!/etckeeper/post-install.d/sbp*
+!/etckeeper/post-install.d/*sbp*
 !/etckeeper/pre-commit.d
-!/etckeeper/pre-commit.d/sbp*
+!/etckeeper/pre-commit.d/*sbp*
 !/etckeeper/pre-install.d
-!/etckeeper/pre-install.d/sbp*
+!/etckeeper/pre-install.d/*sbp*
 !/etckeeper/unclean.d
-!/etckeeper/unclean.d/sbp*
+!/etckeeper/unclean.d/*sbp*
 !/etckeeper/uninit.d
-!/etckeeper/uninit.d/sbp*
+!/etckeeper/uninit.d/*sbp*
 !/etckeeper/update-ignore.d
-!/etckeeper/update-ignore.d/sbp*
+!/etckeeper/update-ignore.d/*sbp*
 !/etckeeper/vcs.d
-!/etckeeper/vcs.d/sbp*
+!/etckeeper/vcs.d/*sbp*
 
 # EXPORTS: Keep global config to all computers here; but don't take additional
 !/exports
@@ -159,7 +161,7 @@
 !/pacman.conf
 !/pacman.d
 !/pacman.d/hooks
-!/pacman.d/hooks/90-sbp**
+!/pacman.d/hooks/*sbp*
 
 # PIPEWIRE
 !/pipewire
@@ -227,17 +229,17 @@
 
 # SYSTEMD: Grab overrides, and custom units
 !/systemd
-/systemd/**
+!/systemd/*.conf
 !/systemd/logind.conf.d
-!/systemd/logind.conf.d/sbp**
+!/systemd/logind.conf.d/*sbp**
 !/systemd/system.conf.d
-!/systemd/system.conf.d/sbp**
+!/systemd/system.conf.d/*sbp**
 !/systemd/user.conf.d
-!/systemd/user.conf.d/sbp**
+!/systemd/user.conf.d/*sbp**
 !/systemd/system
-!/systemd/system/sbp*.service
+!/systemd/system/**sbp*.service
 !/systemd/system/*.d/
-!/systemd/system/*.d/sbp**
+!/systemd/system/*.d/*sbp*
 !/systemd/user
 !/systemd/user/*.service
 
