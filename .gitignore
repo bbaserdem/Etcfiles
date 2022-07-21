@@ -52,7 +52,8 @@
 !/default/useradd
 
 # DRACUT: Grab the dracut config
-!/dracut.conf
+!/dracut.conf.d
+!/dracut.conf.d/10-sbp-common.conf
 
 # DHCPD: Grab config
 !/dhcpcd.conf
@@ -213,8 +214,8 @@
 
 # SSH: Allow the configs to be shared
 !/ssh
-!/sshd_config
-!/ssh_config
+!/ssh/sshd_config
+!/ssh/ssh_config
 
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
