@@ -240,6 +240,7 @@
 !/systemd/system/**sbp*.service
 !/systemd/system/*.d/
 !/systemd/system/*.d/*sbp*
+!/systemd/system/*.d/override.conf
 !/systemd/user
 !/systemd/user/*.service
 
