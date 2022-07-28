@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim:set ts=4 sw=4 ft=sh et:
 # Default acpi script that takes an entry for all actions
 
 case "$1" in
@@ -74,4 +75,3 @@ case "$1" in
         ;;
 esac
 
-# vim:set ts=4 sw=4 ft=sh et:
