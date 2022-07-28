@@ -1,47 +1,21 @@
-#!/bin/sh
+#!/bin/dash
 
 # Manage backlight
 if [ -x '/usr/bin/light' ] ; then
     case $2 in
         BRTUP)
-            case "$(hostname)" in
-                sbp-homestation|sbp-laptop)
-                    /usr/bin/light -A 5
-                    ;;
-                *)
-                    logger "BRTUP action undefined for $(hostname)"
-                    ;;
-            esac
+            /usr/bin/light -A 5
             ;;
         BRTDN)
-            case "$(hostname)" in
-                sbp-homestation|sbp-laptop)
-                    /usr/bin/light -D 5
-                    ;;
-                *)
-                    logger "BRTDN action undefined for $(hostname)"
-                    ;;
-            esac
+            /usr/bin/light -D 5
             ;;
         KBILLUMUP)
-            case "$(hostname)" in
-                sbp-homestation)
-                    light -Ars "sysfs/leds/asus::kbd_backlight" 1
-                    ;;
-                *)
-                    logger "KBILLUMUP action undefined for $(hostname)"
-                    ;;
-            esac
+            _kbd="$(light -L | sed -n '/kbd_backlight/s|^\s||p')"
+            [ -n "${_kbd}" ] && light -A 1 -r -s "${_kbd}"
             ;;
         KBILLUMDOWN)
-            case "$(hostname)" in
-                sbp-homestation)
-                    light -Urs "sysfs/leds/asus::kbd_backlight" 1
-                    ;;
-                *)
-                    logger "KBILLUMDOWN action undefined for $(hostname)"
-                    ;;
-            esac
+            _kbd="$(light -L | sed -n '/kbd_backlight/s|^\s||p')"
+            [ -n "${_kbd}" ] && light -U 1 -r -s "${_kbd}"
             ;;
     esac
 fi
