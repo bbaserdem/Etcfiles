@@ -25,37 +25,36 @@
 
 # BLUETOOTH: Grab config
 !/bluetooth
-!/bluetooth/**
+!/bluetooth/sbp-**
 
-# BUMBLEBEE: Grab config
-!/bumblebee
-!/bumblebee/bumblebee.conf*
-
-# CONF.D: Grab most thing
+# CONF.D: Grab some things
 !/conf.d
 !/conf.d/consolefont
 !/conf.d/fluidsynth
 !/conf.d/keymaps
+!/conf.d/reflector
 !/conf.d/snapper
 !/conf.d/xdm
-!/conf.d/reflector
+
+# CRON: Grab all these
+!/cron.*
+!/cron.*/**
 
 # DEFAULT: Grab only some configs
 !/default
+!/default/earlyoom
 !/default/tlp
 !/default/useradd
 
 # DRACUT: Grab the dracut config
 !/dracut.conf.d
-!/dracut.conf.d/10-sbp-common.conf
-
-# DHCPD: Grab config
-!/dhcpcd.conf
+!/dracut.conf.d/*sbp*.conf
 
 # ETCKEEPER: Grab config; excluding the local config
 !/etckeeper
 !/etckeeper/etckeeper.conf
 /etckeeper/local.conf
+
 # Hooks to grab
 !/etckeeper/commit.d
 !/etckeeper/commit.d/*sbp*
@@ -78,31 +77,21 @@
 !/etckeeper/vcs.d
 !/etckeeper/vcs.d/*sbp*
 
-# EXPORTS: Keep global config to all computers here; but don't take additional
-!/exports
-!/exports.d
-!/exports.d/sbp**
-
 # FIREWALLD: Grab config, and overrides
 !/firewall
 !/firewall/applet.conf
 !/firewalld
-!/firewalld/firewalld.conf
 !/firewalld/helpers
-!/firewalld/helpers/*
-/firewalld/helpers/*.old
+!/firewalld/helpers/*sbp*.xml
 !/firewalld/icmptypes
-!/firewalld/icmptypes/*
-/firewalld/icmptypes/*.old
+!/firewalld/icmptypes/*sbp*.xml
 !/firewalld/ipsets
-!/firewalld/ipsets/*
-/firewalld/ipsets/*.old
+!/firewalld/ipsets/*sbp*.xml
 !/firewalld/services
-!/firewalld/services/*
-/firewalld/services/*.old
+!/firewalld/services/*sbp*.xml
 !/firewalld/zones
-!/firewalld/zones/*
-/firewalld/zones/*.old
+!/firewalld/zones/*.xml
+!/firewalld/firewalld.conf
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
@@ -112,19 +101,18 @@
 !/fonts/conf.d
 !/fonts/conf.d/*sbp*.conf
 
-# FUSE: Grab config
-!/fuse.conf
-
 # GEOCLUE: Get config
 !/geoclue
-!/geoclue/**
-
-# GEOCLUE: Get git config
-!/gitconfig
+!/geoclue/geoclue.conf
 
 # IWD: Grab config
 !/iwd
 !/iwd/main.conf
+
+# KERNEL: Grab config
+!/kernel
+!/kernel/install.d
+!/kernel/install.d/*
 
 # LIBVIRT: Grab the configurations
 !/libvirt
@@ -134,84 +122,88 @@
 !/libvirt/qemu.conf
 !/libvirt/virtlogd.conf
 
-# LOCALE: Grab the files
-!/locale*
+# LOGROTATE.D: Grab things
+!/logrotate.d
+!/logrotate.d/*sbp*
+!/logrotate.conf
 
-# MAKEPKG: Grab config
-!/makepkg.conf*
+# MODPROBE: Grab universal things
+!/modprobe.d
+!/modprobe.d/sbp*.conf
+!/modules-load.d
+!/modules-load.d/sbp*.conf
 
-# MKINITCPIO: Grab the presets
-!/mkinitcpio
-!/mkinitcpio/**
-
-# NSSWITCH: Grab for avahi
-!/nsswitch.conf
-
-# NUT: Grab teh ups config
+# NUT: Grab the ups config
 !/nut
-!/nut/ups.conf
+!/nut/sbp*.conf
 
 # PACMAN: Grab config and user hooks
-!/pacman.conf
 !/pacman.d
 !/pacman.d/hooks
-!/pacman.d/hooks/*sbp*
+!/pacman.d/hooks/sbp*.hook
+!/pacman.conf
 
 # PIPEWIRE
 !/pipewire
-!/pipewire/*.conf
+!/pipewire/client-rt.conf.d
+!/pipewire/client-rt.conf.d/sbp-*.conf
+!/pipewire/client.conf.d
+!/pipewire/client.conf.d/sbp-*.conf
+!/pipewire/jack.conf.d
+!/pipewire/jack.conf.d/sbp-*.conf
+!/pipewire/minimal.conf.d
+!/pipewire/minimal.conf.d/sbp-*.conf
+!/pipewire/pipewire-pulse.conf.d
+!/pipewire/pipewire-pulse.conf.d/sbp-*.conf
+!/pipewire/pipewire.conf.d
+!/pipewire/pipewire.conf.d/sbp-*.conf
 
 # POLKIT: Grab overrides
 !/polkit
 !/polkit/rules.d
-!/polkit/rules.d/90-sbp**
+!/polkit/rules.d/*sbp**
 !/polkit-1
 !/polkit-1/rules.d
-!/polkit-1/rules.d/90-sbp**
+!/polkit-1/rules.d/*sbp**
 
 # PORTAGE: Grab all but the specific config file
 !/portage
-!/portage/**
-/portage/local.conf
-
-# PRIVATE-INTERNET-ACCESS: Grab only the config file, nothing else!
-!/private-internet-access
-!/private-internet-access/pia.conf
-/private-internet-access/login.conf
+!/portage/Readme.md
 
 # PROFILE: Grab all
 !/profile
 !/profile.d
 !/profile.d/*.sh
-
-# RESOLVCONF: Grab config
-!/resolvconf.conf
-
-# SBUPDATE: Grab config
-!/sbupdate.conf
+!/profile.d/*.csh
 
 # SDDM: Grab theme
 !/sddm.conf.d
-!/sddm.conf.d/**
+!/sddm.conf.d/sbp-*.conf
 
 # SKEL: Grab skel
 !/skel
 !/skel/**
 
-# SNAPPER: Use the same configs for all computers, and grab snap-pac as well
+# SNAP-PAC: Use the same configs for all computers
+!/snap-pac
+!/snap-pac/**
+!/snap-pac.conf
+
+# SNAPPER: Use the same configs for all computers
 !/snapper
 !/snapper/configs
 !/snapper/configs/**
 !/snapper/filters
 !/snapper/filters/**
-!/snap-pac.conf
-!/snap-pac
-!/snap-pac/**
 
 # SSH: Allow the configs to be shared
 !/ssh
 !/ssh/sshd_config
 !/ssh/ssh_config
+
+# STEAMOS-COMPOSITOR: Grab things
+!/steamos-compositor-plus
+!/steamos-compositor-plus/sbp*
 
 # SUDOERS: Grab the sudoers files
 !/sudoers.d
@@ -221,63 +213,109 @@
 !/sysctl.d
 !/sysctl.d/99-sbp**
 
-# SYSTEMD: Grab overrides, and custom units
+# SWAY: Grab special things
+!/sway
+!/sway/config.d
+!/sway/config.d/sbp*.conf
+
+# SYSCONFIG: Grab rasdaemon things
+!/sysconfig/rasdaemon
+!/sysconfig/rasdaemon
+
+# SYSCTL: Grab some overrides
+!/sysctl.d
+!/sysctl.d/sbp-*.conf
+
+# SYSTEMD: Grab overrides, config files and custom units
 !/systemd
-!/systemd/*.conf
-!/systemd/logind.conf.d
-!/systemd/logind.conf.d/*sbp**
-!/systemd/system.conf.d
-!/systemd/system.conf.d/*sbp**
-!/systemd/user.conf.d
-!/systemd/user.conf.d/*sbp**
+!/systemd/network
+!/systemd/network/*.service.d
+!/systemd/network/*.service.d/sbp*.conf
+!/systemd/network/*.timer.d
+!/systemd/network/*.target.wants
+!/systemd/network/**sbp*.conf
+!/systemd/network/**sbp*.service
+!/systemd/network/**sbp*.timer
 !/systemd/system
+!/systemd/system/*.service.d
+!/systemd/system/*.service.d/sbp*.conf
+!/systemd/system/*.timer.d
+!/systemd/system/*.target.wants
+!/systemd/system/**sbp*.conf
 !/systemd/system/**sbp*.service
-!/systemd/system/*.d/
-!/systemd/system/*.d/*sbp*
-!/systemd/system/*.d/override.conf
+!/systemd/system/**sbp*.timer
 !/systemd/user
+!/systemd/user/*.service.d
+!/systemd/user/*.service.d/sbp*.conf
+!/systemd/user/*.timer.d
+!/systemd/user/*.target.wants
+!/systemd/user/**sbp*.conf
+!/systemd/user/**sbp*.service
+!/systemd/user/**sbp*.timer
 !/systemd/user/*.service
+!/systemd/*.conf
+!/systemd/*.conf.d
+!/systemd/*.conf.d/sbp*.conf
+!/systemd/*/*.d/override.conf
 
-# TIMEZONE: Grab it
-!/timezone
+# TLP: Get specific config
+!/tlp.d
+!/tlp.d/sbp*.conf
+!/tlp.conf
 
-# UDEV: Grab rules
+# UDEV: Grab rules and config
 !/udev
+!/udev/hwdb.d
+!/udev/hwdb.d/*sbp*.rules
 !/udev/rules.d
-!/udev/rules.d/11-sbp**
-!/udev/rules.d/90-sbp**
+!/udev/rules.d/*sbp*.rules
+!/udev/udev.conf
 
-# UDISKS: Grab things
+# UDISKS: Grab config
 !/udisks2
-!/udisks2/**
+!/udisks2/udisks2.conf
 
 # UNBOUND: Grab config
 !/unbound
-!/unbound/unbound.conf*
-
-# UPS Tools: Grab the config files
-!/ups
-!/ups/ups.conf
-!/ups/upssched.conf
-!/ups/upsmon.conf
-
-# VCONSOLE: Grab config
-!/vconsole.conf
+!/unbound/unbound.conf
 
 # XDG: Grab some stuff
 !/xdg
 !/xdg/autorandr
 !/xdg/autorandr/**
+!/xdg/autostart
+!/xdg/autostart/sbp*.desktop
+!/xdg/reflector
+!/xdg/reflector/reflector.conf
 !/xdg/systemd
 !/xdg/systemd/**
 !/xdg/reflector
 !/xdg/reflector/**
+!/xdg/picom.conf
+!/xdg/user-dirs.defaults
 
 # ZSH: Grab every needed zthing
 !/zsh
 !/zsh/zshenv
 !/zsh/zshrc
 !/zsh/zprofile
+
+# Single files
+!/Readme.md
+!/abcde.conf
+!/dhcpcd.conf
+!/gitconfig
+!/locale.conf
+!/locale.gen
+!/logrotate.conf
+!/makepkg.conf
+!/nsswitch.conf
+!/ntp.conf
+!/pacman.conf
+!/resolvconf.conf
+!/snap-pac.conf
+!/tlp.conf
+!/vconsole.conf
 
 # begin section managed by etckeeper (do not edit this section by hand)
 
