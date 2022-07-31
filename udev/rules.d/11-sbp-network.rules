@@ -1,10 +1,8 @@
-# Homestation
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="04:92:26:0c:50:e0", NAME="ethernet-home"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="80:c5:f2:1e:60:71", NAME="wifi-home"
-# Workstation
+# Work
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ethernet-work"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi-work"
 # Laptop
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:e0:4c:68:02:39", NAME="ethernet-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether-laptop"
