@@ -341,6 +341,7 @@ mtab.fuselock
 *.LOCK
 network/run
 adjtime
+udev/hwdb.bin
 lvm/cache
 lvm/archive
 X11/xdm/authdir/authfiles/*
