@@ -1,0 +1,8 @@
+[Unit]
+Description=Run tzupdate every hour
+
+[Timer]
+OnBootSec=5min
+
+[Install]
+WantedBy=timers.target

@@ -1,6 +1,0 @@
-# Intel microcode
-sys-firmware/intel-microcode hostonly split-ucode -initramfs
-# Bumblebee for multigpu drivers
-x11-misc/bumblebee bbswitch
-# Nvidia driver, with specific version
-x11-drivers/nvidia-drivers compat driver gtk3 kms tools uvm

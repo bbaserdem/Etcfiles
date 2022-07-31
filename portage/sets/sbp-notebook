@@ -1,8 +1,0 @@
-# Intel microcode
-sys-firmware/intel-microcode
-# Bumblebee for switching gpu
-x11-misc/bumblebee
-x11-misc/primus
-sys-power/bbswitch
-# Nvidia driver, with specific version
-=x11-drivers/nvidia-drivers-430.09
