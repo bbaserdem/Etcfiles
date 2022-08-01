@@ -10,9 +10,6 @@
 !/X11/xorg.conf.d
 !/X11/xorg.conf.d/10-sbp**
 
-# ABCDE: Get config
-!/abcde.conf
-
 # ACPI: Grab configuration
 !/acpi
 !/acpi/**
