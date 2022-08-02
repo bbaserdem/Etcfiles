@@ -1,0 +1,2 @@
+# Make it so that we use ntfs3 by default always
+SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_FS_TYPE}="ntfs3"
