@@ -8,23 +8,18 @@ else
     export MATLAB_LOG_DIR="${HOME}/.cache/matlab/"
 fi
 
-# Matlab libraries
-#export MATLAB_LIBS="/usr/lib/libstdc++.so
-#/usr/lib/libfreetype.so.6"
-#for lib in $MATLAB_LIBS ; do
-#    if [ -f "${lib}" ]; then
-#        # Sequentially add to LD_PRELOAD
-#        if [ -z "${LD_PRELOAD}" ]; then
-#            export LD_PRELOAD="${lib}"
-#        else
-#            export LD_PRELOAD="${LD_PRELOAD}:${lib}"
-#        fi
-#    fi
-#done
+# Tell MATLAB to use zink instead of iris on my laptop
+if uname -n | grep --quiet --regexp 'sbp-.*-laptop' 2>/dev/null ; then
+    export MATLAB_MESA_OVERRIDE=zink
+fi
 
-# Tell MATLAB to use mesa driver i965 instead of Iris on intel cards
-if [ "$(hostname)" = 'sbp-laptop' ] ; then
-  export MATLAB_INTEL_OVERRIDE=yes
+# Tell matlab where to find the gcc libraries if gcc10 is installed
+if [ -x '/usr/bin/gcc-10' ] && [ -d '/usr/lib/gcc/x86_64-pc-linux-gnu' ] ; then
+    libdir="$(find '/usr/lib/gcc/x86_64-pc-linux-gnu' \
+        -type d -name '10.*' 2>/dev/null \
+        | sort | tail -1)" 
+    # Export this path if we got a match
+    [ -d "${libdir}" ] && export MATLAB_PRELOAD_PATH="${libdir}"
 fi
 
 # Set matlab Java version
