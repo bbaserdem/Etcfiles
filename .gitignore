@@ -45,7 +45,7 @@
 
 # DRACUT: Grab the dracut config
 !/dracut.conf.d
-!/dracut.conf.d/*sbp*.conf
+!/dracut.conf.d/sbp-common.conf
 
 # ETCKEEPER: Grab config; excluding the local config
 !/etckeeper
