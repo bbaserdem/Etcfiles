@@ -92,7 +92,7 @@
 
 # FONTS: Grab overrides THAT I PUT
 !/fonts
-!/fonts/fonts.conf
+!/fonts/local.conf
 !/fonts/conf.avail
 !/fonts/conf.avail/*sbp*.conf
 !/fonts/conf.d
@@ -101,6 +101,10 @@
 # GEOCLUE: Get config
 !/geoclue
 !/geoclue/geoclue.conf
+
+# GREETD: Get all
+!/greetd
+!/greetd/*
 
 # IWD: Grab config
 !/iwd
@@ -173,9 +177,9 @@
 !/profile.d/*.sh
 !/profile.d/*.csh
 
-# SDDM: Grab theme
-!/sddm.conf.d
-!/sddm.conf.d/sbp-*.conf
+# QTGREET: Grab all
+!/qtgreet
+!/qtgreet/*
 
 # SKEL: Grab skel
 !/skel
