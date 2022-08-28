@@ -10,7 +10,7 @@
 !/X11/xorg.conf.d
 !/X11/xorg.conf.d/10-sbp**
 
-# ACPI: Grab configuration
+# ACPI: Grab everything here
 !/acpi
 !/acpi/**
 
@@ -42,6 +42,11 @@
 !/default/earlyoom
 !/default/tlp
 !/default/useradd
+
+# DHCPCD: Grab config and hooks
+!/dhcpcd.conf
+!/dhcpcd.enter-hook
+!/dhcpcd.exit-hook
 
 # DRACUT: Grab the dracut config
 !/dracut.conf.d
@@ -304,7 +309,6 @@
 # Single files
 !/Readme.md
 !/abcde.conf
-!/dhcpcd.conf
 !/gitconfig
 !/locale.conf
 !/locale.gen

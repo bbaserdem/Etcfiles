@@ -3,26 +3,18 @@
 # --> They are stable and don't depend on loading order to get names assigned
 # --> Firewalld configuration is based on network name; so I can share config
 #   but retain granular control over computers.
-#   
-# * Matlab licence is based on network card MAC address; so spoofing MAC helps
-#   share the licence across computers.
-# --> Two devices with the same MAC address apparently destroys network speed,
-#     so make sure no two spoofed interfaces are connected to the same network
-#     at a given time
 
 # WORK
 #   This one is the wired connection; and of main usage
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ethernet-work"
-#   This one is the wireless card (SPOOF: never used)
+#   This one is the wireless card
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi-work"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", RUN+="/usr/bin/ip link set dev $name address 00:11:22:33:44:55"
 
 # LAPTOP 
+#   Main interface is wifi; and only one that is available consistently
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-laptop"
 #   This one is for an adapter on the USB-C port, seems like a stable MAC address
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:e0:4c:68:02:39", NAME="ethernet-laptop"
 #   Got these two MAC addresses when I do Android tethering. Doesn't seem stable
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether-laptop"
-#   Main interface is wifi; and only one that is available consistently (SPOOF)
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-laptop"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", RUN+="/usr/bin/ip link set dev $name address 00:11:22:33:44:55"

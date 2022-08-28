@@ -2,7 +2,7 @@
 
 # Manage backlight
 if [ -x '/usr/bin/light' ] ; then
-    case $2 in
+    case "${2}" in
         BRTUP)
             /usr/bin/light -A 5
             ;;

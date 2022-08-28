@@ -1,16 +1,15 @@
 #!/bin/sh
 # Handler for lid open/close event
 
-name="$1"
-butn="$2"
-state="$3"
-
-# If autorandr is loaded and there is an external display; refresh
-if [ -x '/usr/bin/autorandr' ] ; then
-    autorandr --batch --change
-fi
-
-# If lid is closed; and there is only one display; turn it off
-if [ "${state}" = 'close' ] ; then
-    /usr/bin/xset dpms force off
-fi
+case "${3}" in
+    close)
+        _ac="$(acpi --ac-adapter | sed --quiet 's|Adapter 0: \(.*\)$|\1|p')"
+        if [ "${_ac}" = 'off-line' ] ; then
+            logger "Lid closed while running on battery, sleeping."
+            echo -n mem > /sys/power/state
+        fi
+        ;;
+    *)
+        logger "User script not configured for: ${3}"
+        ;;
+esac
