@@ -33,6 +33,9 @@
 !/conf.d/snapper
 !/conf.d/xdm
 
+# CHRONY: Grab config
+!/chrony.conf
+
 # CRON: Grab all these
 !/cron.*
 !/cron.*/**
