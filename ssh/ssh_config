@@ -22,6 +22,8 @@ Host hopper.cshl.edu
     PubkeyAcceptedKeyTypes=+ssh-rsa
 
 Host *
+    HostKeyAlgorithms=+ssh-rsa
+    PubkeyAcceptedKeyTypes=+ssh-rsa
 #    ForwardAgent no
 #    ForwardX11 no
 #    PasswordAuthentication yes
