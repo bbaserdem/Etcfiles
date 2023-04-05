@@ -8,7 +8,7 @@
 #   This one is the wired connection; and of main usage
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ethernet-work"
 #   This one is the wireless card
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d0:c6:37:25:8a:55", NAME="wifi-work"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:a8:d3:a0:d0:ac", NAME="wifi-work"
 
 # LAPTOP 
 #   Main interface is wifi; and only one that is available consistently
