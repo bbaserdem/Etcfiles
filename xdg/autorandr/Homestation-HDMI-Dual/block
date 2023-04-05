@@ -1,4 +1,0 @@
-#!/usr/bin/sh
-
-# Block by returning 0 if lid is closed
-exec grep -q close /proc/acpi/button/lid/LID/state
