@@ -11,10 +11,12 @@ SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:85:c2:dc:a9:4b", NAME="ether
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="70:a8:d3:a0:d0:ac", NAME="wifi-work"
 
 # LAPTOP 
-#   Main interface is wifi; and only one that is available consistently
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="0c:dd:24:1b:d5:d7", NAME="wifi-laptop"
-#   This one is for an adapter on the USB-C port, seems like a stable MAC address
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:e0:4c:68:02:39", NAME="ethernet-laptop"
+# The wifi thing
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="10:6f:d9:b0:36:37", NAME="wifi-laptop"
+# The ethernet adapter
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="50:a1:32:2b:be:2c", NAME="ethernet-laptop"
+#   This one is for an adapter on the USB-A port, seems like a stable MAC address
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:e0:4c:68:06:18", NAME="ethernet-laptop"
 #   Got these two MAC addresses when I do Android tethering. Doesn't seem stable
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="82:da:d6:27:02:83", NAME="usbtether-laptop"
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="86:a6:65:5c:38:68", NAME="usbtether-laptop"
