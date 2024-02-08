@@ -3,4 +3,17 @@ primary
 mode 3440x1440
 pos 0x0
 output eDP-1
+mode 1920x1080
+pos 3440x180
+DP-2
+off
+DP-3
+off
+DP-4
+off
+DP-5
+off
+DP-6
+off
+DP-7
 off
